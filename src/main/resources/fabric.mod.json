@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "mutantmore",
+  "version": "${version}",
+  "name": "Mutant More",
+  "description": "Mutant forms of mobs with epic boss battles (unofficial 26.3 Fabric port for personal use).",
+  "authors": ["Alexander's Fun and Games"],
+  "contact": { "homepage": "https://www.curseforge.com/minecraft/mc-mods/new-mutant-more" },
+  "license": "Custom",
+  "icon": "mutant_more_logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.alexander.mutantmore.MutantMore"],
+    "client": ["com.alexander.mutantmore.client.MutantMoreClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.20.1",
+    "fabric-api": "*",
+    "forgeconfigapiport": "*",
+    "minecraft": "26.3"
+  },
+  "mixins": ["mutantmore.mixins.json"],
+  "accessWidener": "mutantmore.accesswidener"
+}

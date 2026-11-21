@@ -1,0 +1,12 @@
+
+{
+	"replace": false,
+	"values": [
+		"minecraft:zombified_piglin",
+		"minecraft:hoglin",
+		"mutantmore:mutant_hoglin",
+		"minecraft:piglin",
+		"minecraft:piglin_brute",
+		"minecraft:enderman"
+	]
+}

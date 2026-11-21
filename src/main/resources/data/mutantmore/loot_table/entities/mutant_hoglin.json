@@ -1,0 +1,39 @@
+{
+	"type": "minecraft:entity",
+	"pools": [
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": 1.0,
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "mutantmore:disc_fragment_adrenaline_rush"
+				}
+			],
+			"rolls": 1.0
+		},
+		{
+			"bonus_rolls": 0.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"functions": [
+						{
+							"add": false,
+							"count": 2.0,
+							"function": "minecraft:set_count"
+						}
+					],
+					"name": "mutantmore:mutant_hoglin_tusk"
+				}
+			],
+			"rolls": 1.0
+		}
+	]
+}

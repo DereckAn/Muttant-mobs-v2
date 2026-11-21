@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "mutantmore:heat",
+    "mutantmore:poison_cloud",
+    "mutantmore:icicle",
+    "mutantmore:earthquake_attack"
+  ]
+}
