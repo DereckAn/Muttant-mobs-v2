@@ -121,7 +121,8 @@ public class MiscUtils {
       Entity entityForTeam = owner != null ? owner : entity;
       if (owner == null) {
          return true;
-      } else if (owner != null && owner instanceof Mob && ((Mob)owner).getTarget() != null && ((Mob)owner).getTarget() == target) {
+      } else if (owner instanceof Mob mob && mob.getTargetUnchecked() != null && mob.getTargetUnchecked() == target) {
+         // getTargetUnchecked: since 26.x Mob.getTarget() calls canAttack(), which calls back here (StackOverflowError)
          return true;
       } else if (tag != null && target.is(tag) && entityForTeam.getTeam() == null && target.getTeam() == null) {
          return false;

@@ -8,6 +8,7 @@ import com.alexander.mutantmore.config.mutant_hoglin.MutantHoglinCommonConfig;
 import com.alexander.mutantmore.config.mutant_hoglin.MutantHoglinRewardsClientConfig;
 import com.alexander.mutantmore.config.mutant_hoglin.MutantHoglinRewardsCommonConfig;
 import com.alexander.mutantmore.entities.MutantHoglin;
+import com.alexander.mutantmore.init.CreativeModeTabInit;
 import com.alexander.mutantmore.init.EffectInit;
 import com.alexander.mutantmore.init.EntityTypeInit;
 import com.alexander.mutantmore.init.ItemInit;
@@ -37,6 +38,7 @@ public class MutantMore implements ModInitializer {
       ParticleTypeInit.init();
       EntityTypeInit.init();
       ItemInit.init();
+      CreativeModeTabInit.init();
       // ponytail: attributes read the common config once at startup, so health/armour edits need a restart (same as the original)
       FabricDefaultAttributeRegistry.register(EntityTypeInit.MUTANT_HOGLIN, MutantHoglin.createConfiguredAttributes());
       PayloadTypeRegistry.clientboundPlay().register(ShakeCameraPayload.TYPE, ShakeCameraPayload.CODEC);
