@@ -18,7 +18,12 @@ public class CreativeModeTabInit {
          .displayItems((parameters, output) -> {
             output.accept(ItemInit.MUTANT_HOGLIN_TUSK);
             output.accept(ItemInit.DISC_FRAGMENT_ADRENALINE_RUSH);
+            output.accept(ItemInit.MUTANT_JUNGLE_ZOMBIE_VINE_SEED);
+            output.accept(ItemInit.MUTANT_JUNGLE_ZOMBIE_VINE);
+            output.accept(ItemInit.SENTRY_VINE);
+            output.accept(ItemInit.MUTANT_JUNGLE_ZOMBIE_ARM);
             output.accept(ItemInit.MUTANT_HOGLIN_SPAWN_EGG);
+            output.accept(ItemInit.MUTANT_JUNGLE_ZOMBIE_SPAWN_EGG);
          })
          .build()
    );

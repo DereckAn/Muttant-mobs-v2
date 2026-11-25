@@ -16,8 +16,14 @@ Pass 1 (done): Mutant Hoglin end to end.
 - Entity, AI goals, keyframe and sine-wave animations, enraged glow, death quake, camera shake, battle music.
 - Spawn egg, tusk and disc fragment drops, damage types, Jumping Fatigue effect, shockwave particle, sounds, and the Hoglin's configs.
 
+Pass 2 (done): Mutant Jungle Zombie.
+- Entity with its 5 attacks (punch, strangle, slam, vine sweep, poison jump), get-up lives, configs, spawn egg, Mutant More creative tab.
+- Shared `AreaDamage` entity (ground and poison-cloud types) and the poison cloud particle.
+- Rewards: vine seed (drop) and vine crop, Sentry Vine (placeable turret), Mutant Jungle Zombie Arm (grab/strangle, 3D item via a special model renderer, arm-raise pose), arm recipe.
+- Not yet: Sentry Vine recipe (needs the mutation potions), the advancement tree (the "flew" check is in code and lights up once it exists), armour/held-item render layers.
+
 Deferred to later passes:
-- Other mutants: Blaze, Husk, Frozen Zombie, Jungle Zombie, Shulker, Wither Skeleton, Phantom. Most need the `advanced_animation_utils` system and the armour layers.
+- Other mutants: Blaze, Husk, Frozen Zombie, Shulker, Wither Skeleton, Phantom. Most need the `advanced_animation_utils` system and the armour layers.
 - Mutation system: the `mutation_type` data registry, natural spawns, Formula Y, Compound Z, the mutation cloud and Concoction W.
 - Advancements: the tree is rooted in mutation advancements.
 - Hoglin rewards (Hog Helm, Hoglance, Hogfist Gauntlet) and the music discs (jukebox_song data).

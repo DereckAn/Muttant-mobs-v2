@@ -1,0 +1,9 @@
+
+{
+	"replace": false,
+	"values": [
+		"minecraft:creeper",
+		"mutantmore:mutant_jungle_zombie",
+		"minecraft:player"
+	]
+}

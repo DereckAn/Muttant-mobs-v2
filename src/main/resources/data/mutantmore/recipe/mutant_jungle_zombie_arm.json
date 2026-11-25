@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "L": "minecraft:lead",
+    "V": "mutantmore:mutant_jungle_zombie_vine",
+    "S": "minecraft:slime_ball"
+  },
+  "pattern": [
+    " L ",
+    "SVS",
+    " L "
+  ],
+  "result": {
+    "id": "mutantmore:mutant_jungle_zombie_arm"
+  }
+}

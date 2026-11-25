@@ -1,0 +1,12 @@
+
+{
+	"replace": false,
+	"values": [
+		"mutantmore:mutant_jungle_zombie",
+		"minecraft:zombie",
+		"minecraft:skeleton",
+		"minecraft:stray",
+		"minecraft:creeper",
+		"minecraft:spider"
+	]
+}

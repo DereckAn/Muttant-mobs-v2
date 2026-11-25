@@ -1,0 +1,6 @@
+{
+  "parent": "mutantmore:block/double_cross",
+  "textures": {
+    "cross": "mutantmore:block/mutant_jungle_zombie_vine_stage_3"
+  }
+}

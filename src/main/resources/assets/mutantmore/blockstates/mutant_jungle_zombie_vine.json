@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "mutantmore:block/mutant_jungle_zombie_vine_stage0"
+    },
+    "age=1": {
+      "model": "mutantmore:block/mutant_jungle_zombie_vine_stage0"
+    },
+    "age=2": {
+      "model": "mutantmore:block/mutant_jungle_zombie_vine_stage1"
+    },
+    "age=3": {
+      "model": "mutantmore:block/mutant_jungle_zombie_vine_stage1"
+    },
+    "age=4": {
+      "model": "mutantmore:block/mutant_jungle_zombie_vine_stage2"
+    },
+    "age=5": {
+      "model": "mutantmore:block/mutant_jungle_zombie_vine_stage2"
+    },
+    "age=6": {
+      "model": "mutantmore:block/mutant_jungle_zombie_vine_stage2"
+    },
+    "age=7": {
+      "model": "mutantmore:block/mutant_jungle_zombie_vine_stage3"
+    }
+  }
+}

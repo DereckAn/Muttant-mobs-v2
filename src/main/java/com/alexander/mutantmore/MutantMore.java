@@ -8,7 +8,16 @@ import com.alexander.mutantmore.config.mutant_hoglin.MutantHoglinCommonConfig;
 import com.alexander.mutantmore.config.mutant_hoglin.MutantHoglinRewardsClientConfig;
 import com.alexander.mutantmore.config.mutant_hoglin.MutantHoglinRewardsCommonConfig;
 import com.alexander.mutantmore.entities.MutantHoglin;
+import com.alexander.mutantmore.entities.MutantJungleZombie;
+import com.alexander.mutantmore.config.mutant_jungle_zombie.MutantJungleZombieClientConfig;
+import com.alexander.mutantmore.config.mutant_jungle_zombie.MutantJungleZombieCommonConfig;
+import com.alexander.mutantmore.init.BlockInit;
 import com.alexander.mutantmore.init.CreativeModeTabInit;
+import com.alexander.mutantmore.entities.SentryVine;
+import com.alexander.mutantmore.items.JungleZombieArmState;
+import com.alexander.mutantmore.network.ArmStranglePayload;
+import com.alexander.mutantmore.config.mutant_jungle_zombie.MutantJungleZombieRewardsCommonConfig;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import com.alexander.mutantmore.init.EffectInit;
 import com.alexander.mutantmore.init.EntityTypeInit;
 import com.alexander.mutantmore.init.ItemInit;
@@ -37,15 +46,24 @@ public class MutantMore implements ModInitializer {
       EffectInit.init();
       ParticleTypeInit.init();
       EntityTypeInit.init();
+      BlockInit.init();
       ItemInit.init();
       CreativeModeTabInit.init();
       // ponytail: attributes read the common config once at startup, so health/armour edits need a restart (same as the original)
       FabricDefaultAttributeRegistry.register(EntityTypeInit.MUTANT_HOGLIN, MutantHoglin.createConfiguredAttributes());
+      FabricDefaultAttributeRegistry.register(EntityTypeInit.MUTANT_JUNGLE_ZOMBIE, MutantJungleZombie.createConfiguredAttributes());
+      FabricDefaultAttributeRegistry.register(EntityTypeInit.SENTRY_VINE, SentryVine.createConfiguredAttributes());
+      PayloadTypeRegistry.serverboundPlay().register(ArmStranglePayload.TYPE, ArmStranglePayload.CODEC);
+      ServerPlayNetworking.registerGlobalReceiver(ArmStranglePayload.TYPE, (payload, context) -> JungleZombieArmState.of(context.player()).strangleTicks = 3);
       PayloadTypeRegistry.clientboundPlay().register(ShakeCameraPayload.TYPE, ShakeCameraPayload.CODEC);
-      CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.SPAWN_EGGS).register(output -> output.accept(ItemInit.MUTANT_HOGLIN_SPAWN_EGG));
+      CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.SPAWN_EGGS).register(output -> {
+         output.accept(ItemInit.MUTANT_HOGLIN_SPAWN_EGG);
+         output.accept(ItemInit.MUTANT_JUNGLE_ZOMBIE_SPAWN_EGG);
+      });
       CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(output -> {
          output.accept(ItemInit.MUTANT_HOGLIN_TUSK);
          output.accept(ItemInit.DISC_FRAGMENT_ADRENALINE_RUSH);
+         output.accept(ItemInit.MUTANT_JUNGLE_ZOMBIE_VINE);
       });
    }
 
@@ -58,6 +76,9 @@ public class MutantMore implements ModInitializer {
       config(Type.CLIENT, MutantHoglinClientConfig.SPEC, "mutant_hoglin/mutant_hoglin-client.toml");
       config(Type.COMMON, MutantHoglinRewardsCommonConfig.SPEC, "mutant_hoglin/mutant_hoglin_rewards-common.toml");
       config(Type.CLIENT, MutantHoglinRewardsClientConfig.SPEC, "mutant_hoglin/mutant_hoglin_rewards-client.toml");
+      config(Type.COMMON, MutantJungleZombieCommonConfig.SPEC, "mutant_jungle_zombie/mutant_jungle_zombie-common.toml");
+      config(Type.COMMON, MutantJungleZombieRewardsCommonConfig.SPEC, "mutant_jungle_zombie/mutant_jungle_zombie_rewards-common.toml");
+      config(Type.CLIENT, MutantJungleZombieClientConfig.SPEC, "mutant_jungle_zombie/mutant_jungle_zombie-client.toml");
       config(Type.COMMON, MutantMoreGroupedOptionsCommonConfig.SPEC, "grouped_options-common.toml");
       config(Type.CLIENT, MutantMoreGroupedOptionsClientConfig.SPEC, "grouped_options-client.toml");
       config(Type.CLIENT, MutantMoreMiscClientConfig.SPEC, "misc-client.toml");

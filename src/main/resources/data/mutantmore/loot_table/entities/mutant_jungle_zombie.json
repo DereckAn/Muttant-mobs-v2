@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "mutantmore:disc_fragment_adrenaline_rush" }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "mutantmore:mutant_jungle_zombie_vine_seed" }
+      ]
+    }
+  ]
+}
