@@ -1,6 +1,9 @@
 {
-	"replace": false,
-	"values": [
-		"minecraft:music.credits"
-	]
+  "replace": false,
+  "values": [
+    {
+      "id": "minecraft:music.credits",
+      "required": false
+    }
+  ]
 }

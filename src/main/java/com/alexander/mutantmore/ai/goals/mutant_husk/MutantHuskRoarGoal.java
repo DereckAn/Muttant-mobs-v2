@@ -1,5 +1,6 @@
 package com.alexander.mutantmore.ai.goals.mutant_husk;
 
+import com.alexander.mutantmore.util.MiscUtils;
 import net.minecraft.world.entity.EntityTypes;
 import com.alexander.mutantmore.config.mutant_husk.MutantHuskCommonConfig;
 import com.alexander.mutantmore.entities.MutantHusk;
@@ -98,10 +99,7 @@ public class MutantHuskRoarGoal extends Goal {
                         + this.mob.getRandom().nextInt((Integer)MutantHuskCommonConfig.roar_summon_zombies_range.get() * 2)
                   )
             );
-            // Unknown ids in the config fall back to a zombie
-            String typeId = MutantHuskCommonConfig.roar_summoned_zombie_type.get();
-            Identifier id = Identifier.tryParse(typeId);
-            resurrection.setEntityType(id == null ? EntityTypes.ZOMBIE : BuiltInRegistries.ENTITY_TYPE.getOptional(id).orElse(EntityTypes.ZOMBIE));
+            resurrection.setEntityType(MiscUtils.entityTypeOrZombie(MutantHuskCommonConfig.roar_summoned_zombie_type.get()));
             resurrection.setYRot(this.mob.getRandom().nextFloat() * 360.0F);
             PositionUtils.moveToCorrectHeight(resurrection, true);
             ((ServerLevel)this.mob.level()).addFreshEntityWithPassengers(resurrection);

@@ -1,9 +1,9 @@
 package com.alexander.mutantmore.items;
 
-import com.alexander.mutantmore.entities.SentryVine;
-import com.alexander.mutantmore.init.EntityTypeInit;
 import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -13,6 +13,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntitySpawnReason;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -24,18 +25,32 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
-public class SentryVineItem extends Item {
-   public SentryVineItem(Properties properties) {
+/**
+ * Right-click the ground to place an entity there (Sentry Vine, Mutant Shulker Turret, Mutant Shulker Trap).
+ * Replaces three near-identical original items; ponytail: the trap no longer converts spawners or floats on water like a spawn egg did.
+ */
+public class PlaceEntityItem extends Item {
+   private final Supplier<? extends EntityType<?>> type;
+   private final String tooltipKey;
+   private final BiConsumer<Entity, Player> onPlaced;
+
+   public PlaceEntityItem(Properties properties, Supplier<? extends EntityType<?>> type, String tooltipKey, BiConsumer<Entity, Player> onPlaced) {
       super(properties);
+      this.type = type;
+      this.tooltipKey = tooltipKey;
+      this.onPlaced = onPlaced;
    }
 
    @Override
    @SuppressWarnings("deprecation")
    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flag) {
       tooltip.accept(Component.translatable("mutantmore.desc.abilities").withStyle(ChatFormatting.GRAY));
-      tooltip.accept(Component.translatable("mutantmore.sentry_vine.desc", Component.keybind("key.use")).withStyle(ChatFormatting.BLUE));
+      tooltip.accept(Component.translatable("mutantmore." + this.tooltipKey + ".desc", Component.keybind("key.use")).withStyle(ChatFormatting.BLUE));
       tooltip.accept(Component.translatable("mutantmore.desc.interactions").withStyle(ChatFormatting.GRAY));
-      tooltip.accept(Component.translatable("mutantmore.sentry_vine.interactions").withStyle(ChatFormatting.BLUE));
+      String interactions = Component.translatable("mutantmore." + this.tooltipKey + ".interactions", Component.keybind("key.use"), Component.keybind("key.sneak")).getString();
+      for (String line : interactions.split("\n")) {
+         tooltip.accept(Component.literal(line).withStyle(ChatFormatting.BLUE));
+      }
    }
 
    @Override
@@ -46,7 +61,7 @@ public class SentryVineItem extends Item {
          return InteractionResult.PASS;
       }
 
-      // Don't place while looking at an entity standing in front of you
+      // Don't place while standing inside another entity's hitbox in front of you
       Vec3 view = player.getViewVector(1.0F);
       Vec3 eye = player.getEyePosition();
       List<Entity> near = level.getEntities(player, player.getBoundingBox().expandTowards(view.scale(5.0)).inflate(1.0), EntitySelector.NO_SPECTATORS.and(Entity::isPickable));
@@ -56,18 +71,19 @@ public class SentryVineItem extends Item {
          }
       }
 
-      SentryVine vine = EntityTypeInit.SENTRY_VINE.create(level, EntitySpawnReason.SPAWN_ITEM_USE);
-      if (vine == null) {
+      Entity entity = this.type.get().create(level, EntitySpawnReason.SPAWN_ITEM_USE);
+      if (entity == null) {
          return InteractionResult.FAIL;
       }
 
-      vine.snapTo(BlockPos.containing(hit.getLocation()), 0.0F, 0.0F);
-      if (!level.noCollision(vine, vine.getBoundingBox())) {
+      entity.snapTo(BlockPos.containing(hit.getLocation()), 0.0F, 0.0F);
+      if (!level.noCollision(entity, entity.getBoundingBox())) {
          return InteractionResult.FAIL;
       }
 
       if (!level.isClientSide()) {
-         level.addFreshEntity(vine);
+         this.onPlaced.accept(entity, player);
+         level.addFreshEntity(entity);
          level.gameEvent(player, GameEvent.ENTITY_PLACE, hit.getLocation());
          stack.consume(1, player);
       }

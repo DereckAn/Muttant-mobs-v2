@@ -1,9 +1,17 @@
-
 {
-	"replace": false,
-	"values": [
-		"minecraft:iron_golem",
-		"minecraft:villager",
-		"minecraft:wandering_trader"
-	]
+  "replace": false,
+  "values": [
+    {
+      "id": "minecraft:iron_golem",
+      "required": false
+    },
+    {
+      "id": "minecraft:villager",
+      "required": false
+    },
+    {
+      "id": "minecraft:wandering_trader",
+      "required": false
+    }
+  ]
 }

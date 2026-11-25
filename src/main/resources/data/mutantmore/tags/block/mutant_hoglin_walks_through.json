@@ -1,8 +1,21 @@
 {
-	"values": [
-		"#minecraft:wart_blocks",
-		"#minecraft:leaves",
-		"#minecraft:logs",
-		"minecraft:glowstone"
-	]
+  "replace": false,
+  "values": [
+    {
+      "id": "#minecraft:wart_blocks",
+      "required": false
+    },
+    {
+      "id": "#minecraft:leaves",
+      "required": false
+    },
+    {
+      "id": "#minecraft:logs",
+      "required": false
+    },
+    {
+      "id": "minecraft:glowstone",
+      "required": false
+    }
+  ]
 }

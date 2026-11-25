@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "mutantmore:derelict_laboratory",
+      "required": false
+    }
+  ]
+}

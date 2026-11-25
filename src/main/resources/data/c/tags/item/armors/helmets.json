@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "mutantmore:mutant_wither_skeleton_skull",
+      "required": false
+    }
+  ]
+}

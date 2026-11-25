@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "minecraft:blaze",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_blaze",
+      "required": false
+    }
+  ]
+}

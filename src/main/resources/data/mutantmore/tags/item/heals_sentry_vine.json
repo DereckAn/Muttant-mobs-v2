@@ -1,5 +1,9 @@
 {
+  "replace": false,
   "values": [
-    "minecraft:bone_meal"
+    {
+      "id": "minecraft:bone_meal",
+      "required": false
+    }
   ]
 }

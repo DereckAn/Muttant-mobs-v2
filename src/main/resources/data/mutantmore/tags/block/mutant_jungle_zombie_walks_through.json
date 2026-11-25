@@ -1,8 +1,21 @@
 {
-	"values": [
-		"#minecraft:logs",
-		"#minecraft:leaves",
-		"minecraft:bamboo",
-		"minecraft:vine"
-	]
+  "replace": false,
+  "values": [
+    {
+      "id": "#minecraft:logs",
+      "required": false
+    },
+    {
+      "id": "#minecraft:leaves",
+      "required": false
+    },
+    {
+      "id": "minecraft:bamboo",
+      "required": false
+    },
+    {
+      "id": "minecraft:vine",
+      "required": false
+    }
+  ]
 }

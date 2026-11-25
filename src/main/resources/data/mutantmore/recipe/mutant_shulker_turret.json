@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "S": "minecraft:shulker_shell",
+    "M": "mutantmore:mutant_shulker_shell",
+    "P": "minecraft:ender_pearl",
+    "E": "minecraft:ender_eye"
+  },
+  "pattern": [
+    "SMS",
+    "PEP",
+    "SSS"
+  ],
+  "result": {
+    "id": "mutantmore:mutant_shulker_turret"
+  }
+}

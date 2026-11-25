@@ -1,7 +1,21 @@
 {
   "replace": false,
   "values": [
-    "mutantmore:husk_hammer",
-    "mutantmore:mutant_jungle_zombie_arm"
+    {
+      "id": "mutantmore:husk_hammer",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_jungle_zombie_arm",
+      "required": false
+    },
+    {
+      "id": "mutantmore:hoglance",
+      "required": false
+    },
+    {
+      "id": "mutantmore:hogfist_gauntlet",
+      "required": false
+    }
   ]
 }

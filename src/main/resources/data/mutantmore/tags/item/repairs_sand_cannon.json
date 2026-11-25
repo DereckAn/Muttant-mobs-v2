@@ -1,5 +1,9 @@
 {
+  "replace": false,
   "values": [
-    "minecraft:dispenser"
+    {
+      "id": "minecraft:dispenser",
+      "required": false
+    }
   ]
 }

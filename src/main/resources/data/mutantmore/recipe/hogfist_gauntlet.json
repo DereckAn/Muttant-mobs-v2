@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "L": "minecraft:leather",
+    "T": "mutantmore:mutant_hoglin_tusk",
+    "B": "minecraft:bone_block"
+  },
+  "pattern": [
+    " L ",
+    " L ",
+    "TBT"
+  ],
+  "result": {
+    "id": "mutantmore:hogfist_gauntlet"
+  }
+}

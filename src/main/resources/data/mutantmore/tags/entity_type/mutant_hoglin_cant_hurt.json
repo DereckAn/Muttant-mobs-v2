@@ -1,12 +1,29 @@
-
 {
-	"replace": false,
-	"values": [
-		"minecraft:zombified_piglin",
-		"minecraft:hoglin",
-		"mutantmore:mutant_hoglin",
-		"minecraft:piglin",
-		"minecraft:piglin_brute",
-		"minecraft:enderman"
-	]
+  "replace": false,
+  "values": [
+    {
+      "id": "minecraft:zombified_piglin",
+      "required": false
+    },
+    {
+      "id": "minecraft:hoglin",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_hoglin",
+      "required": false
+    },
+    {
+      "id": "minecraft:piglin",
+      "required": false
+    },
+    {
+      "id": "minecraft:piglin_brute",
+      "required": false
+    },
+    {
+      "id": "minecraft:enderman",
+      "required": false
+    }
+  ]
 }

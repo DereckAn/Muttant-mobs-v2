@@ -1,8 +1,14 @@
 {
   "replace": false,
   "values": [
-    "minecraft:husk",
-    "mutantmore:mutant_husk",
+    {
+      "id": "minecraft:husk",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_husk",
+      "required": false
+    },
     {
       "id": "mutantmore:concoction_w",
       "required": false

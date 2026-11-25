@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "mutantmore:item/template_mutant_spawn_egg",
+    "tints": [
+      { "type": "minecraft:constant", "value": -10659701 },
+      { "type": "minecraft:constant", "value": -6498329 }
+    ]
+  }
+}

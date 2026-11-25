@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mutantmore:disc_fragment_forces_unknown",
+    "mutantmore:disc_fragment_forces_unknown",
+    "mutantmore:disc_fragment_forces_unknown",
+    "mutantmore:disc_fragment_forces_unknown",
+    "mutantmore:disc_fragment_forces_unknown",
+    "mutantmore:disc_fragment_forces_unknown",
+    "mutantmore:disc_fragment_forces_unknown",
+    "mutantmore:disc_fragment_forces_unknown",
+    "mutantmore:disc_fragment_forces_unknown"
+  ],
+  "result": {
+    "id": "mutantmore:music_disc_forces_unknown"
+  }
+}

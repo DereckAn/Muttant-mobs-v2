@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "mutantmore:poison_cloud"
+    {
+      "id": "mutantmore:poison_cloud",
+      "required": false
+    }
   ]
 }

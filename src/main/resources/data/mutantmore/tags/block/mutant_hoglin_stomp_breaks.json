@@ -1,8 +1,21 @@
 {
-	"values": [
-		"minecraft:weeping_vines",
-		"minecraft:twisting_vines",
-		"minecraft:vine",
-		"minecraft:ladder"
-	]
+  "replace": false,
+  "values": [
+    {
+      "id": "minecraft:weeping_vines",
+      "required": false
+    },
+    {
+      "id": "minecraft:twisting_vines",
+      "required": false
+    },
+    {
+      "id": "minecraft:vine",
+      "required": false
+    },
+    {
+      "id": "minecraft:ladder",
+      "required": false
+    }
+  ]
 }

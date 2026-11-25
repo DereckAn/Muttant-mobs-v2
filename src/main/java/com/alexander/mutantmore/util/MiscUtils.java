@@ -1,5 +1,12 @@
 package com.alexander.mutantmore.util;
 
+import org.jspecify.annotations.Nullable;
+import net.minecraft.core.particles.ExplosionParticleInfo;
+import net.minecraft.util.random.WeightedList;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
+import com.alexander.mutantmore.interfaces.IHasCustomExplosion;
+import net.minecraft.world.entity.EntityTypes;
 import com.alexander.mutantmore.config.MutantMoreGroupedOptionsCommonConfig;
 import com.alexander.mutantmore.init.ParticleTypeInit;
 import com.alexander.mutantmore.init.BlockInit;
@@ -153,6 +160,79 @@ public class MiscUtils {
 
    public static Block quicksandBlockForSandType(String sandType) {
       return "_red_sand".equals(sandType) ? BlockInit.RED_QUICKSAND : BlockInit.QUICKSAND;
+   }
+
+   /**
+    * The mod's explosion: vanilla blast and block damage, but every entity in range takes a flat entityDamage
+    * (only those the exploder may harm, unless friendlyFire). Was a ~330-line Explosion subclass (CustomExplosion);
+    * 26.x customises explosions through an ExplosionDamageCalculator instead. Server side only, like the original.
+    * ponytail: damageCalculator and damageRelativeToDistance were unused by the original's entity damage; soundSource is now the default.
+    */
+   public static void customExplosion(
+      Level level,
+      @Nullable Entity explodingEntity,
+      DamageSource damageSource,
+      @Nullable ExplosionDamageCalculator damageCalculator,
+      double x,
+      double y,
+      double z,
+      float explosionSize,
+      boolean createsFire,
+      Explosion.BlockInteraction blockInteraction,
+      @Nullable SoundEvent explosionSound,
+      SoundSource explosionSoundSource,
+      ParticleOptions explosionParticle,
+      ParticleOptions secondaryExplosionParticle,
+      float entityDamage,
+      boolean damageRelativeToDistance,
+      boolean friendlyFire
+   ) {
+      if (!(level instanceof ServerLevel serverLevel)) {
+         return;
+      }
+
+      ExplosionDamageCalculator calculator = new ExplosionDamageCalculator() {
+         @Override
+         public boolean shouldDamageEntity(Explosion explosion, Entity entity) {
+            return entityDamage > 0.0F
+               && (friendlyFire || !(explodingEntity instanceof IHasCustomExplosion custom) || custom.canHarmWithExplosion(entity));
+         }
+
+         @Override
+         public float getEntityDamageAmount(Explosion explosion, Entity entity, float exposure) {
+            return entityDamage;
+         }
+      };
+      Level.ExplosionInteraction interaction = blockInteraction == Explosion.BlockInteraction.KEEP ? Level.ExplosionInteraction.NONE : Level.ExplosionInteraction.BLOCK;
+      serverLevel.explode(
+         explodingEntity,
+         damageSource,
+         calculator,
+         x,
+         y,
+         z,
+         explosionSize,
+         createsFire,
+         interaction,
+         explosionParticle,
+         secondaryExplosionParticle,
+         EXPLOSION_BLOCK_PARTICLES,
+         explosionSound != null ? BuiltInRegistries.SOUND_EVENT.wrapAsHolder(explosionSound) : SoundEvents.GENERIC_EXPLODE
+      );
+   }
+
+   private static final WeightedList<ExplosionParticleInfo> EXPLOSION_BLOCK_PARTICLES = WeightedList.<ExplosionParticleInfo>builder()
+      .add(new ExplosionParticleInfo(ParticleTypes.POOF, 0.5F, 1.0F))
+      .add(new ExplosionParticleInfo(ParticleTypes.SMOKE, 1.0F, 1.0F))
+      .build();
+
+   /** Client sets this to start a looping sound that follows an entity (was HandleLoopingSoundInstances, client-only). */
+   public static java.util.function.BiConsumer<Entity, SoundEvent> loopingSoundHook = (entity, sound) -> {};
+
+   /** Entity type named in a config value; unknown or malformed ids fall back to a zombie. */
+   public static EntityType<?> entityTypeOrZombie(String id) {
+      Identifier parsed = Identifier.tryParse(id);
+      return parsed == null ? EntityTypes.ZOMBIE : BuiltInRegistries.ENTITY_TYPE.getOptional(parsed).orElse(EntityTypes.ZOMBIE);
    }
 
    /** The old Entity.hurt(): damages on the server, does nothing (returns false) on the client. Safe from code that ticks on both sides. */

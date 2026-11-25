@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "mutantmore:concoction_w",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_frozen_zombie",
+      "required": false
+    }
+  ]
+}

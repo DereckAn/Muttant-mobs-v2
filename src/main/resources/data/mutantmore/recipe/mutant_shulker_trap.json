@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "M": "mutantmore:mutant_shulker_shell",
+    "T": "minecraft:tripwire_hook",
+    "S": "minecraft:string"
+  },
+  "pattern": [
+    " M ",
+    "STS"
+  ],
+  "result": {
+    "id": "mutantmore:mutant_shulker_trap",
+    "count": 16
+  }
+}

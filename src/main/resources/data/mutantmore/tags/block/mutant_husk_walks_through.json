@@ -1,6 +1,13 @@
 {
-	"values": [
-		"minecraft:cactus",
-		"#minecraft:leaves"
-	]
+  "replace": false,
+  "values": [
+    {
+      "id": "minecraft:cactus",
+      "required": false
+    },
+    {
+      "id": "#minecraft:leaves",
+      "required": false
+    }
+  ]
 }

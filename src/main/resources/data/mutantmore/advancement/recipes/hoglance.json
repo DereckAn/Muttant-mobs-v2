@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mutant_hoglin_tusk": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:mutant_hoglin_tusk"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipes": "mutantmore:hoglance"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mutant_hoglin_tusk",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mutantmore:hoglance"
+    ]
+  }
+}

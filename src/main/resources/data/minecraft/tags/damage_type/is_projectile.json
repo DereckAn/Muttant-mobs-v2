@@ -1,10 +1,25 @@
 {
   "replace": false,
   "values": [
-    "mutantmore:wither_slash",
-    "mutantmore:fire_resistance_bypassing_fireball",
-    "mutantmore:mutant_blaze_rod_projectile",
-    "mutantmore:mutant_shulker_bullet",
-    "mutantmore:sand_boulder"
+    {
+      "id": "mutantmore:wither_slash",
+      "required": false
+    },
+    {
+      "id": "mutantmore:fire_resistance_bypassing_fireball",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_blaze_rod_projectile",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_shulker_bullet",
+      "required": false
+    },
+    {
+      "id": "mutantmore:sand_boulder",
+      "required": false
+    }
   ]
 }

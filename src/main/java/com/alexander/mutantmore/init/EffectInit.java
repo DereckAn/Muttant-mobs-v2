@@ -18,6 +18,9 @@ public class EffectInit {
          .addAttributeModifier(Attributes.JUMP_STRENGTH, Identifier.fromNamespaceAndPath("mutantmore", "effect.jumping_fatigue"), -0.7, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
    );
 
+   public static final Holder<MobEffect> ENRAGED = register("enraged", new SimpleEffect(MobEffectCategory.BENEFICIAL, 12129043));
+   public static final Holder<MobEffect> FREEZING = register("freezing", new com.alexander.mutantmore.effects.FreezingEffect(MobEffectCategory.HARMFUL, 8447471));
+
    private static Holder<MobEffect> register(String name, MobEffect effect) {
       return Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, Identifier.fromNamespaceAndPath("mutantmore", name), effect);
    }

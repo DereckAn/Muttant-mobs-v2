@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "mutantmore:formula_y",
+      "required": false
+    },
+    {
+      "id": "mutantmore:compound_z",
+      "required": false
+    }
+  ]
+}

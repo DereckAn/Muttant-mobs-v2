@@ -1,11 +1,25 @@
-
 {
-	"replace": false,
-	"values": [
-		"mutantmore:mutant_husk",
-		"minecraft:husk",
-		"minecraft:zombie",
-		"minecraft:skeleton",
-		"minecraft:creeper"
-	]
+  "replace": false,
+  "values": [
+    {
+      "id": "mutantmore:mutant_husk",
+      "required": false
+    },
+    {
+      "id": "minecraft:husk",
+      "required": false
+    },
+    {
+      "id": "minecraft:zombie",
+      "required": false
+    },
+    {
+      "id": "minecraft:skeleton",
+      "required": false
+    },
+    {
+      "id": "minecraft:creeper",
+      "required": false
+    }
+  ]
 }

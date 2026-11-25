@@ -27,8 +27,16 @@ Pass 3 (done): Mutant Husk.
 - Quicksand and red quicksand blocks (scheduled tick replaces the original's timer block entity), sand / sand geyser particles, sand geyser area damage, Aegis disc fragment and vocal cords drops.
 - Rewards: Husk Hammer (shockwave line + geyser), Desert Horn (roar + quicksand ring), Sand Cannon (charged sand boulder), with recipes.
 
+Pass 4 (done): Mutant Frozen Zombie (icicle spikes, thrown icicles, giant snowball, ice cube, roar snowstorm, freezing effect, frost walking). Rewards not yet.
+
+Pass 5 (done): Hoglin rewards (Hog Helm with rage, Hoglance, Hogfist Gauntlet), music discs (jukebox songs + fragment recipes).
+
+Pass 6 (done): Mutant Shulker (bullets, traps, turret, custom explosion, math animations), trap and turret items. Shield not yet.
+
+Not ported on purpose: Mutant Phantom (unfinished in the original: no spawn egg, no attacks).
+
 Deferred to later passes:
-- Other mutants: Blaze, Frozen Zombie, Shulker, Wither Skeleton, Phantom. Most need the `advanced_animation_utils` system and the armour layers.
+- Other mutants: Blaze, Wither Skeleton. Most need the `advanced_animation_utils` system and the armour layers.
 - Mutation system: the `mutation_type` data registry, natural spawns, Formula Y, Compound Z, the mutation cloud and Concoction W.
 - Advancements: the tree is rooted in mutation advancements.
 - Hoglin rewards (Hog Helm, Hoglance, Hogfist Gauntlet) and the music discs (jukebox_song data).

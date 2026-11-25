@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "mutantmore:mutant_shulker_trap"
+    {
+      "id": "mutantmore:mutant_shulker_trap",
+      "required": false
+    }
   ]
 }

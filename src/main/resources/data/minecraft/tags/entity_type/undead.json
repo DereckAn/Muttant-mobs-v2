@@ -1,7 +1,17 @@
 {
   "replace": false,
   "values": [
-    "mutantmore:mutant_jungle_zombie",
-    "mutantmore:mutant_husk"
+    {
+      "id": "mutantmore:mutant_jungle_zombie",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_husk",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_frozen_zombie",
+      "required": false
+    }
   ]
 }

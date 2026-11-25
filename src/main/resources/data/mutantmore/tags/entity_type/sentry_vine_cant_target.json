@@ -1,9 +1,17 @@
-
 {
-	"replace": false,
-	"values": [
-		"minecraft:creeper",
-		"mutantmore:mutant_jungle_zombie",
-		"minecraft:player"
-	]
+  "replace": false,
+  "values": [
+    {
+      "id": "minecraft:creeper",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_jungle_zombie",
+      "required": false
+    },
+    {
+      "id": "minecraft:player",
+      "required": false
+    }
+  ]
 }

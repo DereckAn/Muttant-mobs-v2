@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "minecraft:wither_skeleton",
+      "required": false
+    },
+    {
+      "id": "minecraft:wither",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_wither_skeleton",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "mutantmore:mutant_shulker",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_shulker_trap",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_shulker_turret",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_wither_skeleton",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_husk",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_blaze",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_hoglin",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_frozen_zombie",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_jungle_zombie",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_phantom",
+      "required": false
+    },
+    {
+      "id": "mutantmore:rodling",
+      "required": false
+    },
+    {
+      "id": "minecraft:wither",
+      "required": false
+    },
+    {
+      "id": "minecraft:ender_dragon",
+      "required": false
+    }
+  ]
+}

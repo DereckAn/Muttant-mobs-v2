@@ -1,9 +1,21 @@
 {
   "replace": false,
   "values": [
-    "mutantmore:heat",
-    "mutantmore:poison_cloud",
-    "mutantmore:icicle",
-    "mutantmore:earthquake_attack"
+    {
+      "id": "mutantmore:heat",
+      "required": false
+    },
+    {
+      "id": "mutantmore:poison_cloud",
+      "required": false
+    },
+    {
+      "id": "mutantmore:icicle",
+      "required": false
+    },
+    {
+      "id": "mutantmore:earthquake_attack",
+      "required": false
+    }
   ]
 }

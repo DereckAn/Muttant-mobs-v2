@@ -1,0 +1,6 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "mutantmore:item/mutant_frozen_zombie_spikes"
+	}
+}

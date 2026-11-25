@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mutant_shulker_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:mutant_shulker_shell"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipes": "mutantmore:mutant_shulker_turret"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mutant_shulker_shell",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mutantmore:mutant_shulker_turret"
+    ]
+  }
+}

@@ -1,6 +1,16 @@
 package com.alexander.mutantmore.init;
 
 import com.alexander.mutantmore.entities.AreaDamage;
+import com.alexander.mutantmore.entities.CustomShulkerBullet;
+import com.alexander.mutantmore.entities.MutantShulker;
+import com.alexander.mutantmore.entities.MutantShulkerBullet;
+import com.alexander.mutantmore.entities.MutantShulkerTrap;
+import com.alexander.mutantmore.entities.MutantShulkerTurret;
+import com.alexander.mutantmore.entities.GiantSnowball;
+import com.alexander.mutantmore.entities.IceCube;
+import com.alexander.mutantmore.entities.IcicleSpike;
+import com.alexander.mutantmore.entities.MutantFrozenZombie;
+import com.alexander.mutantmore.entities.ThrownIcicle;
 import com.alexander.mutantmore.entities.MutantHoglin;
 import com.alexander.mutantmore.entities.MutantHusk;
 import com.alexander.mutantmore.entities.SandBoulder;
@@ -35,6 +45,28 @@ public class EntityTypeInit {
    );
    public static final EntityType<ZombieResurrection> ZOMBIE_RESURRECTION = register(
       "zombie_resurrection", EntityType.Builder.<ZombieResurrection>of(ZombieResurrection::new, MobCategory.MISC).sized(0.6F, 1.95F)
+   );
+   public static final EntityType<MutantFrozenZombie> MUTANT_FROZEN_ZOMBIE = register(
+      "mutant_frozen_zombie", EntityType.Builder.of(MutantFrozenZombie::new, MobCategory.MONSTER).sized(1.8F, 3.2F).clientTrackingRange(10)
+   );
+   public static final EntityType<IcicleSpike> ICICLE_SPIKE = register("icicle_spike", EntityType.Builder.<IcicleSpike>of(IcicleSpike::new, MobCategory.MISC).sized(1.6F, 2.0F));
+   public static final EntityType<ThrownIcicle> THROWN_ICICLE = register("thrown_icicle", EntityType.Builder.<ThrownIcicle>of(ThrownIcicle::new, MobCategory.MISC).sized(1.0F, 1.0F));
+   public static final EntityType<GiantSnowball> GIANT_SNOWBALL = register("giant_snowball", EntityType.Builder.<GiantSnowball>of(GiantSnowball::new, MobCategory.MISC).sized(1.8F, 1.8F));
+   public static final EntityType<IceCube> ICE_CUBE = register("ice_cube", EntityType.Builder.<IceCube>of(IceCube::new, MobCategory.MISC).sized(1.0F, 1.0F));
+   public static final EntityType<MutantShulker> MUTANT_SHULKER = register(
+      "mutant_shulker", EntityType.Builder.of(MutantShulker::new, MobCategory.MONSTER).fireImmune().sized(2.75F, 2.75F).eyeHeight(1.8F).clientTrackingRange(10)
+   );
+   public static final EntityType<MutantShulkerTurret> MUTANT_SHULKER_TURRET = register(
+      "mutant_shulker_turret", EntityType.Builder.of(MutantShulkerTurret::new, MobCategory.MISC).fireImmune().sized(1.25F, 4.25F)
+   );
+   public static final EntityType<MutantShulkerTrap> MUTANT_SHULKER_TRAP = register(
+      "mutant_shulker_trap", EntityType.Builder.of(MutantShulkerTrap::new, MobCategory.MISC).sized(0.95F, 0.5F).fireImmune()
+   );
+   public static final EntityType<MutantShulkerBullet> MUTANT_SHULKER_BULLET = register(
+      "mutant_shulker_bullet", EntityType.Builder.<MutantShulkerBullet>of(MutantShulkerBullet::new, MobCategory.MISC).sized(0.85F, 0.85F)
+   );
+   public static final EntityType<CustomShulkerBullet> CUSTOM_SHULKER_BULLET = register(
+      "custom_shulker_bullet", EntityType.Builder.<CustomShulkerBullet>of(CustomShulkerBullet::new, MobCategory.MISC).sized(0.3125F, 0.3125F).clientTrackingRange(8)
    );
    public static final EntityType<AreaDamage> AREA_DAMAGE = register(
       "area_damage", EntityType.Builder.<AreaDamage>of(AreaDamage::new, MobCategory.MISC).sized(1.0F, 1.0F).fireImmune().noSave()

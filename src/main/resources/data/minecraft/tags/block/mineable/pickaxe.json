@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "mutantmore:heatstorm_generator",
+      "required": false
+    },
+    {
+      "id": "mutantmore:snowstorm_generator",
+      "required": false
+    },
+    {
+      "id": "mutantmore:freezing_fan",
+      "required": false
+    }
+  ]
+}

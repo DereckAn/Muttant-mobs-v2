@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "mutantmore:mutant_frozen_zombie",
+      "required": false
+    },
+    {
+      "id": "minecraft:zombie",
+      "required": false
+    },
+    {
+      "id": "minecraft:skeleton",
+      "required": false
+    },
+    {
+      "id": "minecraft:stray",
+      "required": false
+    },
+    {
+      "id": "minecraft:creeper",
+      "required": false
+    },
+    {
+      "id": "minecraft:spider",
+      "required": false
+    }
+  ]
+}

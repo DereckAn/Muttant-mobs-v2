@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "mutantmore:mutant_frozen_zombie",
+      "required": false
+    },
+    {
+      "id": "minecraft:stray",
+      "required": false
+    }
+  ]
+}

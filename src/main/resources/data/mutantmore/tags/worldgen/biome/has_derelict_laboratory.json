@@ -1,0 +1,57 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "minecraft:grove",
+      "required": false
+    },
+    {
+      "id": "minecraft:forest",
+      "required": false
+    },
+    {
+      "id": "minecraft:taiga",
+      "required": false
+    },
+    {
+      "id": "minecraft:old_growth_pine_taiga",
+      "required": false
+    },
+    {
+      "id": "minecraft:old_growth_spruce_taiga",
+      "required": false
+    },
+    {
+      "id": "minecraft:snowy_taiga",
+      "required": false
+    },
+    {
+      "id": "minecraft:birch_forest",
+      "required": false
+    },
+    {
+      "id": "minecraft:old_growth_birch_forest",
+      "required": false
+    },
+    {
+      "id": "minecraft:dark_forest",
+      "required": false
+    },
+    {
+      "id": "minecraft:jungle",
+      "required": false
+    },
+    {
+      "id": "minecraft:mangrove_swamp",
+      "required": false
+    },
+    {
+      "id": "minecraft:ice_spikes",
+      "required": false
+    },
+    {
+      "id": "minecraft:wooded_badlands",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "minecraft:zombified_piglin",
+      "required": false
+    },
+    {
+      "id": "minecraft:wither_skeleton",
+      "required": false
+    },
+    {
+      "id": "minecraft:skeleton",
+      "required": false
+    },
+    {
+      "id": "minecraft:wither",
+      "required": false
+    },
+    {
+      "id": "minecraft:blaze",
+      "required": false
+    }
+  ]
+}

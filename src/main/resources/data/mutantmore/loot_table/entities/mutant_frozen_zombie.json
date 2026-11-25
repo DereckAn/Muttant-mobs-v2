@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "mutantmore:disc_fragment_forces_unknown" }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "mutantmore:mutant_frozen_zombie_spikes" }
+      ]
+    }
+  ]
+}

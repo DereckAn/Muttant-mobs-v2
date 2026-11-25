@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "minecraft:shulker_shell",
+      "required": false
+    },
+    {
+      "id": "minecraft:raw_cod",
+      "required": false
+    },
+    {
+      "id": "minecraft:orange_dye",
+      "required": false
+    },
+    {
+      "id": "minecraft:bone",
+      "required": false
+    }
+  ]
+}

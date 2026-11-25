@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "mutantmore:mutant_shulker",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_shulker_trap",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_shulker_turret",
+      "required": false
+    },
+    {
+      "id": "minecraft:shulker",
+      "required": false
+    }
+  ]
+}

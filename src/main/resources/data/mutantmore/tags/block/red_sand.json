@@ -1,15 +1,49 @@
 {
+  "replace": false,
   "values": [
-    "minecraft:red_sand",
-    "minecraft:red_sandstone",
-    "minecraft:cut_red_sandstone",
-    "minecraft:chiseled_red_sandstone",
-    "minecraft:smooth_red_sandstone",
-    "minecraft:red_sandstone_slab",
-    "minecraft:cut_red_sandstone_slab",
-    "minecraft:smooth_red_sandstone_slab",
-    "minecraft:smooth_red_sandstone_stairs",
-    "minecraft:red_sandstone_stairs",
-    "minecraft:red_sandstone_wall"
+    {
+      "id": "minecraft:red_sand",
+      "required": false
+    },
+    {
+      "id": "minecraft:red_sandstone",
+      "required": false
+    },
+    {
+      "id": "minecraft:cut_red_sandstone",
+      "required": false
+    },
+    {
+      "id": "minecraft:chiseled_red_sandstone",
+      "required": false
+    },
+    {
+      "id": "minecraft:smooth_red_sandstone",
+      "required": false
+    },
+    {
+      "id": "minecraft:red_sandstone_slab",
+      "required": false
+    },
+    {
+      "id": "minecraft:cut_red_sandstone_slab",
+      "required": false
+    },
+    {
+      "id": "minecraft:smooth_red_sandstone_slab",
+      "required": false
+    },
+    {
+      "id": "minecraft:smooth_red_sandstone_stairs",
+      "required": false
+    },
+    {
+      "id": "minecraft:red_sandstone_stairs",
+      "required": false
+    },
+    {
+      "id": "minecraft:red_sandstone_wall",
+      "required": false
+    }
   ]
 }

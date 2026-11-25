@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "mutantmore:music_disc_adrenaline_rush",
+      "required": false
+    },
+    {
+      "id": "mutantmore:music_disc_aegis",
+      "required": false
+    },
+    {
+      "id": "mutantmore:music_disc_forces_unknown",
+      "required": false
+    }
+  ]
+}

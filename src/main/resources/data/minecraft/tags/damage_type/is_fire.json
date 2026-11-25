@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "mutantmore:heat"
+    {
+      "id": "mutantmore:heat",
+      "required": false
+    }
   ]
 }
