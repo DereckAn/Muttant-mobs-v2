@@ -29,12 +29,16 @@ public class MutantJungleZombieArmSpecialRenderer implements SpecialModelRendere
       this.mode = mode;
    }
 
+   // Inventory/item-frame wobble repeats; keeping the tick in one cycle keeps the GUI atlas to a bounded set of frames
+   private static final int STILL_ANIMATION_CYCLE = 7200;
+
    @Override
    public MutantJungleZombieArmModel.@Nullable State extractArgument(ItemStack stack) {
       Minecraft mc = Minecraft.getInstance();
-      MutantJungleZombieArmModel.State state = new MutantJungleZombieArmModel.State();
-      state.mode = this.mode;
-      state.partialTick = mc.getDeltaTracker().getGameTimeDeltaPartialTick(false);
+      if (this.mode != MutantJungleZombieArmModel.Mode.HELD) {
+         return MutantJungleZombieArmModel.State.still(this.mode, mc.player != null ? mc.player.tickCount % STILL_ANIMATION_CYCLE : 0);
+      }
+
       Player holder = null;
       if (mc.level != null) {
          // The rendered stack is the holder's own stack object, so find who holds it
@@ -47,20 +51,22 @@ public class MutantJungleZombieArmSpecialRenderer implements SpecialModelRendere
       }
 
       if (holder == null) {
-         state.tickCount = mc.player != null ? mc.player.tickCount : 0;
-         return state;
+         return MutantJungleZombieArmModel.State.still(this.mode, mc.player != null ? mc.player.tickCount : 0);
       }
 
       JungleZombieArmState arm = JungleZombieArmState.of(holder);
-      state.tickCount = arm.tickCount;
-      state.grabAnimationState.copyFrom(arm.grabAnimationState);
-      state.grabAnimationTick = arm.grabAnimationTick;
-      state.releaseAnimationState.copyFrom(arm.releaseAnimationState);
-      state.releaseAnimationTick = arm.releaseAnimationTick;
-      state.strangleTicks = arm.strangleTicks;
-      state.grabbing = arm.grabbing;
-      state.standby = arm.standby;
-      return state;
+      return new MutantJungleZombieArmModel.State(
+         this.mode,
+         arm.tickCount,
+         mc.getDeltaTracker().getGameTimeDeltaPartialTick(false),
+         arm.grabStartTick,
+         arm.grabAnimationTick,
+         arm.releaseStartTick,
+         arm.releaseAnimationTick,
+         arm.strangleTicks,
+         arm.grabbing,
+         arm.standby
+      );
    }
 
    @Override
@@ -73,7 +79,7 @@ public class MutantJungleZombieArmSpecialRenderer implements SpecialModelRendere
       boolean hasFoil,
       int outlineColor
    ) {
-      collector.submitModel(this.model, state != null ? state : new MutantJungleZombieArmModel.State(), poseStack, TEXTURE, light, overlay, outlineColor);
+      collector.submitModel(this.model, state != null ? state : MutantJungleZombieArmModel.State.still(this.mode, 0), poseStack, TEXTURE, light, overlay, outlineColor);
    }
 
    @Override

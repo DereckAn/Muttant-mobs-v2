@@ -24,6 +24,7 @@ public class MutantJungleZombieArmModel extends Model<MutantJungleZombieArmModel
    public final ModelPart vine5;
    private final KeyframeAnimation grab;
    private final KeyframeAnimation release;
+   private final AnimationState scratch = new AnimationState();
 
    public MutantJungleZombieArmModel(ModelPart root) {
       super(root, RenderTypes::entityCutout);
@@ -72,21 +73,23 @@ public class MutantJungleZombieArmModel extends Model<MutantJungleZombieArmModel
    @Override
    public void setupAnim(State state) {
       super.setupAnim(state);
-      float tick = SineWaveAnimationUtils.getTick(state.tickCount, true);
-      switch (state.mode) {
+      float tick = SineWaveAnimationUtils.getTick(state.tickCount() + state.partialTick(), true);
+      switch (state.mode()) {
          case INVENTORY -> MutantJungleZombieArmSineWaveAnimations.mutantJungleZombieArmInventoryAnimation(this, tick, 1.0F, 1.0F);
          case IDLE -> MutantJungleZombieArmSineWaveAnimations.mutantJungleZombieArmIdleAnimation(this, tick, 1.0F, 1.0F);
          case HELD -> {
-            float age = state.tickCount + state.partialTick;
-            if (state.releaseAnimationTick > 0) {
-               this.release.apply(state.releaseAnimationState, age);
-            } else if (state.grabAnimationTick > 0) {
-               this.grab.apply(state.grabAnimationState, age);
-            } else if (state.strangleTicks > 0) {
+            float age = state.tickCount() + state.partialTick();
+            if (state.releaseAnimationTick() > 0) {
+               this.scratch.start(state.releaseStartTick());
+               this.release.apply(this.scratch, age);
+            } else if (state.grabAnimationTick() > 0) {
+               this.scratch.start(state.grabStartTick());
+               this.grab.apply(this.scratch, age);
+            } else if (state.strangleTicks() > 0) {
                MutantJungleZombieArmSineWaveAnimations.mutantJungleZombieArmStrangleAnimation(this, tick, 1.0F, 1.0F);
-            } else if (state.grabbing) {
+            } else if (state.grabbing()) {
                MutantJungleZombieArmSineWaveAnimations.mutantJungleZombieArmGrabbingAnimation(this, tick, 1.0F, 1.0F);
-            } else if (state.standby) {
+            } else if (state.standby()) {
                MutantJungleZombieArmSineWaveAnimations.mutantJungleZombieArmStandbyAnimation(this, tick, 1.0F, 1.0F);
             } else {
                MutantJungleZombieArmSineWaveAnimations.mutantJungleZombieArmIdleAnimation(this, tick, 1.0F, 1.0F);
@@ -101,17 +104,24 @@ public class MutantJungleZombieArmModel extends Model<MutantJungleZombieArmModel
       HELD
    }
 
-   /** Snapshot taken when the item is extracted for rendering; the model poses itself from it at draw time. */
-   public static class State {
-      public Mode mode = Mode.HELD;
-      public int tickCount;
-      public float partialTick;
-      public final AnimationState grabAnimationState = new AnimationState();
-      public int grabAnimationTick;
-      public final AnimationState releaseAnimationState = new AnimationState();
-      public int releaseAnimationTick;
-      public int strangleTicks;
-      public boolean grabbing;
-      public boolean standby;
+   /**
+    * Snapshot taken when the item is extracted for rendering; the model poses itself from it at draw time.
+    * Must be a value type: 26.x keys the GUI item atlas by it, and a fresh identity every frame fills the atlas until the item stops drawing.
+    */
+   public record State(
+      Mode mode,
+      int tickCount,
+      float partialTick,
+      int grabStartTick,
+      int grabAnimationTick,
+      int releaseStartTick,
+      int releaseAnimationTick,
+      int strangleTicks,
+      boolean grabbing,
+      boolean standby
+   ) {
+      public static State still(Mode mode, int tickCount) {
+         return new State(mode, tickCount, 0.0F, 0, 0, 0, 0, 0, false, false);
+      }
    }
 }

@@ -41,10 +41,10 @@ public final class JungleZombieArmClient {
       }
 
       if (using && !state.grabbing) {
-         state.grabAnimationState.start(state.tickCount);
+         state.grabStartTick = state.tickCount;
          state.grabAnimationTick = MutantJungleZombieArmItem.GRAB_ANIMATION_LENGTH;
       } else if (!using && state.grabbing) {
-         state.releaseAnimationState.start(state.tickCount);
+         state.releaseStartTick = state.tickCount;
          state.releaseAnimationTick = MutantJungleZombieArmItem.RELEASE_ANIMATION_LENGTH;
       }
 
