@@ -16,6 +16,10 @@
     {
       "id": "mutantmore:hogfist_gauntlet",
       "required": false
+    },
+    {
+      "id": "mutantmore:withered_scimitar",
+      "required": false
     }
   ]
 }

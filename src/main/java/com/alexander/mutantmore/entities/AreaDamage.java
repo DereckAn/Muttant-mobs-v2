@@ -1,5 +1,8 @@
 package com.alexander.mutantmore.entities;
 
+import net.minecraft.world.entity.player.Player;
+import com.alexander.mutantmore.init.EffectInit;
+import com.alexander.mutantmore.config.mutant_wither_skeleton.MutantWitherSkeletonCommonConfig;
 import com.alexander.mutantmore.config.MutantMoreGroupedOptionsCommonConfig;
 import com.alexander.mutantmore.config.mutant_jungle_zombie.MutantJungleZombieRewardsCommonConfig;
 import com.alexander.mutantmore.blocks.QuicksandBlock;
@@ -57,6 +60,7 @@ public class AreaDamage extends Entity {
    private static final EntityDataAccessor<Integer> START_DELAY = SynchedEntityData.defineId(AreaDamage.class, EntityDataSerializers.INT);
    private static final EntityDataAccessor<Boolean> DIRECTIONAL_MOTION = SynchedEntityData.defineId(AreaDamage.class, EntityDataSerializers.BOOLEAN);
    private static final EntityDataAccessor<String> SAND_TYPE = SynchedEntityData.defineId(AreaDamage.class, EntityDataSerializers.STRING);
+   private static final EntityDataAccessor<BlockPos> SENT_FROM = SynchedEntityData.defineId(AreaDamage.class, EntityDataSerializers.BLOCK_POS);
    public float damage;
    public DamageSource damageSource = this.damageSources().generic();
    public LivingEntity owner;
@@ -249,8 +253,35 @@ public class AreaDamage extends Entity {
          }
       }
 
+      // Type 4: Mutant Wither Skeleton's wither breath, a gas cloud that only reaches what the mouth can see
+      Vec3 sentFrom = Vec3.atLowerCornerOf(this.getSentFrom());
+      if (this.getActiveType() == 4 && this.tickCount < this.getStartDelay() + this.getExtraTime() - 60) {
+         for (int i = 0; i < 10; i++) {
+            Vec3 pos = new Vec3(this.getRandomX(0.5), this.getRandomY() + 0.02, this.getRandomZ(0.5));
+            if (PositionUtils.distanceBetweenVecs(this.position(), pos) <= this.getSize() / 2.0F && PositionUtils.hasLineOfSight(this.level(), sentFrom, pos)) {
+               this.level().addAlwaysVisibleParticle(ParticleTypeInit.WITHER_GAS, pos.x, pos.y, pos.z, 0.0, 0.0, 0.0);
+            }
+         }
+      }
+
       if (this.level() instanceof ServerLevel serverLevel) {
          for (Entity entity : this.level().getEntities(this, this.getBoundingBox(), Entity::isAlive)) {
+            if (this.getActiveType() == 4
+               && !(entity instanceof Player player && (player.isCreative() || player.isSpectator()))
+               && this.canEntityBeDamaged(entity)
+               && this.distanceTo(entity) <= this.getSize() / 2.0F
+               && PositionUtils.hasLineOfSight(this.level(), sentFrom, entity.getEyePosition())
+               && entity instanceof LivingEntity living) {
+               living.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, MutantWitherSkeletonCommonConfig.wither_breath_blindness_length.get()));
+               living.addEffect(
+                  new MobEffectInstance(MobEffects.WITHER, MutantWitherSkeletonCommonConfig.wither_breath_wither_length.get(), MutantWitherSkeletonCommonConfig.wither_breath_wither_level.get())
+               );
+               living.addEffect(
+                  new MobEffectInstance(MobEffects.SLOWNESS, MutantWitherSkeletonCommonConfig.wither_breath_slowness_length.get(), MutantWitherSkeletonCommonConfig.wither_breath_slowness_level.get())
+               );
+               living.addEffect(new MobEffectInstance(EffectInit.JUMPING_FATIGUE, MutantWitherSkeletonCommonConfig.wither_breath_slowness_length.get()));
+            }
+
             if (this.damage > 0.0F && this.damageSource != null && entity instanceof LivingEntity living && this.canEntityBeDamaged(entity)) {
                if (this.ignoresInvulTime) {
                   living.setInvulnerableTime(0);
@@ -373,6 +404,7 @@ public class AreaDamage extends Entity {
       builder.define(START_DELAY, 0);
       builder.define(DIRECTIONAL_MOTION, false);
       builder.define(SAND_TYPE, "");
+      builder.define(SENT_FROM, BlockPos.ZERO);
    }
 
    public float getSize() {
@@ -393,6 +425,14 @@ public class AreaDamage extends Entity {
 
    public String getSandType() {
       return this.entityData.get(SAND_TYPE);
+   }
+
+   public BlockPos getSentFrom() {
+      return this.entityData.get(SENT_FROM);
+   }
+
+   public void setSentFrom(BlockPos pos) {
+      this.entityData.set(SENT_FROM, pos);
    }
 
    public void setSandType(String value) {

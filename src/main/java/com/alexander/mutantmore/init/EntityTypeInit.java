@@ -86,6 +86,16 @@ public class EntityTypeInit {
    public static final EntityType<RodlingFireball> RODLING_FIREBALL = register(
       "rodling_fireball", EntityType.Builder.<RodlingFireball>of(RodlingFireball::new, MobCategory.MISC).sized(0.3125F, 0.3125F)
    );
+   public static final EntityType<com.alexander.mutantmore.entities.MutantWitherSkeleton> MUTANT_WITHER_SKELETON = register(
+      "mutant_wither_skeleton", EntityType.Builder.of(com.alexander.mutantmore.entities.MutantWitherSkeleton::new, MobCategory.MONSTER).sized(1.25F, 3.9F).fireImmune().clientTrackingRange(10)
+   );
+   public static final EntityType<com.alexander.mutantmore.entities.MutantWitherSkeletonBodyPart> MUTANT_WITHER_SKELETON_BODY_PART = register(
+      "mutant_wither_skeleton_body_part",
+      EntityType.Builder.<com.alexander.mutantmore.entities.MutantWitherSkeletonBodyPart>of(com.alexander.mutantmore.entities.MutantWitherSkeletonBodyPart::new, MobCategory.MISC).sized(0.7F, 0.7F).fireImmune().clientTrackingRange(4)
+   );
+   public static final EntityType<com.alexander.mutantmore.entities.WitherSlash> WITHER_SLASH = register(
+      "wither_slash", EntityType.Builder.<com.alexander.mutantmore.entities.WitherSlash>of(com.alexander.mutantmore.entities.WitherSlash::new, MobCategory.MISC).sized(1.25F, 0.25F)
+   );
    public static final EntityType<AreaDamage> AREA_DAMAGE = register(
       "area_damage", EntityType.Builder.<AreaDamage>of(AreaDamage::new, MobCategory.MISC).sized(1.0F, 1.0F).fireImmune().noSave()
    );

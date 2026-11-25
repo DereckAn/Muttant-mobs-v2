@@ -28,6 +28,10 @@
     {
       "id": "mutantmore:hog_helm",
       "required": false
+    },
+    {
+      "id": "mutantmore:withered_scimitar",
+      "required": false
     }
   ]
 }

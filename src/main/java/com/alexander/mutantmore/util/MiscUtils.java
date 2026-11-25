@@ -77,6 +77,17 @@ public class MiscUtils {
       return localdate.get(ChronoField.MONTH_OF_YEAR) == 10 && localdate.get(ChronoField.DAY_OF_MONTH) == 31;
    }
 
+   /** Heals the mob and shows the leech particle flying from the enemy to it. */
+   public static void witherLeech(LivingEntity healedMob, float amount, Vec3 enemyPos) {
+      if (healedMob.level() instanceof net.minecraft.server.level.ServerLevel level && amount > 0.0F) {
+         healedMob.heal(amount);
+         level.sendParticles(
+            new com.alexander.mutantmore.particles.AdvancedParticleOption(com.alexander.mutantmore.init.ParticleTypeInit.MUTANT_WITHER_SKELETON_LEECH, java.util.List.of((float)healedMob.getId())),
+            enemyPos.x, enemyPos.y, enemyPos.z, 1, 0.0, 0.0, 0.0, 0.0
+         );
+      }
+   }
+
    public static boolean isAprilFools() {
       LocalDate localdate = LocalDate.now();
       return localdate.get(ChronoField.MONTH_OF_YEAR) == 4 && localdate.get(ChronoField.DAY_OF_MONTH) == 1;

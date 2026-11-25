@@ -1,0 +1,31 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "mutantmore:item/withered_scimitar",
+		"particle": "mutantmore:item/withered_scimitar_inventory"
+	},
+	"gui_light": "front",
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, -270, 55],
+			"translation": [0, 14.0, 4.0],
+			"scale": [2.0, 2.0, 1]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 270, -55],
+			"translation": [0, 14.0, 4.0],
+			"scale": [2.0, 2.0, 1]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, -270, 50],
+			"translation": [1.13, 7.5, -0.5],
+			"scale": [2.0, 2.0, 1]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 270, -50],
+			"translation": [1.13, 7.5, -0.5],
+			"scale": [2.0, 2.0, 1]
+		}
+	}
+}

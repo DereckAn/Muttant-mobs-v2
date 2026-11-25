@@ -26,6 +26,14 @@ public class CreativeModeTabInit {
             output.accept(ItemInit.MUTANT_SHULKER_TRAP);
             output.accept(ItemInit.MUTANT_SHULKER_TURRET);
             output.accept(ItemInit.MUTANT_BLAZE_CORE);
+            output.accept(ItemInit.WITHERED_SCIMITAR);
+            output.accept(ItemInit.MUTANT_WITHER_SKELETON_SKULL);
+            output.accept(ItemInit.MUTANT_WITHER_SKELETON_ARMS);
+            output.accept(ItemInit.MUTANT_WITHER_SKELETON_LIMB);
+            output.accept(ItemInit.MUTANT_WITHER_SKELETON_PELVIS);
+            output.accept(ItemInit.MUTANT_WITHER_SKELETON_RIB);
+            output.accept(ItemInit.MUTANT_WITHER_SKELETON_RIB_CAGE);
+            output.accept(ItemInit.MUTANT_WITHER_SKELETON_SHOULDER_PAD);
             output.accept(ItemInit.MUTANT_HOGLIN_TUSK);
             output.accept(ItemInit.HOG_HELM);
             output.accept(ItemInit.HOGLANCE);
@@ -45,6 +53,7 @@ public class CreativeModeTabInit {
             output.accept(ItemInit.MUTANT_FROZEN_ZOMBIE_SPAWN_EGG);
             output.accept(ItemInit.MUTANT_SHULKER_SPAWN_EGG);
             output.accept(ItemInit.MUTANT_BLAZE_SPAWN_EGG);
+            output.accept(ItemInit.MUTANT_WITHER_SKELETON_SPAWN_EGG);
             output.accept(ItemInit.RODLING_SPAWN_EGG);
             output.accept(ItemInit.MUTANT_HOGLIN_SPAWN_EGG);
             output.accept(ItemInit.MUTANT_JUNGLE_ZOMBIE_SPAWN_EGG);

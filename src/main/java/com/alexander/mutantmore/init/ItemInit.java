@@ -167,6 +167,26 @@ public class ItemInit {
    public static final Item RODLING_SHIELDS = register("rodling_shields", Item::new, new Item.Properties().stacksTo(1));
    public static final Item MUTANT_BLAZE_CORE = register("mutant_blaze_core", Item::new, new Item.Properties().rarity(Rarity.EPIC).fireResistant());
 
+   public static final Item MUTANT_WITHER_SKELETON_SPAWN_EGG = register(
+      "mutant_wither_skeleton_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EntityTypeInit.MUTANT_WITHER_SKELETON)
+   );
+   public static final Item MUTANT_WITHER_SKELETON_ARMS = register("mutant_wither_skeleton_arms", Item::new, new Item.Properties().fireResistant());
+   public static final Item MUTANT_WITHER_SKELETON_LIMB = register("mutant_wither_skeleton_limb", Item::new, new Item.Properties().fireResistant());
+   public static final Item MUTANT_WITHER_SKELETON_PELVIS = register("mutant_wither_skeleton_pelvis", Item::new, new Item.Properties().fireResistant());
+   public static final Item MUTANT_WITHER_SKELETON_RIB = register("mutant_wither_skeleton_rib", Item::new, new Item.Properties().fireResistant());
+   public static final Item MUTANT_WITHER_SKELETON_RIB_CAGE = register("mutant_wither_skeleton_rib_cage", Item::new, new Item.Properties().fireResistant());
+   public static final Item MUTANT_WITHER_SKELETON_SHOULDER_PAD = register("mutant_wither_skeleton_shoulder_pad", Item::new, new Item.Properties().fireResistant());
+   // ponytail: plain item until the armour set pass (it's a wearable, placeable skull block in the original)
+   public static final Item MUTANT_WITHER_SKELETON_SKULL = register("mutant_wither_skeleton_skull", Item::new, new Item.Properties().rarity(Rarity.RARE).fireResistant());
+   public static final Item WITHERED_SCIMITAR = register(
+      "withered_scimitar",
+      com.alexander.mutantmore.items.WitheredScimitarItem::new,
+      weapon(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).fireResistant().enchantable(com.alexander.mutantmore.config.mutant_wither_skeleton.MutantWitherSkeletonRewardsCommonConfig.scimitar_enchantment_value.get()),
+         com.alexander.mutantmore.config.mutant_wither_skeleton.MutantWitherSkeletonRewardsCommonConfig.scimitar_durability.get(), TagInit.Items.REPAIRS_WITHERED_SCIMITAR,
+         com.alexander.mutantmore.config.mutant_wither_skeleton.MutantWitherSkeletonRewardsCommonConfig.scimitar_attack_damage.get(),
+         com.alexander.mutantmore.config.mutant_wither_skeleton.MutantWitherSkeletonRewardsCommonConfig.scimitar_attack_speed.get(), 0.0)
+   );
+
    public static final Item MUTANT_HOGLIN_TUSK = register("mutant_hoglin_tusk", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON));
    public static final Item MUSIC_DISC_ADRENALINE_RUSH = disc("adrenaline_rush");
    public static final Item MUSIC_DISC_AEGIS = disc("aegis");

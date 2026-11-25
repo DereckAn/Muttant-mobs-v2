@@ -105,5 +105,23 @@ public class MutantMoreClient implements ClientModInitializer {
       ParticleProviderRegistry.getInstance().register(ParticleTypeInit.RODLING_CHARGE_SHOT, sprites -> new com.alexander.mutantmore.particles.MutantBlazeParticles.ChargeShot.Provider(sprites, true));
       ParticleProviderRegistry.getInstance().register(ParticleTypeInit.HEAT, sprites -> new com.alexander.mutantmore.particles.SnowstormParticle.Provider(sprites, true));
       com.alexander.mutantmore.heat.HeatClient.register();
+      // Mutant Wither Skeleton
+      ModelLayerRegistry.registerModelLayer(com.alexander.mutantmore.renderers.entities.MutantWitherSkeletonRenderer.LAYER, com.alexander.mutantmore.models.entities.MutantWitherSkeletonModel::createBodyLayer);
+      EntityRendererRegistry.register(EntityTypeInit.MUTANT_WITHER_SKELETON, com.alexander.mutantmore.renderers.entities.MutantWitherSkeletonRenderer::new);
+      ModelLayerRegistry.registerModelLayer(com.alexander.mutantmore.renderers.entities.MutantWitherSkeletonBodyPartRenderer.LAYER, com.alexander.mutantmore.models.entities.MutantWitherSkeletonBodyPartModel::createBodyLayer);
+      EntityRendererRegistry.register(EntityTypeInit.MUTANT_WITHER_SKELETON_BODY_PART, com.alexander.mutantmore.renderers.entities.MutantWitherSkeletonBodyPartRenderer::new);
+      ModelLayerRegistry.registerModelLayer(com.alexander.mutantmore.renderers.entities.WitherSlashRenderer.LAYER, com.alexander.mutantmore.models.entities.WitherSlashModel::createBodyLayer);
+      EntityRendererRegistry.register(EntityTypeInit.WITHER_SLASH, com.alexander.mutantmore.renderers.entities.WitherSlashRenderer::new);
+      ParticleProviderRegistry.getInstance().register(ParticleTypeInit.ABSORB, com.alexander.mutantmore.particles.WitherParticles.Absorb.Provider::new);
+      ParticleProviderRegistry.getInstance().register(ParticleTypeInit.GROUND_TRAIL, com.alexander.mutantmore.particles.WitherParticles.GroundTrail.Provider::new);
+      ParticleProviderRegistry.getInstance().register(ParticleTypeInit.MUTANT_WITHER_SKELETON_LEECH, com.alexander.mutantmore.particles.WitherParticles.Leech.Provider::new);
+      ParticleProviderRegistry.getInstance().register(ParticleTypeInit.WITHER_GAS, com.alexander.mutantmore.particles.WitherParticles.Gas.Provider::new);
+      net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking.registerGlobalReceiver(
+         com.alexander.mutantmore.network.SyncAdvancedAnimationPayload.TYPE, (payload, context) -> {
+            if (context.client().level != null) {
+               payload.apply(context.client().level);
+            }
+         }
+      );
    }
 }

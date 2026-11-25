@@ -12,6 +12,10 @@
     {
       "id": "mutantmore:mutant_frozen_zombie",
       "required": false
+    },
+    {
+      "id": "mutantmore:mutant_wither_skeleton",
+      "required": false
     }
   ]
 }

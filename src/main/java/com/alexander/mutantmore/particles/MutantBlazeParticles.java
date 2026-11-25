@@ -7,7 +7,8 @@ import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleProvider;
 import net.minecraft.client.particle.SingleQuadParticle;
 import net.minecraft.client.particle.SpriteSet;
-import net.minecraft.core.particles.ParticleTypes;
+import com.alexander.mutantmore.init.ParticleTypeInit;
+import java.util.List;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.RandomSource;
@@ -86,10 +87,11 @@ public final class MutantBlazeParticles {
    }
 
    /**
-    * Shrinking orb glued to an entity offset (values: entity id, x, y, z offset) while a shot charges.
-    * ponytail: the original sucked in its own "absorb" particle type; vanilla flames flying inward stand in for it.
+    * Shrinking orb glued to an entity offset (values: entity id, x, y, z offset) while a shot charges, sucking in sparkles.
     */
    public static class ChargeShot extends SingleQuadParticle {
+      private static final int[] COLOURS = {16775239, 16560663, 13727744};
+      private static final int[] SOUL_COLOURS = {9304059, 2088676, 90726};
       private final int followedEntityId;
       private final double offsetX;
       private final double offsetY;
@@ -123,12 +125,15 @@ public final class MutantBlazeParticles {
          super.tick();
          this.setPos(this.targetPos.x, this.targetPos.y, this.targetPos.z);
          Entity entity = this.followedEntityId != 0 ? this.level.getEntity(this.followedEntityId) : null;
-         boolean soul = false;
+         int[] palette = COLOURS;
+         Integer dyeColour = null;
          if (entity != null) {
             if (entity instanceof Rodling rodling) {
-               soul = rodling.isSoul();
+               boolean soul = rodling.isSoul();
+               palette = soul ? SOUL_COLOURS : COLOURS;
                if (rodling.getColor() != null) {
                   int c = rodling.getColor().getTextureDiffuseColor();
+                  dyeColour = c & 0xFFFFFF;
                   this.setColor(ARGB.redFloat(c), ARGB.greenFloat(c), ARGB.blueFloat(c));
                } else if (soul) {
                   this.setColor(0.0F, 0.75686276F, 1.0F);
@@ -144,10 +149,17 @@ public final class MutantBlazeParticles {
          float range = this.rodling ? 0.5F : 4.0F;
          if (this.quadSize > (this.rodling ? 0.25F : 2.0F) && (!this.rodling || entity != null)) {
             for (int i = 0; i < (this.rodling ? 1 : 10); i++) {
-               double dx = this.random.nextGaussian() * range;
-               double dy = this.random.nextGaussian() * range;
-               double dz = this.random.nextGaussian() * range;
-               this.level.addParticle(soul ? ParticleTypes.SOUL_FIRE_FLAME : ParticleTypes.FLAME, this.x + dx, this.y + dy, this.z + dz, -dx * 0.2, -dy * 0.2, -dz * 0.2);
+               int colour = dyeColour != null ? dyeColour : palette[this.random.nextInt(palette.length)];
+               this.level.addParticle(
+                  new AdvancedParticleOption(
+                     ParticleTypeInit.ABSORB,
+                     List.of(
+                        1.0F, (float)colour, this.rodling ? 0.05F : 0.2F, 5.0F,
+                        (float)(this.x + this.random.nextGaussian() * range), (float)(this.y + this.random.nextGaussian() * range), (float)(this.z + this.random.nextGaussian() * range)
+                     )
+                  ),
+                  this.x, this.y, this.z, 0.0, 0.0, 0.0
+               );
             }
          }
 

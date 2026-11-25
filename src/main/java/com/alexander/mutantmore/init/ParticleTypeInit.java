@@ -24,6 +24,10 @@ public class ParticleTypeInit {
    public static final SimpleParticleType MUTANT_BLAZE_HEAL = simple("mutant_blaze_heal");
    public static final SimpleParticleType BROKEN_MUTANT_BLAZE_SHIELD = simple("broken_mutant_blaze_shield");
    public static final SimpleParticleType FIRE_TRAIL = simple("fire_trail");
+   public static final ParticleType<AdvancedParticleOption> MUTANT_WITHER_SKELETON_LEECH = advanced("mutant_wither_skeleton_leech");
+   public static final SimpleParticleType WITHER_GAS = simple("wither_gas");
+   public static final ParticleType<AdvancedParticleOption> GROUND_TRAIL = advanced("ground_trail");
+   public static final ParticleType<AdvancedParticleOption> ABSORB = advanced("absorb");
 
    private static ParticleType<AdvancedParticleOption> advanced(String name) {
       return Registry.register(
