@@ -1,6 +1,7 @@
 package com.alexander.mutantmore.init;
 
 import com.alexander.mutantmore.blocks.MutantJungleZombieVineBlock;
+import com.alexander.mutantmore.blocks.QuicksandBlock;
 import java.util.function.Function;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -17,6 +18,17 @@ public class BlockInit {
       "mutant_jungle_zombie_vine",
       MutantJungleZombieVineBlock::new,
       BlockBehaviour.Properties.ofFullCopy(Blocks.VINE).noCollision().randomTicks().instabreak().sound(SoundType.CROP)
+   );
+
+   public static final Block QUICKSAND = register(
+      "quicksand",
+      QuicksandBlock::new,
+      BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).noCollision().strength(0.3F).requiresCorrectToolForDrops().sound(SoundType.SAND)
+   );
+   public static final Block RED_QUICKSAND = register(
+      "red_quicksand",
+      QuicksandBlock::new,
+      BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).noCollision().strength(0.3F).requiresCorrectToolForDrops().sound(SoundType.SAND)
    );
 
    private static Block register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties) {

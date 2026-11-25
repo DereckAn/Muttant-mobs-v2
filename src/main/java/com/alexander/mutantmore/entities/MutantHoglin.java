@@ -565,8 +565,7 @@ public class MutantHoglin extends AbstractMutant {
                            entity.setInvulnerableTime(0);
                         }
 
-                        entity.hurtServer((ServerLevel)this.level(),
-                           MMDamageTypes.earthquakeAttack(this.damageSources(), this), ((Double)MutantHoglinCommonConfig.death_damage.get()).floatValue()
+                        MiscUtils.hurt(entity, MMDamageTypes.earthquakeAttack(this.damageSources(), this), ((Double)MutantHoglinCommonConfig.death_damage.get()).floatValue()
                         );
                      }
 

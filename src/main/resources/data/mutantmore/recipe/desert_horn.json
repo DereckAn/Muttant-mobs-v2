@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": "minecraft:sand",
+    "V": "mutantmore:mutant_husk_vocal_cords",
+    "G": "minecraft:goat_horn"
+  },
+  "pattern": [
+    " S ",
+    "SGV",
+    " S "
+  ],
+  "result": {
+    "id": "mutantmore:desert_horn"
+  },
+  "category": "equipment"
+}

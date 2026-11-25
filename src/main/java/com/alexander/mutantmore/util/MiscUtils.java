@@ -2,6 +2,7 @@ package com.alexander.mutantmore.util;
 
 import com.alexander.mutantmore.config.MutantMoreGroupedOptionsCommonConfig;
 import com.alexander.mutantmore.init.ParticleTypeInit;
+import com.alexander.mutantmore.init.BlockInit;
 import com.alexander.mutantmore.init.TagInit;
 import java.time.LocalDate;
 import java.time.temporal.ChronoField;
@@ -140,6 +141,24 @@ public class MiscUtils {
 
 
 
+
+   // Sand type strings: "_red_sand" or "" (the original compared them with ==, which only worked thanks to string interning)
+   public static int sandColourForSandType(String sandType) {
+      return "_red_sand".equals(sandType) ? 12543777 : 16777215;
+   }
+
+   public static String sandStringForPos(Level level, BlockPos pos) {
+      return level.getBlockState(pos).is(TagInit.Blocks.RED_SAND) ? "_red_sand" : "";
+   }
+
+   public static Block quicksandBlockForSandType(String sandType) {
+      return "_red_sand".equals(sandType) ? BlockInit.RED_QUICKSAND : BlockInit.QUICKSAND;
+   }
+
+   /** The old Entity.hurt(): damages on the server, does nothing (returns false) on the client. Safe from code that ticks on both sides. */
+   public static boolean hurt(Entity target, DamageSource source, float amount) {
+      return target.level() instanceof ServerLevel level && target.hurtServer(level, source, amount);
+   }
 
    public static boolean isMovingOnLand(Entity entity) {
       return entity.onGround() && entity.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && !entity.isInWater();

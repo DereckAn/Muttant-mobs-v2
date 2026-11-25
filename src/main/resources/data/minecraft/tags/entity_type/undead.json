@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mutantmore:mutant_jungle_zombie"
+    "mutantmore:mutant_jungle_zombie",
+    "mutantmore:mutant_husk"
   ]
 }

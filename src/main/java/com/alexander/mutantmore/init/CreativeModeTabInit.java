@@ -16,12 +16,20 @@ public class CreativeModeTabInit {
          .title(Component.translatable("itemGroup.mutant_more"))
          .icon(ItemInit.MUTANT_HOGLIN_SPAWN_EGG::getDefaultInstance)
          .displayItems((parameters, output) -> {
+            output.accept(ItemInit.MUTANT_HUSK_VOCAL_CORDS);
+            output.accept(ItemInit.HUSK_HAMMER);
+            output.accept(ItemInit.DESERT_HORN);
+            output.accept(ItemInit.SAND_CANNON);
+            output.accept(ItemInit.QUICKSAND);
+            output.accept(ItemInit.RED_QUICKSAND);
             output.accept(ItemInit.MUTANT_HOGLIN_TUSK);
             output.accept(ItemInit.DISC_FRAGMENT_ADRENALINE_RUSH);
+            output.accept(ItemInit.DISC_FRAGMENT_AEGIS);
             output.accept(ItemInit.MUTANT_JUNGLE_ZOMBIE_VINE_SEED);
             output.accept(ItemInit.MUTANT_JUNGLE_ZOMBIE_VINE);
             output.accept(ItemInit.SENTRY_VINE);
             output.accept(ItemInit.MUTANT_JUNGLE_ZOMBIE_ARM);
+            output.accept(ItemInit.MUTANT_HUSK_SPAWN_EGG);
             output.accept(ItemInit.MUTANT_HOGLIN_SPAWN_EGG);
             output.accept(ItemInit.MUTANT_JUNGLE_ZOMBIE_SPAWN_EGG);
          })

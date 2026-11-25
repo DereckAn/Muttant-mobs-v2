@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": "minecraft:tool/can_silk_touch",
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "mutantmore:red_quicksand" }
+      ]
+    }
+  ]
+}

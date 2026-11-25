@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "V": "mutantmore:mutant_husk_vocal_cords",
+    "S": "minecraft:stick",
+    "T": "minecraft:sandstone"
+  },
+  "pattern": [
+    "TTT",
+    "TVT",
+    " S "
+  ],
+  "result": {
+    "id": "mutantmore:husk_hammer"
+  },
+  "category": "equipment"
+}

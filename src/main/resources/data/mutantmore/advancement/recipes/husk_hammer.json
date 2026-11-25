@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mutant_husk_vocal_cords": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:mutant_husk_vocal_cords"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipes": "mutantmore:husk_hammer"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_mutant_husk_vocal_cords",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mutantmore:husk_hammer"
+    ]
+  }
+}

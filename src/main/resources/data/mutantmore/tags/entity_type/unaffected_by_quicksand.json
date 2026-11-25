@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:husk",
+    "mutantmore:mutant_husk",
+    {
+      "id": "mutantmore:concoction_w",
+      "required": false
+    }
+  ]
+}

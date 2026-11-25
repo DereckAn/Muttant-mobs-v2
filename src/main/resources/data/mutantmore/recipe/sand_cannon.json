@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "V": "mutantmore:mutant_husk_vocal_cords",
+    "S": "minecraft:string",
+    "O": "minecraft:sandstone",
+    "P": "#minecraft:planks",
+    "L": "minecraft:lever",
+    "D": "minecraft:dispenser",
+    "T": "minecraft:leather"
+  },
+  "pattern": [
+    "VSO",
+    "POL",
+    "DT "
+  ],
+  "result": {
+    "id": "mutantmore:sand_cannon"
+  },
+  "category": "equipment"
+}

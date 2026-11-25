@@ -22,8 +22,13 @@ Pass 2 (done): Mutant Jungle Zombie.
 - Rewards: vine seed (drop) and vine crop, Sentry Vine (placeable turret), Mutant Jungle Zombie Arm (grab/strangle, 3D item via a special model renderer, arm-raise pose), arm recipe.
 - Not yet: Sentry Vine recipe (needs the mutation potions), the advancement tree (the "flew" check is in code and lights up once it exists), armour/held-item render layers.
 
+Pass 3 (done): Mutant Husk.
+- Entity with punch, sand-boulder throw, geyser, roar (summons zombies out of the ground and spreads quicksand) and get-up lives; configs; spawn egg.
+- Quicksand and red quicksand blocks (scheduled tick replaces the original's timer block entity), sand / sand geyser particles, sand geyser area damage, Aegis disc fragment and vocal cords drops.
+- Rewards: Husk Hammer (shockwave line + geyser), Desert Horn (roar + quicksand ring), Sand Cannon (charged sand boulder), with recipes.
+
 Deferred to later passes:
-- Other mutants: Blaze, Husk, Frozen Zombie, Shulker, Wither Skeleton, Phantom. Most need the `advanced_animation_utils` system and the armour layers.
+- Other mutants: Blaze, Frozen Zombie, Shulker, Wither Skeleton, Phantom. Most need the `advanced_animation_utils` system and the armour layers.
 - Mutation system: the `mutation_type` data registry, natural spawns, Formula Y, Compound Z, the mutation cloud and Concoction W.
 - Advancements: the tree is rooted in mutation advancements.
 - Hoglin rewards (Hog Helm, Hoglance, Hogfist Gauntlet) and the music discs (jukebox_song data).

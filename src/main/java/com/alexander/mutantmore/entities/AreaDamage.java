@@ -2,7 +2,13 @@ package com.alexander.mutantmore.entities;
 
 import com.alexander.mutantmore.config.MutantMoreGroupedOptionsCommonConfig;
 import com.alexander.mutantmore.config.mutant_jungle_zombie.MutantJungleZombieRewardsCommonConfig;
+import com.alexander.mutantmore.blocks.QuicksandBlock;
+import com.alexander.mutantmore.config.mutant_husk.MutantHuskCommonConfig;
 import com.alexander.mutantmore.init.EntityTypeInit;
+import com.alexander.mutantmore.init.SoundEventInit;
+import com.alexander.mutantmore.particles.AdvancedParticleOption;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.world.level.block.Block;
 import com.alexander.mutantmore.init.TagInit;
 import net.minecraft.world.entity.monster.Enemy;
 import com.alexander.mutantmore.init.ParticleTypeInit;
@@ -36,8 +42,8 @@ import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 
 /**
- * Invisible growing hitbox that damages what it touches. Types: 0 plain, 1 ground (block particles + break sound), 3 poison cloud.
- * ponytail: type 2 (Mutant Husk sand geyser) and 4 (Mutant Wither Skeleton breath) come back with those mutants.
+ * Invisible growing hitbox that damages what it touches. Types: 0 plain, 1 ground (block particles + break sound), 2 sand geyser, 3 poison cloud.
+ * ponytail: type 4 (Mutant Wither Skeleton breath) comes back with that mutant.
  */
 public class AreaDamage extends Entity {
    private static final EntityDataAccessor<Float> SIZE = SynchedEntityData.defineId(AreaDamage.class, EntityDataSerializers.FLOAT);
@@ -50,6 +56,7 @@ public class AreaDamage extends Entity {
    private static final EntityDataAccessor<Integer> EXTRA_TIME = SynchedEntityData.defineId(AreaDamage.class, EntityDataSerializers.INT);
    private static final EntityDataAccessor<Integer> START_DELAY = SynchedEntityData.defineId(AreaDamage.class, EntityDataSerializers.INT);
    private static final EntityDataAccessor<Boolean> DIRECTIONAL_MOTION = SynchedEntityData.defineId(AreaDamage.class, EntityDataSerializers.BOOLEAN);
+   private static final EntityDataAccessor<String> SAND_TYPE = SynchedEntityData.defineId(AreaDamage.class, EntityDataSerializers.STRING);
    public float damage;
    public DamageSource damageSource = this.damageSources().generic();
    public LivingEntity owner;
@@ -145,6 +152,20 @@ public class AreaDamage extends Entity {
                   .addParticle(new BlockParticleOption(ParticleTypes.BLOCK, blockstate), this.getRandomX(0.5), this.getY() + 0.1, this.getRandomZ(0.5), 0.0, 0.0, 0.0);
             }
          }
+
+         for (int i = 0; i < 20; i++) {
+            Vec3 motion = PositionUtils.getOffsetMotion(this, 0.0, 0.0, 0.25, 0.0F, this.getYRot());
+            this.level()
+               .addParticle(
+                  this.sandParticle(ParticleTypeInit.SAND),
+                  this.getRandomX(0.75),
+                  this.getY(),
+                  this.getRandomZ(0.75),
+                  motion.x + this.random.nextGaussian() * 0.01,
+                  this.random.nextFloat() * 0.05,
+                  motion.z + this.random.nextGaussian() * 0.01
+               );
+         }
       } else {
          super.handleEntityEvent(id);
       }
@@ -209,6 +230,10 @@ public class AreaDamage extends Entity {
          return;
       }
 
+      if (this.getActiveType() == 2) {
+         this.tickSandGeyser();
+      }
+
       if (this.getActiveType() == 3) {
          for (int i = 0; i < this.getSize() * 3.0F; i++) {
             this.level()
@@ -261,9 +286,13 @@ public class AreaDamage extends Entity {
       }
 
       if (this.getAreaDamageType() > 0) {
-         if (this.getAreaDamageType() == 1) {
+         if (this.getAreaDamageType() == 1 || this.getAreaDamageType() == 2) {
             this.playSound(this.level().getBlockState(this.blockPosition().below()).getSoundType().getBreakSound(), 1.0F, MiscUtils.randomSoundPitch());
             this.level().broadcastEntityEvent(this, (byte)1);
+         }
+
+         if (this.getAreaDamageType() == 2) {
+            this.playSound(SoundEventInit.MUTANT_HUSK_GEYSER, 2.0F, MiscUtils.randomSoundPitch());
          }
 
          this.setActiveType(this.getAreaDamageType());
@@ -284,6 +313,48 @@ public class AreaDamage extends Entity {
       }
    }
 
+   private AdvancedParticleOption sandParticle(ParticleType<AdvancedParticleOption> type) {
+      return new AdvancedParticleOption(type, List.of((float)MiscUtils.sandColourForSandType(this.getSandType())));
+   }
+
+   private void tickSandGeyser() {
+      for (int i = 0; i < 8; i++) {
+         this.level()
+            .addParticle(
+               this.sandParticle(ParticleTypeInit.SAND),
+               this.getRandomX(1.0),
+               this.getY(),
+               this.getRandomZ(1.0),
+               this.random.nextGaussian() * 0.01,
+               this.getYKnockback() * 1.5 + this.random.nextGaussian() * 0.5,
+               this.random.nextGaussian() * 0.01
+            );
+      }
+
+      this.level()
+         .addParticle(
+            this.sandParticle(ParticleTypeInit.SAND_GEYSER),
+            this.getX() + this.random.nextGaussian() * 0.1,
+            this.getY(),
+            this.getZ() + this.random.nextGaussian() * 0.1,
+            0.0,
+            this.getYKnockback() * 1.5,
+            0.0
+         );
+      // A Mutant Husk's geyser leaves quicksand around it
+      if (!this.level().isClientSide()
+         && this.owner instanceof MutantHusk
+         && (Boolean)MutantHuskCommonConfig.geyser_attack_griefing.get()
+         && !(Boolean)MutantMoreGroupedOptionsCommonConfig.quicksand_griefing_off.get()) {
+         Block quicksand = MiscUtils.quicksandBlockForSandType(this.getSandType());
+         for (BlockPos pos : BlockPos.betweenClosed(this.getBoundingBox().inflate(2.0))) {
+            if (this.level().getBlockState(pos).isAir() && QuicksandBlock.survivable(quicksand.defaultBlockState(), this.level(), pos) && this.random.nextInt(40) == 0) {
+               this.level().setBlockAndUpdate(pos, quicksand.defaultBlockState());
+            }
+         }
+      }
+   }
+
    @Override
    public boolean hurtServer(ServerLevel level, DamageSource source, float amount) {
       return false;
@@ -301,6 +372,7 @@ public class AreaDamage extends Entity {
       builder.define(EXTRA_TIME, 0);
       builder.define(START_DELAY, 0);
       builder.define(DIRECTIONAL_MOTION, false);
+      builder.define(SAND_TYPE, "");
    }
 
    public float getSize() {
@@ -317,6 +389,14 @@ public class AreaDamage extends Entity {
 
    public void setShouldDirectionalMotion(boolean value) {
       this.entityData.set(DIRECTIONAL_MOTION, value);
+   }
+
+   public String getSandType() {
+      return this.entityData.get(SAND_TYPE);
+   }
+
+   public void setSandType(String value) {
+      this.entityData.set(SAND_TYPE, value);
    }
 
    public float getSizeToReach() {

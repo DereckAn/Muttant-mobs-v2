@@ -2,6 +2,9 @@ package com.alexander.mutantmore.init;
 
 import com.alexander.mutantmore.entities.AreaDamage;
 import com.alexander.mutantmore.entities.MutantHoglin;
+import com.alexander.mutantmore.entities.MutantHusk;
+import com.alexander.mutantmore.entities.SandBoulder;
+import com.alexander.mutantmore.entities.ZombieResurrection;
 import com.alexander.mutantmore.entities.MutantJungleZombie;
 import com.alexander.mutantmore.entities.SentryVine;
 import net.minecraft.core.Registry;
@@ -23,6 +26,15 @@ public class EntityTypeInit {
    );
    public static final EntityType<SentryVine> SENTRY_VINE = register(
       "sentry_vine", EntityType.Builder.of(SentryVine::new, MobCategory.MISC).sized(1.25F, 3.0F)
+   );
+   public static final EntityType<MutantHusk> MUTANT_HUSK = register(
+      "mutant_husk", EntityType.Builder.of(MutantHusk::new, MobCategory.MONSTER).sized(1.9F, 3.4F).clientTrackingRange(10)
+   );
+   public static final EntityType<SandBoulder> SAND_BOULDER = register(
+      "sand_boulder", EntityType.Builder.<SandBoulder>of(SandBoulder::new, MobCategory.MISC).sized(1.5F, 1.5F)
+   );
+   public static final EntityType<ZombieResurrection> ZOMBIE_RESURRECTION = register(
+      "zombie_resurrection", EntityType.Builder.<ZombieResurrection>of(ZombieResurrection::new, MobCategory.MISC).sized(0.6F, 1.95F)
    );
    public static final EntityType<AreaDamage> AREA_DAMAGE = register(
       "area_damage", EntityType.Builder.<AreaDamage>of(AreaDamage::new, MobCategory.MISC).sized(1.0F, 1.0F).fireImmune().noSave()
