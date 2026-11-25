@@ -25,6 +25,7 @@ public class CreativeModeTabInit {
             output.accept(ItemInit.MUTANT_SHULKER_SHELL);
             output.accept(ItemInit.MUTANT_SHULKER_TRAP);
             output.accept(ItemInit.MUTANT_SHULKER_TURRET);
+            output.accept(ItemInit.MUTANT_BLAZE_CORE);
             output.accept(ItemInit.MUTANT_HOGLIN_TUSK);
             output.accept(ItemInit.HOG_HELM);
             output.accept(ItemInit.HOGLANCE);
@@ -43,6 +44,8 @@ public class CreativeModeTabInit {
             output.accept(ItemInit.MUTANT_HUSK_SPAWN_EGG);
             output.accept(ItemInit.MUTANT_FROZEN_ZOMBIE_SPAWN_EGG);
             output.accept(ItemInit.MUTANT_SHULKER_SPAWN_EGG);
+            output.accept(ItemInit.MUTANT_BLAZE_SPAWN_EGG);
+            output.accept(ItemInit.RODLING_SPAWN_EGG);
             output.accept(ItemInit.MUTANT_HOGLIN_SPAWN_EGG);
             output.accept(ItemInit.MUTANT_JUNGLE_ZOMBIE_SPAWN_EGG);
          })

@@ -18,6 +18,12 @@ public class ParticleTypeInit {
    public static final ParticleType<AdvancedParticleOption> SAND = advanced("sand");
    public static final ParticleType<AdvancedParticleOption> SAND_GEYSER = advanced("sand_geyser");
    public static final ParticleType<AdvancedParticleOption> SNOWSTORM = advanced("snowstorm");
+   public static final ParticleType<AdvancedParticleOption> HEAT = advanced("heat");
+   public static final ParticleType<AdvancedParticleOption> MUTANT_BLAZE_CHARGE_SHOT = advanced("mutant_blaze_charge_shot");
+   public static final ParticleType<AdvancedParticleOption> RODLING_CHARGE_SHOT = advanced("rodling_charge_shot");
+   public static final SimpleParticleType MUTANT_BLAZE_HEAL = simple("mutant_blaze_heal");
+   public static final SimpleParticleType BROKEN_MUTANT_BLAZE_SHIELD = simple("broken_mutant_blaze_shield");
+   public static final SimpleParticleType FIRE_TRAIL = simple("fire_trail");
 
    private static ParticleType<AdvancedParticleOption> advanced(String name) {
       return Registry.register(

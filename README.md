@@ -33,13 +33,15 @@ Pass 5 (done): Hoglin rewards (Hog Helm with rage, Hoglance, Hogfist Gauntlet), 
 
 Pass 6 (done): Mutant Shulker (bullets, traps, turret, custom explosion, math animations), trap and turret items. Shield not yet.
 
+Pass 7 (done): Mutant Blaze (breakable orbiting shields as hitboxes, fireballs, rod projectiles that hatch Rodlings, stun, heat system and heat overlay), Rodling mob. The charge-shot "absorb" sparkles are vanilla flames for now.
+
 Not ported on purpose: Mutant Phantom (unfinished in the original: no spawn egg, no attacks).
 
 Deferred to later passes:
-- Other mutants: Blaze, Wither Skeleton. Most need the `advanced_animation_utils` system and the armour layers.
+- Wither Skeleton: needs the `advanced_animation_utils` system.
+- Blaze extras: Rodling Checker GUI, Rodling equipment editing, Mutant Blaze Shields reward item, heat hearts.
 - Mutation system: the `mutation_type` data registry, natural spawns, Formula Y, Compound Z, the mutation cloud and Concoction W.
 - Advancements: the tree is rooted in mutation advancements.
-- Hoglin rewards (Hog Helm, Hoglance, Hogfist Gauntlet) and the music discs (jukebox_song data).
 - Custom "mutant" boss-bar textures. The bar is a vanilla one for now, and it's off by default in the config anyway.
 - Structures, blocks, GUIs, the remaining mixins, and the `forge:` → `c:` tag data.
 

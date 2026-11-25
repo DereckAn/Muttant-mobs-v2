@@ -160,6 +160,13 @@ public class ItemInit {
       new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
    );
 
+   public static final Item MUTANT_BLAZE_SPAWN_EGG = register("mutant_blaze_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EntityTypeInit.MUTANT_BLAZE));
+   public static final Item RODLING_SPAWN_EGG = register("rodling_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EntityTypeInit.RODLING));
+   // ponytail: plain equipment items for now; equipping them needs the Rodling Checker screen (not ported yet). Rods from a Mutant Blaze can still hatch armoured/shielded Rodlings.
+   public static final Item RODLING_HELMET = register("rodling_helmet", Item::new, new Item.Properties().stacksTo(1));
+   public static final Item RODLING_SHIELDS = register("rodling_shields", Item::new, new Item.Properties().stacksTo(1));
+   public static final Item MUTANT_BLAZE_CORE = register("mutant_blaze_core", Item::new, new Item.Properties().rarity(Rarity.EPIC).fireResistant());
+
    public static final Item MUTANT_HOGLIN_TUSK = register("mutant_hoglin_tusk", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON));
    public static final Item MUSIC_DISC_ADRENALINE_RUSH = disc("adrenaline_rush");
    public static final Item MUSIC_DISC_AEGIS = disc("aegis");

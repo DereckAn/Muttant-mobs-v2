@@ -1,6 +1,11 @@
 package com.alexander.mutantmore.init;
 
 import com.alexander.mutantmore.entities.AreaDamage;
+import com.alexander.mutantmore.entities.MutantBlaze;
+import com.alexander.mutantmore.entities.MutantBlazeFireball;
+import com.alexander.mutantmore.entities.MutantBlazeRodProjectile;
+import com.alexander.mutantmore.entities.Rodling;
+import com.alexander.mutantmore.entities.RodlingFireball;
 import com.alexander.mutantmore.entities.CustomShulkerBullet;
 import com.alexander.mutantmore.entities.MutantShulker;
 import com.alexander.mutantmore.entities.MutantShulkerBullet;
@@ -67,6 +72,19 @@ public class EntityTypeInit {
    );
    public static final EntityType<CustomShulkerBullet> CUSTOM_SHULKER_BULLET = register(
       "custom_shulker_bullet", EntityType.Builder.<CustomShulkerBullet>of(CustomShulkerBullet::new, MobCategory.MISC).sized(0.3125F, 0.3125F).clientTrackingRange(8)
+   );
+   public static final EntityType<MutantBlaze> MUTANT_BLAZE = register(
+      "mutant_blaze", EntityType.Builder.of(MutantBlaze::new, MobCategory.MONSTER).sized(1.9F, 4.5F).fireImmune().clientTrackingRange(10)
+   );
+   public static final EntityType<MutantBlazeFireball> MUTANT_BLAZE_FIREBALL = register(
+      "mutant_blaze_fireball", EntityType.Builder.<MutantBlazeFireball>of(MutantBlazeFireball::new, MobCategory.MISC).sized(1.0F, 1.0F)
+   );
+   public static final EntityType<MutantBlazeRodProjectile> MUTANT_BLAZE_ROD_PROJECTILE = register(
+      "mutant_blaze_rod_projectile", EntityType.Builder.<MutantBlazeRodProjectile>of(MutantBlazeRodProjectile::new, MobCategory.MISC).sized(0.5F, 0.5F).fireImmune()
+   );
+   public static final EntityType<Rodling> RODLING = register("rodling", EntityType.Builder.of(Rodling::new, MobCategory.MISC).sized(0.25F, 0.65F).fireImmune());
+   public static final EntityType<RodlingFireball> RODLING_FIREBALL = register(
+      "rodling_fireball", EntityType.Builder.<RodlingFireball>of(RodlingFireball::new, MobCategory.MISC).sized(0.3125F, 0.3125F)
    );
    public static final EntityType<AreaDamage> AREA_DAMAGE = register(
       "area_damage", EntityType.Builder.<AreaDamage>of(AreaDamage::new, MobCategory.MISC).sized(1.0F, 1.0F).fireImmune().noSave()

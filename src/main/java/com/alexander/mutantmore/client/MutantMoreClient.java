@@ -90,5 +90,20 @@ public class MutantMoreClient implements ClientModInitializer {
       ClientTickEvents.END_CLIENT_TICK.register(CameraShake::tick);
       ClientTickEvents.END_CLIENT_TICK.register(MutantMoreMusicManager::tick);
       AbstractMutant.battleMusicHook = BattleMusic::tick;
+      // Mutant Blaze
+      ModelLayerRegistry.registerModelLayer(com.alexander.mutantmore.renderers.entities.MutantBlazeRenderer.LAYER, com.alexander.mutantmore.models.entities.MutantBlazeModel::createBodyLayer);
+      EntityRendererRegistry.register(EntityTypeInit.MUTANT_BLAZE, com.alexander.mutantmore.renderers.entities.MutantBlazeRenderer::new);
+      ModelLayerRegistry.registerModelLayer(com.alexander.mutantmore.renderers.entities.RodlingRenderer.LAYER, com.alexander.mutantmore.models.entities.RodlingModel::createBodyLayer);
+      EntityRendererRegistry.register(EntityTypeInit.RODLING, com.alexander.mutantmore.renderers.entities.RodlingRenderer::new);
+      EntityRendererRegistry.register(EntityTypeInit.MUTANT_BLAZE_ROD_PROJECTILE, com.alexander.mutantmore.renderers.entities.MutantBlazeRodProjectileRenderer::new);
+      EntityRendererRegistry.register(EntityTypeInit.MUTANT_BLAZE_FIREBALL, context -> new net.minecraft.client.renderer.entity.ThrownItemRenderer<>(context, 3.0F, true));
+      EntityRendererRegistry.register(EntityTypeInit.RODLING_FIREBALL, context -> new net.minecraft.client.renderer.entity.ThrownItemRenderer<>(context, 0.75F, true));
+      ParticleProviderRegistry.getInstance().register(ParticleTypeInit.MUTANT_BLAZE_HEAL, sprites -> new com.alexander.mutantmore.particles.MutantShulkerBulletParticle.Provider(sprites, true));
+      ParticleProviderRegistry.getInstance().register(ParticleTypeInit.BROKEN_MUTANT_BLAZE_SHIELD, com.alexander.mutantmore.particles.MutantBlazeParticles.Shard.Provider::new);
+      ParticleProviderRegistry.getInstance().register(ParticleTypeInit.FIRE_TRAIL, com.alexander.mutantmore.particles.MutantBlazeParticles.FireTrail.Provider::new);
+      ParticleProviderRegistry.getInstance().register(ParticleTypeInit.MUTANT_BLAZE_CHARGE_SHOT, sprites -> new com.alexander.mutantmore.particles.MutantBlazeParticles.ChargeShot.Provider(sprites, false));
+      ParticleProviderRegistry.getInstance().register(ParticleTypeInit.RODLING_CHARGE_SHOT, sprites -> new com.alexander.mutantmore.particles.MutantBlazeParticles.ChargeShot.Provider(sprites, true));
+      ParticleProviderRegistry.getInstance().register(ParticleTypeInit.HEAT, sprites -> new com.alexander.mutantmore.particles.SnowstormParticle.Provider(sprites, true));
+      com.alexander.mutantmore.heat.HeatClient.register();
    }
 }

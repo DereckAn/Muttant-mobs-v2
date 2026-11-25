@@ -12,7 +12,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.Vec3;
 
-/** A snowflake circling a centre (optionally following an entity). Values: range, start angle, speed, entity id, follow flag, offset x/y/z. */
+/** A snowflake (or, with heat=true, an ember) circling a centre, optionally following an entity. Values: range, start angle, speed, entity id, follow flag, offset x/y/z. */
 public class SnowstormParticle extends SingleQuadParticle {
    private final float rollSpeed;
    private final double circleRange;
@@ -24,8 +24,9 @@ public class SnowstormParticle extends SingleQuadParticle {
    private final double offsetY;
    private final double offsetZ;
    private Vec3 circleCentrePos;
+   private final boolean heat;
 
-   protected SnowstormParticle(ClientLevel level, double x, double y, double z, SpriteSet sprites, AdvancedParticleOption options) {
+   protected SnowstormParticle(ClientLevel level, double x, double y, double z, SpriteSet sprites, AdvancedParticleOption options, boolean heat) {
       super(level, x, y, z, 0.0, 0.0, 0.0, sprites.get(level.getRandom()));
       this.circleRange = options.value(0);
       this.circleProgress = options.value(1);
@@ -35,10 +36,11 @@ public class SnowstormParticle extends SingleQuadParticle {
       this.offsetX = options.value(5);
       this.offsetY = options.value(6);
       this.offsetZ = options.value(7);
-      this.rollSpeed = this.random.nextFloat() * 0.1F;
+      this.heat = heat;
+      this.rollSpeed = this.random.nextFloat() * (heat ? 0.06F : 0.1F);
       this.friction = 0.8F;
       this.quadSize = this.quadSize * (this.random.nextFloat() * 3.0F);
-      this.lifetime = 30 + this.random.nextInt(100);
+      this.lifetime = heat ? 20 + this.random.nextInt(80) : 30 + this.random.nextInt(100);
       this.alpha = 0.0F;
       this.circleCentrePos = new Vec3(this.x, this.y, this.z);
    }
@@ -64,14 +66,23 @@ public class SnowstormParticle extends SingleQuadParticle {
    }
 
    @Override
+   public int getLightCoords(float partialTick) {
+      return this.heat ? 240 : super.getLightCoords(partialTick);
+   }
+
+   @Override
    protected SingleQuadParticle.Layer getLayer() {
       return SingleQuadParticle.Layer.TRANSLUCENT;
    }
 
-   public record Provider(SpriteSet sprites) implements ParticleProvider<AdvancedParticleOption> {
+   public record Provider(SpriteSet sprites, boolean heat) implements ParticleProvider<AdvancedParticleOption> {
+      public Provider(SpriteSet sprites) {
+         this(sprites, false);
+      }
+
       @Override
       public Particle createParticle(AdvancedParticleOption options, ClientLevel level, double x, double y, double z, double dx, double dy, double dz, RandomSource random) {
-         return new SnowstormParticle(level, x, y, z, this.sprites, options);
+         return new SnowstormParticle(level, x, y, z, this.sprites, options, this.heat);
       }
    }
 }

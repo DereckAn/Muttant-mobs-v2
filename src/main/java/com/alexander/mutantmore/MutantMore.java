@@ -68,6 +68,9 @@ public class MutantMore implements ModInitializer {
       FabricDefaultAttributeRegistry.register(EntityTypeInit.MUTANT_SHULKER, MutantShulker.createConfiguredAttributes());
       FabricDefaultAttributeRegistry.register(EntityTypeInit.MUTANT_SHULKER_TURRET, MutantShulkerTurret.createConfiguredAttributes());
       FabricDefaultAttributeRegistry.register(EntityTypeInit.MUTANT_SHULKER_TRAP, MutantShulkerTrap.createConfiguredAttributes());
+      FabricDefaultAttributeRegistry.register(EntityTypeInit.MUTANT_BLAZE, com.alexander.mutantmore.entities.MutantBlaze.createConfiguredAttributes());
+      FabricDefaultAttributeRegistry.register(EntityTypeInit.RODLING, com.alexander.mutantmore.entities.Rodling.createConfiguredAttributes());
+      com.alexander.mutantmore.heat.Heat.init();
       FabricDefaultAttributeRegistry.register(EntityTypeInit.SENTRY_VINE, SentryVine.createConfiguredAttributes());
       PayloadTypeRegistry.serverboundPlay().register(ArmStranglePayload.TYPE, ArmStranglePayload.CODEC);
       ServerPlayNetworking.registerGlobalReceiver(ArmStranglePayload.TYPE, (payload, context) -> JungleZombieArmState.of(context.player()).strangleTicks = 3);
@@ -84,6 +87,8 @@ public class MutantMore implements ModInitializer {
          output.accept(ItemInit.MUTANT_HUSK_SPAWN_EGG);
          output.accept(ItemInit.MUTANT_FROZEN_ZOMBIE_SPAWN_EGG);
          output.accept(ItemInit.MUTANT_SHULKER_SPAWN_EGG);
+         output.accept(ItemInit.MUTANT_BLAZE_SPAWN_EGG);
+         output.accept(ItemInit.RODLING_SPAWN_EGG);
          output.accept(ItemInit.MUTANT_HOGLIN_SPAWN_EGG);
          output.accept(ItemInit.MUTANT_JUNGLE_ZOMBIE_SPAWN_EGG);
       });
@@ -122,6 +127,13 @@ public class MutantMore implements ModInitializer {
       config(Type.COMMON, com.alexander.mutantmore.config.mutant_shulker.MutantShulkerCommonConfig.SPEC, "mutant_shulker/mutant_shulker-common.toml");
       config(Type.CLIENT, com.alexander.mutantmore.config.mutant_shulker.MutantShulkerClientConfig.SPEC, "mutant_shulker/mutant_shulker-client.toml");
       config(Type.COMMON, com.alexander.mutantmore.config.mutant_shulker.MutantShulkerRewardsCommonConfig.SPEC, "mutant_shulker/mutant_shulker_rewards-common.toml");
+      config(Type.COMMON, com.alexander.mutantmore.config.mutant_blaze.MutantBlazeCommonConfig.SPEC, "mutant_blaze/mutant_blaze-common.toml");
+      config(Type.CLIENT, com.alexander.mutantmore.config.mutant_blaze.MutantBlazeClientConfig.SPEC, "mutant_blaze/mutant_blaze-client.toml");
+      config(Type.COMMON, com.alexander.mutantmore.config.mutant_blaze.MutantBlazeRewardsCommonConfig.SPEC, "mutant_blaze/mutant_blaze_rewards-common.toml");
+      config(Type.CLIENT, com.alexander.mutantmore.config.mutant_blaze.MutantBlazeRewardsClientConfig.SPEC, "mutant_blaze/mutant_blaze_rewards-client.toml");
+      config(Type.COMMON, com.alexander.mutantmore.config.mutant_blaze.RodlingCommonConfig.SPEC, "mutant_blaze/rodling-common.toml");
+      config(Type.COMMON, com.alexander.mutantmore.config.mutant_blaze.HeatCommonConfig.SPEC, "mutant_blaze/heat-common.toml");
+      config(Type.CLIENT, com.alexander.mutantmore.config.mutant_blaze.HeatClientConfig.SPEC, "mutant_blaze/heat-client.toml");
       config(Type.COMMON, MutantJungleZombieCommonConfig.SPEC, "mutant_jungle_zombie/mutant_jungle_zombie-common.toml");
       config(Type.COMMON, MutantJungleZombieRewardsCommonConfig.SPEC, "mutant_jungle_zombie/mutant_jungle_zombie_rewards-common.toml");
       config(Type.CLIENT, MutantJungleZombieClientConfig.SPEC, "mutant_jungle_zombie/mutant_jungle_zombie-client.toml");
