@@ -1,5 +1,8 @@
 package com.alexander.mutantmore.renderers.entities;
 
+import net.minecraft.world.item.ItemStack;
+import com.alexander.mutantmore.client.armour.ArmourRenderState;
+import com.alexander.mutantmore.client.armour.MutantArmourLayer;
 import com.alexander.mutantmore.advanced_animation_utils.animation_utils.AdvancedAnimationUtils;
 import com.alexander.mutantmore.advanced_animation_utils.animation_utils.animation_trackers.AdvancedAnimationTracker;
 import com.alexander.mutantmore.entities.MutantWitherSkeleton;
@@ -24,6 +27,7 @@ public class MutantWitherSkeletonRenderer extends MobRenderer<MutantWitherSkelet
 
    public MutantWitherSkeletonRenderer(EntityRendererProvider.Context context) {
       super(context, new MutantWitherSkeletonModel(context.bakeLayer(LAYER)), 1.25F);
+      MutantArmourLayer.addTo(this, context, this::addLayer);
       this.addLayer(new ItemInHandLayer<>(this));
    }
 
@@ -61,6 +65,7 @@ public class MutantWitherSkeletonRenderer extends MobRenderer<MutantWitherSkelet
    @Override
    public void extractRenderState(MutantWitherSkeleton entity, State state, float partialTicks) {
       super.extractRenderState(entity, state, partialTicks);
+      MutantArmourLayer.extract(entity, state);
       ArmedEntityRenderState.extractArmedEntityRenderState(entity, state, this.itemModelResolver, partialTicks);
       state.tracker = entity.getAnimationTracker();
       // Per-frame inputs of the walk and leg-height animations (were computed inside the model's setupAnim)
@@ -77,7 +82,14 @@ public class MutantWitherSkeletonRenderer extends MobRenderer<MutantWitherSkelet
       state.lungingXRot = entity.lungingXRot;
    }
 
-   public static class State extends ArmedEntityRenderState {
+   public static class State extends ArmedEntityRenderState implements ArmourRenderState {
+   public final ItemStack[] armour = {ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY};
+
+   @Override
+   public ItemStack[] armour() {
+      return this.armour;
+   }
+
       /** ponytail: the animations live on the entity (server-synced, client-ticked); the state borrows them for this frame */
       public @Nullable AdvancedAnimationTracker tracker;
       public float lungingXRot;

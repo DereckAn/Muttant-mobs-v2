@@ -1,9 +1,18 @@
 package com.alexander.mutantmore.client;
 
+import net.minecraft.world.item.ItemStack;
+import com.alexander.mutantmore.client.armour.ArmourRenderState;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.world.entity.AnimationState;
 
-public class MutantFrozenZombieRenderState extends LivingEntityRenderState {
+public class MutantFrozenZombieRenderState extends LivingEntityRenderState implements ArmourRenderState {
+   public final ItemStack[] armour = {ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY};
+
+   @Override
+   public ItemStack[] armour() {
+      return this.armour;
+   }
+
    public final AnimationState downAnimationState = new AnimationState();
    public final AnimationState roarAnimationState = new AnimationState();
    public final AnimationState snowThrowAnimationState = new AnimationState();

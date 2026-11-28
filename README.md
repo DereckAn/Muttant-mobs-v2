@@ -20,7 +20,6 @@ Pass 2 (done): Mutant Jungle Zombie.
 - Entity with its 5 attacks (punch, strangle, slam, vine sweep, poison jump), get-up lives, configs, spawn egg, Mutant More creative tab.
 - Shared `AreaDamage` entity (ground and poison-cloud types) and the poison cloud particle.
 - Rewards: vine seed (drop) and vine crop, Sentry Vine (placeable turret), Mutant Jungle Zombie Arm (grab/strangle, 3D item via a special model renderer, arm-raise pose), arm recipe.
-- Not yet: armour/held-item render layers.
 
 Pass 3 (done): Mutant Husk.
 - Entity with punch, sand-boulder throw, geyser, roar (summons zombies out of the ground and spreads quicksand) and get-up lives; configs; spawn egg.
@@ -47,12 +46,12 @@ Not ported on purpose: Mutant Phantom (unfinished in the original: no spawn egg,
 
 Advancements: all 24 tab advancements (root = entering a Derelict Laboratory) and every recipe-unlock advancement, converted to the 26.x format. The three code-awarded ones (mutate a mob, enrage a Mutant Hoglin, fly with the Jungle Zombie Arm) are hooked. The Sentry Vine recipe is ported too.
 
+Armour layer: the Husk, Frozen Zombie, Jungle Zombie and Wither Skeleton show worn armour and head items (skulls, pumpkins), each piece placed on the mutant's own bones (`client/armour/MutantArmourLayer`).
+
 Deferred to later passes:
-- Mobs don't render worn armour (`AdvancedArmourLayer`).
 - Blaze extras: the heat hearts HUD, and the Rodling Checker's list for switching between and bulk-editing nearby Rodlings.
 - Mutation extras: the glowing overlay drawn on a mob while it mutates, and Mutant Shulkers at End City sentry spots (that one only happens if a datapack turns natural spawns on).
 - Custom "mutant" boss-bar textures. The bar is a vanilla one for now, and it's off by default in the config anyway.
-- Structures, blocks, GUIs, the remaining mixins, and the `forge:` → `c:` tag data.
 
 ## How the port was made
 

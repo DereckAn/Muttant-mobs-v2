@@ -1,5 +1,8 @@
 package com.alexander.mutantmore.models.entities;
 
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.alexander.mutantmore.client.armour.ArmourWearingModel;
+import com.alexander.mutantmore.client.armour.ArmourWearingModel.Part;
 import com.alexander.mutantmore.animation.keyframe_animations.definition.MutantFrozenZombieKeyframeAnimations;
 import com.alexander.mutantmore.animation.sine_wave_animations.SineWaveAnimationUtils;
 import com.alexander.mutantmore.animation.sine_wave_animations.definition.MutantFrozenZombieSineWaveAnimations;
@@ -16,7 +19,7 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 
 // ponytail: armour and held-item layers skipped, same as the other mutants
-public class MutantFrozenZombieModel extends EntityModel<MutantFrozenZombieRenderState> {
+public class MutantFrozenZombieModel extends EntityModel<MutantFrozenZombieRenderState> implements ArmourWearingModel {
    public final ModelPart everything;
    public final ModelPart pelvis;
    public final ModelPart body;
@@ -245,6 +248,63 @@ public class MutantFrozenZombieModel extends EntityModel<MutantFrozenZombieRende
          this.snowBlock.xScale = 0.0F;
          this.snowBlock.yScale = 0.0F;
          this.snowBlock.zScale = 0.0F;
+      }
+   }
+
+   @Override
+   public ModelPart getHead() {
+      return this.head;
+   }
+
+   @Override
+   public void translateArmour(Part modelPart, PoseStack stack, boolean innerModel) {
+      switch (modelPart) {
+         case HEAD:
+            ArmourWearingModel.through(this.root(), stack, "everything", "pelvis", "body", "head");
+            stack.translate(0.0, 0.0, -0.21875);
+            break;
+         case BODY:
+            ArmourWearingModel.through(this.root(), stack, "everything", "pelvis");
+            if (innerModel) {
+               stack.translate(0.0F, -2.125F, 0.0F);
+               stack.scale(1.8F, 2.9F, 2.4F);
+            } else {
+               this.body.translateAndRotate(stack);
+               stack.translate(0.0F, -0.6875F, 0.0F);
+               stack.scale(2.5F, 1.2F, 2.75F);
+            }
+            break;
+         case RIGHT_ARM:
+            ArmourWearingModel.through(this.root(), stack, "everything", "pelvis", "body", "rightArm");
+            stack.translate(0.4375F, -0.125F, 0.0F);
+            stack.scale(1.2F, 1.6F, 1.2F);
+            break;
+         case LEFT_ARM:
+            ArmourWearingModel.through(this.root(), stack, "everything", "pelvis", "body", "leftArm");
+            stack.translate(-0.4375F, -0.125F, 0.0F);
+            stack.scale(1.2F, 1.6F, 1.2F);
+            break;
+         case RIGHT_LEG:
+            ArmourWearingModel.through(this.root(), stack, "everything", "rightLeg");
+            if (innerModel) {
+               stack.translate(0.1875F, -1.0625F, 0.03125F);
+               stack.scale(1.5F, 1.3F, 1.5F);
+            } else {
+               this.rightLegLower.translateAndRotate(stack);
+               stack.translate(0.15625F, -1.875F, 0.0F);
+               stack.scale(1.25F, 1.5F, 1.25F);
+            }
+            break;
+         case LEFT_LEG:
+            ArmourWearingModel.through(this.root(), stack, "everything", "leftLeg");
+            if (innerModel) {
+               stack.translate(-0.1875F, -1.0625F, 0.03125F);
+               stack.scale(1.5F, 1.3F, 1.5F);
+            } else {
+               this.leftLegLower.translateAndRotate(stack);
+               stack.translate(-0.15625F, -1.875F, 0.0F);
+               stack.scale(1.25F, 1.5F, 1.25F);
+            }
       }
    }
 }

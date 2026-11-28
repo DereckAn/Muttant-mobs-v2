@@ -1,5 +1,6 @@
 package com.alexander.mutantmore.renderers.entities;
 
+import com.alexander.mutantmore.client.armour.MutantArmourLayer;
 import com.alexander.mutantmore.client.MutantFrozenZombieRenderState;
 import com.alexander.mutantmore.entities.MutantFrozenZombie;
 import com.alexander.mutantmore.init.ModelLayerInit;
@@ -15,6 +16,7 @@ public class MutantFrozenZombieRenderer extends MobRenderer<MutantFrozenZombie, 
 
    public MutantFrozenZombieRenderer(EntityRendererProvider.Context context) {
       super(context, new MutantFrozenZombieModel(context.bakeLayer(ModelLayerInit.MUTANT_FROZEN_ZOMBIE)), 1.25F);
+      MutantArmourLayer.addTo(this, context, this::addLayer);
    }
 
    @Override
@@ -41,6 +43,7 @@ public class MutantFrozenZombieRenderer extends MobRenderer<MutantFrozenZombie, 
    @Override
    public void extractRenderState(MutantFrozenZombie entity, MutantFrozenZombieRenderState state, float partialTicks) {
       super.extractRenderState(entity, state, partialTicks);
+      MutantArmourLayer.extract(entity, state);
       state.downAnimationState.copyFrom(entity.downAnimationState);
       state.roarAnimationState.copyFrom(entity.roarAnimationState);
       state.snowThrowAnimationState.copyFrom(entity.snowThrowAnimationState);

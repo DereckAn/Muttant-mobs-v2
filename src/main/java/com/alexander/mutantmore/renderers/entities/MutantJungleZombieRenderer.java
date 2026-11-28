@@ -1,5 +1,6 @@
 package com.alexander.mutantmore.renderers.entities;
 
+import com.alexander.mutantmore.client.armour.MutantArmourLayer;
 import com.alexander.mutantmore.client.MutantJungleZombieRenderState;
 import com.alexander.mutantmore.entities.MutantJungleZombie;
 import com.alexander.mutantmore.init.ModelLayerInit;
@@ -15,6 +16,7 @@ public class MutantJungleZombieRenderer extends MobRenderer<MutantJungleZombie, 
 
    public MutantJungleZombieRenderer(EntityRendererProvider.Context context) {
       super(context, new MutantJungleZombieModel(context.bakeLayer(ModelLayerInit.MUTANT_JUNGLE_ZOMBIE)), 1.25F);
+      MutantArmourLayer.addTo(this, context, this::addLayer);
    }
 
    @Override
@@ -41,6 +43,7 @@ public class MutantJungleZombieRenderer extends MobRenderer<MutantJungleZombie, 
    @Override
    public void extractRenderState(MutantJungleZombie entity, MutantJungleZombieRenderState state, float partialTicks) {
       super.extractRenderState(entity, state, partialTicks);
+      MutantArmourLayer.extract(entity, state);
       state.noveltyAnimationState.copyFrom(entity.noveltyAnimationState);
       state.downAnimationState.copyFrom(entity.downAnimationState);
       state.introAnimationState.copyFrom(entity.introAnimationState);

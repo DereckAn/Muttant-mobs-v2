@@ -1,5 +1,7 @@
 package com.alexander.mutantmore.models.entities;
 
+import com.alexander.mutantmore.client.armour.ArmourWearingModel;
+import com.alexander.mutantmore.client.armour.ArmourWearingModel.Part;
 import com.alexander.mutantmore.advanced_animation_utils.animation_utils.animation_trackers.AbstractAdvancedAnimation;
 import com.alexander.mutantmore.advanced_animation_utils.animation_utils.model_animations.AdvancedAnimationDefinition;
 import com.alexander.mutantmore.advanced_animation_utils.animation_utils.model_animations.AdvancedAnimator;
@@ -21,7 +23,7 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.world.entity.HumanoidArm;
 
 // ponytail: armour layers (AdvancedArmourLayer) skipped like the other mutants; held scimitars are rendered
-public class MutantWitherSkeletonModel extends MMBaseEntityModel<MutantWitherSkeletonRenderer.State> implements ArmedModel<MutantWitherSkeletonRenderer.State> {
+public class MutantWitherSkeletonModel extends MMBaseEntityModel<MutantWitherSkeletonRenderer.State> implements ArmedModel<MutantWitherSkeletonRenderer.State>, ArmourWearingModel {
    private final ModelPart head;
    private final List<ModelPart> parts;
    private final List<ModelPart> rightHand;
@@ -339,5 +341,58 @@ public class MutantWitherSkeletonModel extends MMBaseEntityModel<MutantWitherSke
    public void translateToHand(MutantWitherSkeletonRenderer.State state, HumanoidArm arm, PoseStack stack) {
       (arm == HumanoidArm.RIGHT ? this.rightHand : this.leftHand).forEach(part -> part.translateAndRotate(stack));
       stack.translate(arm == HumanoidArm.RIGHT ? 0.0625F : -0.0625F, -0.5625F, 0.0F);
+   }
+
+   @Override
+   public ModelPart getHead() {
+      return ArmourWearingModel.find(this.root(), "head");
+   }
+
+   @Override
+   public void translateArmour(Part modelPart, PoseStack stack, boolean innerModel) {
+      switch (modelPart) {
+         case HEAD:
+            ArmourWearingModel.through(this.root(), stack, "everything", "pelvis1", "pelvis2", "spine1", "spine2", "spine3", "neck", "head");
+            stack.translate(0.0F, 0.0F, -0.09375F);
+            break;
+         case BODY:
+            if (innerModel) {
+               ArmourWearingModel.through(this.root(), stack, "everything", "pelvis1");
+               stack.translate(0.0F, -0.8125F, 0.0F);
+               stack.scale(1.0F, 1.3F, 1.1F);
+            } else {
+               ArmourWearingModel.through(this.root(), stack, "everything", "pelvis1", "pelvis2", "spine1", "spine2");
+               stack.translate(0.0F, -0.5F, 0.0F);
+               stack.scale(1.0F, 1.2F, 1.5F);
+            }
+            break;
+         case RIGHT_ARM:
+            ArmourWearingModel.through(this.root(), stack, "everything", "pelvis1", "pelvis2", "spine1", "spine2", "spine3", "rightShoulderPad");
+            stack.translate(0.34375F, -0.15625F, 0.0F);
+            stack.scale(1.75F, 1.0F, 1.4F);
+            break;
+         case LEFT_ARM:
+            ArmourWearingModel.through(this.root(), stack, "everything", "pelvis1", "pelvis2", "spine1", "spine2", "spine3", "leftShoulderPad");
+            stack.translate(-0.28125F, -0.0625F, 0.0F);
+            stack.scale(1.5F, 1.0F, 1.1F);
+            break;
+         case RIGHT_LEG:
+            if (innerModel) {
+               ArmourWearingModel.through(this.root(), stack, "everything", "rightLeg");
+               stack.translate(0.125F, -0.75F, 0.0F);
+            } else {
+               ArmourWearingModel.through(this.root(), stack, "everything", "rightLeg", "rightLegLower");
+               stack.translate(0.125F, -0.65625F, 0.0F);
+            }
+            break;
+         case LEFT_LEG:
+            if (innerModel) {
+               ArmourWearingModel.through(this.root(), stack, "everything", "leftLeg");
+               stack.translate(-0.125F, -0.75F, 0.0F);
+            } else {
+               ArmourWearingModel.through(this.root(), stack, "everything", "leftLeg", "leftLegLower");
+               stack.translate(-0.125F, -0.65625F, 0.0F);
+            }
+      }
    }
 }

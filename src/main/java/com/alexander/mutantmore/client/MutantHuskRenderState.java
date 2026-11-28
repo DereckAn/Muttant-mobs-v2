@@ -1,9 +1,18 @@
 package com.alexander.mutantmore.client;
 
+import net.minecraft.world.item.ItemStack;
+import com.alexander.mutantmore.client.armour.ArmourRenderState;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.world.entity.AnimationState;
 
-public class MutantHuskRenderState extends LivingEntityRenderState {
+public class MutantHuskRenderState extends LivingEntityRenderState implements ArmourRenderState {
+   public final ItemStack[] armour = {ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY};
+
+   @Override
+   public ItemStack[] armour() {
+      return this.armour;
+   }
+
    public final AnimationState noveltyAnimationState = new AnimationState();
    public final AnimationState throwSandAnimationState = new AnimationState();
    public final AnimationState attackAnimationState = new AnimationState();

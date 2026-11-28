@@ -1,5 +1,6 @@
 package com.alexander.mutantmore.renderers.entities;
 
+import com.alexander.mutantmore.client.armour.MutantArmourLayer;
 import com.alexander.mutantmore.client.MutantHuskRenderState;
 import com.alexander.mutantmore.entities.MutantHusk;
 import com.alexander.mutantmore.init.ModelLayerInit;
@@ -16,6 +17,7 @@ public class MutantHuskRenderer extends MobRenderer<MutantHusk, MutantHuskRender
 
    public MutantHuskRenderer(EntityRendererProvider.Context context) {
       super(context, new MutantHuskModel(context.bakeLayer(ModelLayerInit.MUTANT_HUSK)), 1.5F);
+      MutantArmourLayer.addTo(this, context, this::addLayer);
    }
 
    @Override
@@ -42,6 +44,7 @@ public class MutantHuskRenderer extends MobRenderer<MutantHusk, MutantHuskRender
    @Override
    public void extractRenderState(MutantHusk entity, MutantHuskRenderState state, float partialTicks) {
       super.extractRenderState(entity, state, partialTicks);
+      MutantArmourLayer.extract(entity, state);
       state.noveltyAnimationState.copyFrom(entity.noveltyAnimationState);
       state.throwSandAnimationState.copyFrom(entity.throwSandAnimationState);
       state.attackAnimationState.copyFrom(entity.attackAnimationState);
