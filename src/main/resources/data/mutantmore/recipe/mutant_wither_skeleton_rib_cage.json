@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "R": "mutantmore:mutant_wither_skeleton_rib"
+  },
+  "pattern": [
+    "R R",
+    "R R",
+    "R R"
+  ],
+  "result": {
+    "id": "mutantmore:mutant_wither_skeleton_rib_cage"
+  },
+  "category": "misc"
+}

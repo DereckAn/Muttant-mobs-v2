@@ -37,10 +37,12 @@ Pass 7 (done): Mutant Blaze (breakable orbiting shields as hitboxes, fireballs, 
 
 Pass 8 (done): Mutant Wither Skeleton (the server-synced `advanced_animation_utils` animation system, lunge, wither slash, wither breath gas cloud, rib crush, blocking, life leech, falls apart into collectable bones), Withered Scimitar, bone drops. Also ported the shared absorb and ground-trail particles; the Blaze charge shots now use the real absorb sparkles.
 
+Pass 9 (done): Mutant Wither Skeleton rewards: bone armour set (the skull is wearable and placeable on floors/walls, +attack speed; chestplate +attack damage), Wither Bomb (thrown, placed or dispensed), and their recipes.
+
 Not ported on purpose: Mutant Phantom (unfinished in the original: no spawn egg, no attacks).
 
 Deferred to later passes:
-- Wither Skeleton rewards: armour set (wearable/placeable skull block, chestplate, leggings, boots) and the Wither Bomb. The skull is a plain item for now. Mobs don't render worn armour (`AdvancedArmourLayer`).
+- Mobs don't render worn armour (`AdvancedArmourLayer`).
 - Blaze extras: Rodling Checker GUI, Rodling equipment editing, Mutant Blaze Shields reward item, heat hearts.
 - Mutation system: the `mutation_type` data registry, natural spawns, Formula Y, Compound Z, the mutation cloud and Concoction W.
 - Advancements: the tree is rooted in mutation advancements.

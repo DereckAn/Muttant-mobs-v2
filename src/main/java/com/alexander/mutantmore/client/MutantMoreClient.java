@@ -106,6 +106,11 @@ public class MutantMoreClient implements ClientModInitializer {
       ParticleProviderRegistry.getInstance().register(ParticleTypeInit.HEAT, sprites -> new com.alexander.mutantmore.particles.SnowstormParticle.Provider(sprites, true));
       com.alexander.mutantmore.heat.HeatClient.register();
       // Mutant Wither Skeleton
+      MutantWitherSkeletonArmourClient.register();
+      ModelLayerRegistry.registerModelLayer(com.alexander.mutantmore.renderers.entities.WitherBombRenderer.LAYER, com.alexander.mutantmore.models.entities.WitherBombModel::createBodyLayer);
+      EntityRendererRegistry.register(EntityTypeInit.WITHER_BOMB, com.alexander.mutantmore.renderers.entities.WitherBombRenderer::new);
+      SpecialModelRenderers.ID_MAPPER.put(com.alexander.mutantmore.renderers.items.WitherBombSpecialRenderer.ID, com.alexander.mutantmore.renderers.items.WitherBombSpecialRenderer.Unbaked.MAP_CODEC);
+      ParticleProviderRegistry.getInstance().register(ParticleTypeInit.WITHER_BOMB, com.alexander.mutantmore.particles.WitherParticles.BombSmoke.Provider::new);
       ModelLayerRegistry.registerModelLayer(com.alexander.mutantmore.renderers.entities.MutantWitherSkeletonRenderer.LAYER, com.alexander.mutantmore.models.entities.MutantWitherSkeletonModel::createBodyLayer);
       EntityRendererRegistry.register(EntityTypeInit.MUTANT_WITHER_SKELETON, com.alexander.mutantmore.renderers.entities.MutantWitherSkeletonRenderer::new);
       ModelLayerRegistry.registerModelLayer(com.alexander.mutantmore.renderers.entities.MutantWitherSkeletonBodyPartRenderer.LAYER, com.alexander.mutantmore.models.entities.MutantWitherSkeletonBodyPartModel::createBodyLayer);

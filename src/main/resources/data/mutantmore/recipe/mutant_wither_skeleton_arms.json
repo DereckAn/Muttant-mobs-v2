@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "L": "mutantmore:mutant_wither_skeleton_limb",
+    "S": "mutantmore:mutant_wither_skeleton_shoulder_pad"
+  },
+  "pattern": [
+    "S S",
+    "L L",
+    "L L"
+  ],
+  "result": {
+    "id": "mutantmore:mutant_wither_skeleton_arms"
+  },
+  "category": "misc"
+}

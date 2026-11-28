@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "L": "mutantmore:mutant_wither_skeleton_limb"
+  },
+  "pattern": [
+    "L L"
+  ],
+  "result": {
+    "id": "mutantmore:mutant_wither_skeleton_boots"
+  },
+  "category": "equipment"
+}

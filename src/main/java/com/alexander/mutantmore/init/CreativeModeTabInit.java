@@ -27,6 +27,10 @@ public class CreativeModeTabInit {
             output.accept(ItemInit.MUTANT_SHULKER_TURRET);
             output.accept(ItemInit.MUTANT_BLAZE_CORE);
             output.accept(ItemInit.WITHERED_SCIMITAR);
+            output.accept(ItemInit.WITHER_BOMB);
+            output.accept(ItemInit.MUTANT_WITHER_SKELETON_CHESTPLATE);
+            output.accept(ItemInit.MUTANT_WITHER_SKELETON_LEGGINGS);
+            output.accept(ItemInit.MUTANT_WITHER_SKELETON_BOOTS);
             output.accept(ItemInit.MUTANT_WITHER_SKELETON_SKULL);
             output.accept(ItemInit.MUTANT_WITHER_SKELETON_ARMS);
             output.accept(ItemInit.MUTANT_WITHER_SKELETON_LIMB);

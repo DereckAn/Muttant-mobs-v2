@@ -58,6 +58,8 @@ public class MutantMore implements ModInitializer {
       ParticleTypeInit.init();
       EntityTypeInit.init();
       BlockInit.init();
+      com.alexander.mutantmore.init.BlockEntityTypeInit.init();
+      net.minecraft.world.level.block.DispenserBlock.registerProjectileBehavior(ItemInit.WITHER_BOMB);
       ItemInit.init();
       CreativeModeTabInit.init();
       // ponytail: attributes read the common config once at startup, so health/armour edits need a restart (same as the original)

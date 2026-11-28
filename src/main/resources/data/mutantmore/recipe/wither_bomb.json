@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": "mutantmore:mutant_wither_skeleton_skull",
+    "R": "mutantmore:mutant_wither_skeleton_rib",
+    "P": "minecraft:splash_potion",
+    "G": "minecraft:gunpowder"
+  },
+  "pattern": [
+    "RGR",
+    "GSG",
+    "RPR"
+  ],
+  "result": {
+    "id": "mutantmore:wither_bomb"
+  },
+  "category": "equipment"
+}

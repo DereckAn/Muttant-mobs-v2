@@ -4,6 +4,10 @@
     {
       "id": "mutantmore:hog_helm",
       "required": false
+    },
+    {
+      "id": "mutantmore:mutant_wither_skeleton_skull",
+      "required": false
     }
   ]
 }

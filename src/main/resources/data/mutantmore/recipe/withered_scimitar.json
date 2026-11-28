@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "L": "mutantmore:mutant_wither_skeleton_limb",
+    "R": "mutantmore:mutant_wither_skeleton_rib"
+  },
+  "pattern": [
+    "  R",
+    " RR",
+    "LR "
+  ],
+  "result": {
+    "id": "mutantmore:withered_scimitar"
+  },
+  "category": "equipment"
+}

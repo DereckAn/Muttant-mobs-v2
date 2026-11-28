@@ -31,6 +31,19 @@ public class BlockInit {
       BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).noCollision().strength(0.3F).requiresCorrectToolForDrops().sound(SoundType.SAND)
    );
 
+   public static final Block MUTANT_WITHER_SKELETON_SKULL = register(
+      "mutant_wither_skeleton_skull",
+      com.alexander.mutantmore.blocks.CustomSkullBlock::new,
+      BlockBehaviour.Properties.of().instrument(net.minecraft.world.level.block.state.properties.NoteBlockInstrument.WITHER_SKELETON).strength(1.0F)
+         .pushReaction(net.minecraft.world.level.material.PushReaction.POPPED).noOcclusion()
+   );
+   public static final Block MUTANT_WITHER_SKELETON_WALL_SKULL = register(
+      "mutant_wither_skeleton_wall_skull",
+      com.alexander.mutantmore.blocks.CustomWallSkullBlock::new,
+      BlockBehaviour.Properties.of().overrideLootTable(MUTANT_WITHER_SKELETON_SKULL.getLootTable()).overrideDescription(MUTANT_WITHER_SKELETON_SKULL.getDescriptionId())
+         .strength(1.0F).pushReaction(net.minecraft.world.level.material.PushReaction.POPPED).noOcclusion()
+   );
+
    private static Block register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties) {
       ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("mutantmore", name));
       return Registry.register(BuiltInRegistries.BLOCK, key, factory.apply(properties.setId(key)));

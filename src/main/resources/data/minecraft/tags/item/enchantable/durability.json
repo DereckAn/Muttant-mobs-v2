@@ -32,6 +32,22 @@
     {
       "id": "mutantmore:withered_scimitar",
       "required": false
+    },
+    {
+      "id": "mutantmore:mutant_wither_skeleton_skull",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_wither_skeleton_chestplate",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_wither_skeleton_leggings",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_wither_skeleton_boots",
+      "required": false
     }
   ]
 }

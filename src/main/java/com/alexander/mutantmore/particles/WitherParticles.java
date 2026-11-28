@@ -193,6 +193,58 @@ public final class WitherParticles {
       }
    }
 
+   /** Smoke column pouring out of an open Wither Bomb: rises, then drifts sideways. */
+   public static class BombSmoke extends SingleQuadParticle {
+      private final SpriteSet sprites;
+      private final float xSpeed;
+      private final float zSpeed;
+
+      BombSmoke(ClientLevel level, double x, double y, double z, SpriteSet sprites) {
+         super(level, x, y, z, 0.0, 0.0, 0.0, sprites.first());
+         this.sprites = sprites;
+         this.speedUpWhenYMotionIsBlocked = true;
+         this.friction = 0.86F;
+         this.xSpeed = -1.0F + this.random.nextFloat() * 2.0F;
+         this.zSpeed = -1.0F + this.random.nextFloat() * 2.0F;
+         this.setParticleSpeed(0.0, 0.1 + this.random.nextFloat() * 0.25, 0.0);
+         this.quadSize = 1.0F;
+         this.lifetime = 15 + this.random.nextInt(35);
+         this.hasPhysics = true;
+         this.setSpriteFromAge(sprites);
+         float c = 0.15F + this.random.nextFloat() * 0.1F;
+         this.setColor(c, c, c);
+      }
+
+      @Override
+      public float getQuadSize(float partialTick) {
+         return this.quadSize * Mth.clamp((this.age + partialTick) / this.lifetime * 32.0F, 0.0F, 1.0F);
+      }
+
+      @Override
+      public void tick() {
+         super.tick();
+         if (this.age > 2) {
+            this.setParticleSpeed(this.xSpeed * 0.25, this.yd, this.zSpeed * 0.25);
+         }
+
+         if (!this.removed) {
+            this.setSpriteFromAge(this.sprites);
+         }
+      }
+
+      @Override
+      protected SingleQuadParticle.Layer getLayer() {
+         return SingleQuadParticle.Layer.TRANSLUCENT;
+      }
+
+      public record Provider(SpriteSet sprites) implements ParticleProvider<SimpleParticleType> {
+         @Override
+         public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double dx, double dy, double dz, RandomSource random) {
+            return new BombSmoke(level, x, y, z, this.sprites);
+         }
+      }
+   }
+
    /** Dark grey gas puff from the wither breath. */
    public static class Gas extends SingleQuadParticle {
       private final SpriteSet sprites;

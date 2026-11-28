@@ -96,6 +96,9 @@ public class EntityTypeInit {
    public static final EntityType<com.alexander.mutantmore.entities.WitherSlash> WITHER_SLASH = register(
       "wither_slash", EntityType.Builder.<com.alexander.mutantmore.entities.WitherSlash>of(com.alexander.mutantmore.entities.WitherSlash::new, MobCategory.MISC).sized(1.25F, 0.25F)
    );
+   public static final EntityType<com.alexander.mutantmore.entities.WitherBomb> WITHER_BOMB = register(
+      "wither_bomb", EntityType.Builder.<com.alexander.mutantmore.entities.WitherBomb>of(com.alexander.mutantmore.entities.WitherBomb::new, MobCategory.MISC).sized(0.75F, 0.75F)
+   );
    public static final EntityType<AreaDamage> AREA_DAMAGE = register(
       "area_damage", EntityType.Builder.<AreaDamage>of(AreaDamage::new, MobCategory.MISC).sized(1.0F, 1.0F).fireImmune().noSave()
    );

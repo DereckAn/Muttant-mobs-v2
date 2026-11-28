@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "L": "mutantmore:mutant_wither_skeleton_limb",
+    "P": "mutantmore:mutant_wither_skeleton_pelvis"
+  },
+  "pattern": [
+    " P ",
+    "L L"
+  ],
+  "result": {
+    "id": "mutantmore:mutant_wither_skeleton_leggings"
+  },
+  "category": "equipment"
+}

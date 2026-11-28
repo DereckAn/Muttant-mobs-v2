@@ -1,5 +1,10 @@
 package com.alexander.mutantmore.init;
 
+import com.alexander.mutantmore.config.mutant_wither_skeleton.MutantWitherSkeletonRewardsCommonConfig;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Direction;
+import net.minecraft.world.item.StandingAndWallBlockItem;
 import java.util.function.Function;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -176,8 +181,51 @@ public class ItemInit {
    public static final Item MUTANT_WITHER_SKELETON_RIB = register("mutant_wither_skeleton_rib", Item::new, new Item.Properties().fireResistant());
    public static final Item MUTANT_WITHER_SKELETON_RIB_CAGE = register("mutant_wither_skeleton_rib_cage", Item::new, new Item.Properties().fireResistant());
    public static final Item MUTANT_WITHER_SKELETON_SHOULDER_PAD = register("mutant_wither_skeleton_shoulder_pad", Item::new, new Item.Properties().fireResistant());
-   // ponytail: plain item until the armour set pass (it's a wearable, placeable skull block in the original)
-   public static final Item MUTANT_WITHER_SKELETON_SKULL = register("mutant_wither_skeleton_skull", Item::new, new Item.Properties().rarity(Rarity.RARE).fireResistant());
+   public static final ResourceKey<EquipmentAsset> MUTANT_WITHER_SKELETON_ASSET = ResourceKey.create(
+      EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath("mutantmore", "mutant_wither_skeleton")
+   );
+   // ponytail: armour stats are read from the Wither Skeleton rewards config once at startup
+   private static final ArmorMaterial MUTANT_WITHER_SKELETON_ARMOUR = new ArmorMaterial(
+      MutantWitherSkeletonRewardsCommonConfig.armour_durability_multiplier.get(),
+      Map.of(
+         ArmorType.HELMET, MutantWitherSkeletonRewardsCommonConfig.armour_helmet_armour_value.get(),
+         ArmorType.CHESTPLATE, MutantWitherSkeletonRewardsCommonConfig.armour_chestplate_armour_value.get(),
+         ArmorType.LEGGINGS, MutantWitherSkeletonRewardsCommonConfig.armour_leggings_armour_value.get(),
+         ArmorType.BOOTS, MutantWitherSkeletonRewardsCommonConfig.armour_boots_armour_value.get()
+      ),
+      MutantWitherSkeletonRewardsCommonConfig.armour_enchantment_value.get(),
+      net.minecraft.core.registries.BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEventInit.MUTANT_WITHER_SKELETON_ARMOUR_EQUIP),
+      ((Number)MutantWitherSkeletonRewardsCommonConfig.armour_armour_toughness.get()).floatValue(),
+      ((Number)MutantWitherSkeletonRewardsCommonConfig.armour_knockback_resistance.get()).floatValue(),
+      TagInit.Items.REPAIRS_MUTANT_WITHER_SKELETON_ARMOUR,
+      MUTANT_WITHER_SKELETON_ASSET
+   );
+
+   /** Armour properties plus the piece's own bonus attribute (skull: attack speed, chestplate: attack damage). */
+   private static Item.Properties witherArmour(ArmorType type, Holder<Attribute> bonus, double bonusAmount) {
+      ItemAttributeModifiers modifiers = MUTANT_WITHER_SKELETON_ARMOUR.createAttributes(type);
+      if (bonus != null) {
+         modifiers = modifiers.withModifierAdded(
+            bonus,
+            new AttributeModifier(Identifier.fromNamespaceAndPath("mutantmore", "mutant_wither_skeleton_" + type.getName() + "_bonus"), bonusAmount, AttributeModifier.Operation.ADD_VALUE),
+            EquipmentSlotGroup.bySlot(type.getSlot())
+         );
+      }
+
+      return new Item.Properties().rarity(Rarity.RARE).fireResistant().humanoidArmor(MUTANT_WITHER_SKELETON_ARMOUR, type).attributes(modifiers);
+   }
+
+   public static final Item MUTANT_WITHER_SKELETON_SKULL = register(
+      "mutant_wither_skeleton_skull",
+      p -> new StandingAndWallBlockItem(BlockInit.MUTANT_WITHER_SKELETON_SKULL, BlockInit.MUTANT_WITHER_SKELETON_WALL_SKULL, Direction.DOWN, p),
+      witherArmour(ArmorType.HELMET, Attributes.ATTACK_SPEED, MutantWitherSkeletonRewardsCommonConfig.armour_helmet_attack_speed_increase.get()).useBlockDescriptionPrefix()
+   );
+   public static final Item MUTANT_WITHER_SKELETON_CHESTPLATE = register(
+      "mutant_wither_skeleton_chestplate", Item::new,
+      witherArmour(ArmorType.CHESTPLATE, Attributes.ATTACK_DAMAGE, MutantWitherSkeletonRewardsCommonConfig.armour_chestplate_damage_increase.get())
+   );
+   public static final Item MUTANT_WITHER_SKELETON_LEGGINGS = register("mutant_wither_skeleton_leggings", Item::new, witherArmour(ArmorType.LEGGINGS, null, 0.0));
+   public static final Item MUTANT_WITHER_SKELETON_BOOTS = register("mutant_wither_skeleton_boots", Item::new, witherArmour(ArmorType.BOOTS, null, 0.0));
    public static final Item WITHERED_SCIMITAR = register(
       "withered_scimitar",
       com.alexander.mutantmore.items.WitheredScimitarItem::new,
@@ -185,6 +233,10 @@ public class ItemInit {
          com.alexander.mutantmore.config.mutant_wither_skeleton.MutantWitherSkeletonRewardsCommonConfig.scimitar_durability.get(), TagInit.Items.REPAIRS_WITHERED_SCIMITAR,
          com.alexander.mutantmore.config.mutant_wither_skeleton.MutantWitherSkeletonRewardsCommonConfig.scimitar_attack_damage.get(),
          com.alexander.mutantmore.config.mutant_wither_skeleton.MutantWitherSkeletonRewardsCommonConfig.scimitar_attack_speed.get(), 0.0)
+   );
+
+   public static final Item WITHER_BOMB = register(
+      "wither_bomb", com.alexander.mutantmore.items.WitherBombItem::new, new Item.Properties().stacksTo(16).rarity(Rarity.RARE).fireResistant()
    );
 
    public static final Item MUTANT_HOGLIN_TUSK = register("mutant_hoglin_tusk", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON));
