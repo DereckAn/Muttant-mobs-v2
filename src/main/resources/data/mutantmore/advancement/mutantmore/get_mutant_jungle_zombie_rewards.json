@@ -1,0 +1,61 @@
+{
+  "parent": "mutantmore:mutantmore/kill_mutant_jungle_zombie",
+  "criteria": {
+    "mutant_jungle_zombie_arm": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:mutant_jungle_zombie_arm"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "sentry_vine": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:sentry_vine"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "leafblower": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:leafblower"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.mutantmore.get_mutant_jungle_zombie_rewards.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "mutantmore:leafblower"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.mutantmore.get_mutant_jungle_zombie_rewards.title"
+    }
+  },
+  "requirements": [
+    [
+      "mutant_jungle_zombie_arm"
+    ],
+    [
+      "sentry_vine"
+    ],
+    [
+      "leafblower"
+    ]
+  ]
+}

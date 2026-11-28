@@ -1,0 +1,61 @@
+{
+  "parent": "mutantmore:mutantmore/kill_mutant_hoglin",
+  "criteria": {
+    "hogfist_gauntlet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:hogfist_gauntlet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "hoglance": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:hoglance"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "hog_helm": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:hog_helm"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.mutantmore.get_mutant_hoglin_rewards.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "mutantmore:hoglance"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.mutantmore.get_mutant_hoglin_rewards.title"
+    }
+  },
+  "requirements": [
+    [
+      "hogfist_gauntlet"
+    ],
+    [
+      "hoglance"
+    ],
+    [
+      "hog_helm"
+    ]
+  ]
+}

@@ -311,11 +311,13 @@ public class MutantShulkerTurret extends AbstractGolem implements IHasCustomExpl
       return false;
    }
 
-   public boolean canBeCollidedWith() {
+   @Override
+   public boolean canBeCollidedWith(@org.jspecify.annotations.Nullable Entity other) {
       return !this.isDeadOrDying() && !this.isRemoved();
    }
 
-   public boolean causeFallDamage(float p_149589_, float p_149590_, DamageSource p_149591_) {
+   @Override
+   public boolean causeFallDamage(double p_149589_, float p_149590_, DamageSource p_149591_) {
       return false;
    }
 

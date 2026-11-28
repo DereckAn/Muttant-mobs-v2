@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": "#minecraft:stone_tool_materials",
+    "R": "minecraft:redstone",
+    "I": "minecraft:iron_bars",
+    "M": "mutantmore:mutant_blaze_core",
+    "F": "minecraft:blast_furnace"
+  },
+  "pattern": [
+    "IMI",
+    "CFC",
+    "CRC"
+  ],
+  "result": {
+    "id": "mutantmore:heatstorm_generator"
+  },
+  "category": "redstone"
+}

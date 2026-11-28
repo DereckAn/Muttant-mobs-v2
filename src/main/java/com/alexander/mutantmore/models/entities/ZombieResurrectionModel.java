@@ -19,7 +19,7 @@ public class ZombieResurrectionModel extends Model<ZombieResurrectionRenderer.St
 
    public ZombieResurrectionModel(ModelPart root) {
       super(root, RenderTypes::entityCutout);
-      this.resurrect = ZombieResurrectionAnimations.ZOMBIE_RESURRECTION.bake(root);
+      this.resurrect = com.alexander.mutantmore.animation.LenientBake.bake(ZombieResurrectionAnimations.ZOMBIE_RESURRECTION, root);
    }
 
    public static LayerDefinition createBodyLayer() {

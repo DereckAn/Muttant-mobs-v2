@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": "#minecraft:stone_tool_materials",
+    "R": "minecraft:comparator",
+    "M": "mutantmore:mutant_blaze_core"
+  },
+  "pattern": [
+    "RCC",
+    "CMC",
+    "CCC"
+  ],
+  "result": {
+    "id": "mutantmore:rodling_checker"
+  },
+  "category": "equipment"
+}

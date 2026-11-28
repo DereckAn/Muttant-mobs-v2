@@ -1,0 +1,6 @@
+{
+    "parent": "mutantmore:item/incomplete_compound_z",
+    "textures": {
+        "layer0": "mutantmore:item/compound_z_stage_1"
+    }
+}

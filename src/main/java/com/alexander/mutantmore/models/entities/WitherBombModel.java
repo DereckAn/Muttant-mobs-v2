@@ -25,9 +25,9 @@ public class WitherBombModel extends EntityModel<WitherBombRenderer.State> {
       super(root, RenderTypes::entityTranslucent);
       this.ball = root.getChild("ball");
       this.everything = this.ball.getChild("everything");
-      this.deploy = WitherBombKeyframeAnimations.DEPLOY.bake(root);
-      this.activate = WitherBombKeyframeAnimations.ACTIVATE.bake(root);
-      this.ground = WitherBombKeyframeAnimations.GROUND.bake(root);
+      this.deploy = com.alexander.mutantmore.animation.LenientBake.bake(WitherBombKeyframeAnimations.DEPLOY, root);
+      this.activate = com.alexander.mutantmore.animation.LenientBake.bake(WitherBombKeyframeAnimations.ACTIVATE, root);
+      this.ground = com.alexander.mutantmore.animation.LenientBake.bake(WitherBombKeyframeAnimations.GROUND, root);
    }
 
    public static LayerDefinition createBodyLayer() {

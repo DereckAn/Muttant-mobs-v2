@@ -1,0 +1,10 @@
+{
+  "entityType": "minecraft:husk",
+  "resultEntityType": "mutantmore:mutant_husk",
+  "mutatedSoundEvent": "mutantmore:entity.mutant_husk.intro",
+  "screenShake": {
+    "amount": 0.05,
+    "duration": 26,
+    "range": 25
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "parent": "mutantmore:mutantmore/kill_mutant_wither_skeleton",
+  "criteria": {
+    "wither_bomb": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:wither_bomb"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "withered_scimitar": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:withered_scimitar"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "mutant_wither_skeleton_skull": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:mutant_wither_skeleton_skull"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "mutant_wither_skeleton_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:mutant_wither_skeleton_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "mutant_wither_skeleton_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:mutant_wither_skeleton_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "mutant_wither_skeleton_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:mutant_wither_skeleton_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.mutantmore.get_mutant_wither_skeleton_rewards.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "mutantmore:wither_bomb"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.mutantmore.get_mutant_wither_skeleton_rewards.title"
+    }
+  },
+  "requirements": [
+    [
+      "wither_bomb"
+    ],
+    [
+      "withered_scimitar"
+    ],
+    [
+      "mutant_wither_skeleton_skull"
+    ],
+    [
+      "mutant_wither_skeleton_chestplate"
+    ],
+    [
+      "mutant_wither_skeleton_leggings"
+    ],
+    [
+      "mutant_wither_skeleton_boots"
+    ]
+  ]
+}

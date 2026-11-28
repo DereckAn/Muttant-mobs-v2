@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_incomplete_compound_z": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:incomplete_compound_z"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipes": "mutantmore:incomplete_compound_z"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_incomplete_compound_z",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mutantmore:incomplete_compound_z"
+    ]
+  }
+}

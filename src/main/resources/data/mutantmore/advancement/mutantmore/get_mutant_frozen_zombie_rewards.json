@@ -1,0 +1,61 @@
+{
+  "parent": "mutantmore:mutantmore/kill_mutant_frozen_zombie",
+  "criteria": {
+    "freezing_fan": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:freezing_fan"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "icicle_ammo_charge": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:icicle_ammo_charge"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "snowstorm_generator": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:snowstorm_generator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.mutantmore.get_mutant_frozen_zombie_rewards.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "mutantmore:freezing_fan"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.mutantmore.get_mutant_frozen_zombie_rewards.title"
+    }
+  },
+  "requirements": [
+    [
+      "freezing_fan"
+    ],
+    [
+      "icicle_ammo_charge"
+    ],
+    [
+      "snowstorm_generator"
+    ]
+  ]
+}

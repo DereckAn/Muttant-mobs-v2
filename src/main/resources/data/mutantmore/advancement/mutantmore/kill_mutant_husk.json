@@ -1,0 +1,37 @@
+{
+  "parent": "mutantmore:mutantmore/kill_a_mutant",
+  "criteria": {
+    "killed": {
+      "conditions": {
+        "entity": {
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "mutantmore:mutant_husk"
+          },
+          "type": "minecraft:entity_properties"
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.mutantmore.kill_mutant_husk.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "mutantmore:mutant_husk_vocal_cords"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.mutantmore.kill_mutant_husk.title"
+    }
+  },
+  "requirements": [
+    [
+      "killed"
+    ]
+  ]
+}

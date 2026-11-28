@@ -167,7 +167,6 @@ public class ItemInit {
 
    public static final Item MUTANT_BLAZE_SPAWN_EGG = register("mutant_blaze_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EntityTypeInit.MUTANT_BLAZE));
    public static final Item RODLING_SPAWN_EGG = register("rodling_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EntityTypeInit.RODLING));
-   // ponytail: plain equipment items for now; equipping them needs the Rodling Checker screen (not ported yet). Rods from a Mutant Blaze can still hatch armoured/shielded Rodlings.
    public static final Item RODLING_HELMET = register("rodling_helmet", Item::new, new Item.Properties().stacksTo(1));
    public static final Item RODLING_SHIELDS = register("rodling_shields", Item::new, new Item.Properties().stacksTo(1));
    public static final Item MUTANT_BLAZE_CORE = register("mutant_blaze_core", Item::new, new Item.Properties().rarity(Rarity.EPIC).fireResistant());
@@ -237,6 +236,72 @@ public class ItemInit {
 
    public static final Item WITHER_BOMB = register(
       "wither_bomb", com.alexander.mutantmore.items.WitherBombItem::new, new Item.Properties().stacksTo(16).rarity(Rarity.RARE).fireResistant()
+   );
+
+   public static final Item SNOWSTORM_GENERATOR = register(
+      "snowstorm_generator", p -> new com.alexander.mutantmore.items.DescribedBlockItem(BlockInit.SNOWSTORM_GENERATOR, p, "mutantmore.snowstorm_generator.desc"),
+      new Item.Properties().rarity(Rarity.RARE).useBlockDescriptionPrefix()
+   );
+   public static final Item HEATSTORM_GENERATOR = register(
+      "heatstorm_generator", p -> new com.alexander.mutantmore.items.DescribedBlockItem(BlockInit.HEATSTORM_GENERATOR, p, "mutantmore.heatstorm_generator.desc"),
+      new Item.Properties().rarity(Rarity.RARE).fireResistant().useBlockDescriptionPrefix()
+   );
+   public static final Item FREEZING_FAN = register(
+      "freezing_fan", p -> new com.alexander.mutantmore.items.DescribedBlockItem(BlockInit.FREEZING_FAN, p, "mutantmore.freezing_fan.desc"),
+      new Item.Properties().rarity(Rarity.RARE).useBlockDescriptionPrefix()
+   );
+   public static final Item ICICLE_AMMO_CHARGE = register(
+      "icicle_ammo_charge", com.alexander.mutantmore.items.IcicleAmmoChargeItem::new, new Item.Properties().rarity(Rarity.RARE).stacksTo(1)
+   );
+   public static final Item ADAPTIVE_CROSSBOW = register(
+      "adaptive_crossbow", com.alexander.mutantmore.items.AdaptiveCrossbowItem::new,
+      new Item.Properties().durability(com.alexander.mutantmore.config.AdaptiveCrossbowCommonConfig.durability.get()).rarity(Rarity.UNCOMMON)
+         .repairable(TagInit.Items.REPAIRS_ADAPTIVE_CROSSBOW).enchantable(1)
+   );
+
+   public static final Item MUTANT_SHULKER_SHIELD = register(
+      "mutant_shulker_shield",
+      com.alexander.mutantmore.items.MutantShulkerShieldItem::new,
+      new Item.Properties()
+         .durability(com.alexander.mutantmore.config.mutant_shulker.MutantShulkerRewardsCommonConfig.shield_durability.get())
+         .rarity(Rarity.EPIC)
+         .repairable(TagInit.Items.REPAIRS_MUTANT_SHULKER_SHIELD)
+         .equippableUnswappable(net.minecraft.world.entity.EquipmentSlot.OFFHAND)
+         .delayedComponent(
+            net.minecraft.core.component.DataComponents.BLOCKS_ATTACKS,
+            context -> new net.minecraft.world.item.component.BlocksAttacks(
+               0.25F, 1.0F,
+               java.util.List.of(new net.minecraft.world.item.component.BlocksAttacks.DamageReduction(90.0F, java.util.Optional.empty(), 0.0F, 1.0F)),
+               new net.minecraft.world.item.component.BlocksAttacks.ItemDamageFunction(3.0F, 1.0F, 1.0F),
+               java.util.Optional.of(context.getOrThrow(net.minecraft.tags.DamageTypeTags.BYPASSES_SHIELD)),
+               java.util.Optional.of(SoundEvents.SHIELD_BLOCK),
+               java.util.Optional.of(SoundEvents.SHIELD_BREAK)
+            )
+         )
+         .component(net.minecraft.core.component.DataComponents.BREAK_SOUND, SoundEvents.SHIELD_BREAK)
+   );
+   public static final Item LEAFBLOWER = register(
+      "leafblower", com.alexander.mutantmore.items.LeafblowerItem::new,
+      new Item.Properties().durability(com.alexander.mutantmore.config.mutant_jungle_zombie.MutantJungleZombieRewardsCommonConfig.leafblower_durability.get())
+         .rarity(Rarity.RARE).repairable(TagInit.Items.REPAIRS_LEAFBLOWER)
+   );
+
+   public static final Item MUTANT_BLAZE_SHIELDS = register(
+      "mutant_blaze_shields", com.alexander.mutantmore.items.MutantBlazeShieldsItem::new, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant()
+   );
+   public static final Item RODLING_CHECKER = register("rodling_checker", com.alexander.mutantmore.items.RodlingCheckerItem::new, new Item.Properties().stacksTo(1));
+
+   public static final Item FORMULA_Y = register("formula_y", com.alexander.mutantmore.items.MutationPotionItem::formulaY, new Item.Properties().stacksTo(1).rarity(Rarity.RARE).component(net.minecraft.core.component.DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true));
+   public static final Item COMPOUND_Z = register("compound_z", com.alexander.mutantmore.items.MutationPotionItem::compoundZ, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).component(net.minecraft.core.component.DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true));
+   public static final Item INCOMPLETE_FORMULA_Y = register(
+      "incomplete_formula_y",
+      p -> new com.alexander.mutantmore.items.IncompleteMutationPotionItem(p, com.alexander.mutantmore.config.MutationCommonConfig.formula_y_recipe::get, () -> FORMULA_Y, 0.4F, -10.0F, 1.0F),
+      new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
+   );
+   public static final Item INCOMPLETE_COMPOUND_Z = register(
+      "incomplete_compound_z",
+      p -> new com.alexander.mutantmore.items.IncompleteMutationPotionItem(p, com.alexander.mutantmore.config.MutationCommonConfig.compound_z_recipe::get, () -> COMPOUND_Z, 0.2F, -15.0F, 0.75F),
+      new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
    );
 
    public static final Item MUTANT_HOGLIN_TUSK = register("mutant_hoglin_tusk", Item::new, new Item.Properties().rarity(Rarity.UNCOMMON));

@@ -176,7 +176,8 @@ public class IcicleSpike extends Entity {
       }
    }
 
-   public boolean canBeCollidedWith() {
+   @Override
+   public boolean canBeCollidedWith(@org.jspecify.annotations.Nullable Entity other) {
       return !this.isRemoved() && this.spikeAnimationTick > 10;
    }
 

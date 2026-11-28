@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "mutantmore:adaptive_crossbow",
+      "required": false
+    }
+  ]
+}

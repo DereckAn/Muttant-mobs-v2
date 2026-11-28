@@ -1,0 +1,23 @@
+{
+    "parent": "block/block",
+    "textures": {
+        "bottom": "mutantmore:block/freezing_fan_back",
+        "side": "mutantmore:block/freezing_fan_side",
+        "top": "mutantmore:block/freezing_fan_side",
+        "front": "mutantmore:block/freezing_fan_on",
+        "particle": "mutantmore:block/freezing_fan"
+    },
+    "elements": [
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 16, 16, 16 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 16, 16 ], "rotation":180, "texture": "#top", "cullface": "down" },
+                "up":    { "uv": [ 0, 16, 16, 0 ], "rotation":180, "texture": "#top", "cullface": "up" },
+                "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#front", "cullface": "north" },
+                "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#bottom", "cullface": "south" },
+                "west":  { "uv": [ 0, 0, 16, 16 ], "rotation":270, "texture": "#side", "cullface": "west" },
+                "east":  { "uv": [ 0, 0, 16, 16 ], "rotation":90, "texture": "#side", "cullface": "east" }
+            }
+        }
+    ]
+}

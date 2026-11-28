@@ -1,0 +1,40 @@
+{
+  "wants": {
+    "id": "minecraft:emerald",
+    "count": 20
+  },
+  "additional_wants": {
+    "id": "minecraft:compass"
+  },
+  "gives": {
+    "id": "minecraft:map"
+  },
+  "given_item_modifier": [
+    {
+      "type": "minecraft:exploration_map",
+      "decoration": "mutantmore:derelict_laboratory",
+      "destination": "#mutantmore:on_suspicious_entrance_maps",
+      "search_radius": 100,
+      "zoom": 2
+    },
+    {
+      "type": "minecraft:set_name",
+      "name": {
+        "translate": "filled_map.derelict_laboratory"
+      },
+      "target": "item_name"
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": {
+        "predicates": {
+          "minecraft:map_id": {}
+        }
+      },
+      "on_fail": {
+        "type": "minecraft:discard"
+      }
+    }
+  ],
+  "max_uses": 1
+}

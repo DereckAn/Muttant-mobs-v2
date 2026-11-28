@@ -133,7 +133,9 @@ public class MutantWitherSkeletonBodyPart extends Entity {
       }
    }
 
-   public InteractionResult interact(Player player, InteractionHand hand) {
+   // right-click picks the bone up (26.x added the click location parameter)
+   @Override
+   public InteractionResult interact(Player player, InteractionHand hand, Vec3 location) {
       if (this.isAlive()) {
          if (this.level() instanceof ServerLevel level) {
             ItemEntity item = this.spawnAtLocation(level, new ItemStack(this.getItemByPart()));

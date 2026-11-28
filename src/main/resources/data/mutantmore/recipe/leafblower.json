@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": "minecraft:spore_blossom",
+    "D": "minecraft:dispenser",
+    "I": "minecraft:iron_ingot",
+    "L": "minecraft:lever",
+    "G": "minecraft:glass",
+    "V": "mutantmore:mutant_jungle_zombie_vine"
+  },
+  "pattern": [
+    "  I",
+    "SDV",
+    " LG"
+  ],
+  "result": {
+    "id": "mutantmore:leafblower"
+  },
+  "category": "equipment"
+}

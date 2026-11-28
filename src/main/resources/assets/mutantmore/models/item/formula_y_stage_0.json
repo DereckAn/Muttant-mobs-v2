@@ -1,0 +1,6 @@
+{
+    "parent": "mutantmore:item/incomplete_formula_y",
+    "textures": {
+        "layer0": "mutantmore:item/formula_y_stage_0"
+    }
+}

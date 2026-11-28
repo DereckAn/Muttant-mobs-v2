@@ -107,6 +107,33 @@ public class MutantMoreClient implements ClientModInitializer {
       com.alexander.mutantmore.heat.HeatClient.register();
       // Mutant Wither Skeleton
       MutantWitherSkeletonArmourClient.register();
+      // Shulker Shield and Leafblower
+      RewardItemsClient.register();
+      ClientTickEvents.END_CLIENT_TICK.register(RewardItemsClient::tick);
+      ModelLayerRegistry.registerModelLayer(com.alexander.mutantmore.models.items.MutantShulkerShieldModel.LAYER, com.alexander.mutantmore.models.items.MutantShulkerShieldModel::createBodyLayer);
+      ModelLayerRegistry.registerModelLayer(com.alexander.mutantmore.models.items.LeafblowerModel.LAYER, com.alexander.mutantmore.models.items.LeafblowerModel::createBodyLayer);
+      SpecialModelRenderers.ID_MAPPER.put(com.alexander.mutantmore.renderers.items.RewardItemSpecialRenderers.SHIELD_ID, com.alexander.mutantmore.renderers.items.RewardItemSpecialRenderers.Shield.Unbaked.MAP_CODEC);
+      SpecialModelRenderers.ID_MAPPER.put(com.alexander.mutantmore.renderers.items.RewardItemSpecialRenderers.LEAFBLOWER_ID, com.alexander.mutantmore.renderers.items.RewardItemSpecialRenderers.Leafblower.Unbaked.MAP_CODEC);
+      ModelLayerRegistry.registerModelLayer(com.alexander.mutantmore.renderers.entities.MutantBlazeShieldsRenderer.LAYER, com.alexander.mutantmore.models.entities.MutantBlazeShieldsModel::createBodyLayer);
+      EntityRendererRegistry.register(EntityTypeInit.MUTANT_BLAZE_SHIELDS, com.alexander.mutantmore.renderers.entities.MutantBlazeShieldsRenderer::new);
+      net.minecraft.client.gui.screens.MenuScreens.register(com.alexander.mutantmore.gui.RodlingCheckerMenu.TYPE, com.alexander.mutantmore.gui.RodlingCheckerScreen::new);
+      // Mutation
+      EntityRendererRegistry.register(EntityTypeInit.MUTATION_CLOUD, com.alexander.mutantmore.renderers.entities.MutationCloudRenderer::new);
+      EntityRendererRegistry.register(EntityTypeInit.THROWN_MUTATION_POTION, net.minecraft.client.renderer.entity.ThrownItemRenderer::new);
+      ParticleProviderRegistry.getInstance().register(ParticleTypeInit.MUTATION, com.alexander.mutantmore.particles.MutationParticles.Spark.Provider::new);
+      ParticleProviderRegistry.getInstance().register(ParticleTypeInit.MUTATION_SWIRL, com.alexander.mutantmore.particles.MutationParticles.Swirl.Provider::new);
+      com.alexander.mutantmore.entities.MutationCloud.loopSoundHook = cloud -> Minecraft.getInstance().getSoundManager().queueTickingSound(new EntityLoopingSound(cloud, SoundEventInit.MUTATION_LOOP, 1.0F));
+      net.minecraft.client.renderer.item.properties.numeric.RangeSelectItemModelProperties.ID_MAPPER.put(
+         net.minecraft.resources.Identifier.fromNamespaceAndPath("mutantmore", "brewing_progress"), BrewingProgressProperty.MAP_CODEC
+      );
+      // Reward blocks
+      ModelLayerRegistry.registerModelLayer(com.alexander.mutantmore.models.blockentities.SnowstormGeneratorModel.LAYER, com.alexander.mutantmore.models.blockentities.SnowstormGeneratorModel::createBodyLayer);
+      ModelLayerRegistry.registerModelLayer(com.alexander.mutantmore.models.blockentities.HeatstormGeneratorModel.LAYER, com.alexander.mutantmore.models.blockentities.HeatstormGeneratorModel::createBodyLayer);
+      net.minecraft.client.renderer.blockentity.BlockEntityRenderers.register(com.alexander.mutantmore.init.BlockEntityTypeInit.SNOWSTORM_GENERATOR, com.alexander.mutantmore.renderers.blockentities.SnowstormGeneratorBlockRenderer::new);
+      net.minecraft.client.renderer.blockentity.BlockEntityRenderers.register(com.alexander.mutantmore.init.BlockEntityTypeInit.HEATSTORM_GENERATOR, com.alexander.mutantmore.renderers.blockentities.HeatstormGeneratorBlockRenderer::new);
+      SpecialModelRenderers.ID_MAPPER.put(com.alexander.mutantmore.renderers.items.BlockModelSpecialRenderer.ID, com.alexander.mutantmore.renderers.items.BlockModelSpecialRenderer.Unbaked.MAP_CODEC);
+      com.alexander.mutantmore.blockentities.HeatstormGeneratorBlockEntity.loopSoundHook = generator -> Minecraft.getInstance().getSoundManager().queueTickingSound(new HeatstormGeneratorSound(generator));
+      ParticleProviderRegistry.getInstance().register(ParticleTypeInit.MOTION_SNOWSTORM, com.alexander.mutantmore.particles.MotionSnowstormParticle.Provider::new);
       ModelLayerRegistry.registerModelLayer(com.alexander.mutantmore.renderers.entities.WitherBombRenderer.LAYER, com.alexander.mutantmore.models.entities.WitherBombModel::createBodyLayer);
       EntityRendererRegistry.register(EntityTypeInit.WITHER_BOMB, com.alexander.mutantmore.renderers.entities.WitherBombRenderer::new);
       SpecialModelRenderers.ID_MAPPER.put(com.alexander.mutantmore.renderers.items.WitherBombSpecialRenderer.ID, com.alexander.mutantmore.renderers.items.WitherBombSpecialRenderer.Unbaked.MAP_CODEC);

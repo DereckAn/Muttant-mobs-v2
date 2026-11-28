@@ -34,10 +34,10 @@ public class MutantShulkerTurretModel extends MMBaseEntityModel<MutantShulkerTur
          .getChild("upperShell2")
          .getChild("shell3")
          .getChild("head3");
-      this.deploy = MutantShulkerTurretKeyframeAnimations.DEPLOY.bake(root);
-      this.bottomShoot = MutantShulkerTurretKeyframeAnimations.BOTTOM_SHOOT.bake(root);
-      this.middleShoot = MutantShulkerTurretKeyframeAnimations.MIDDLE_SHOOT.bake(root);
-      this.topShoot = MutantShulkerTurretKeyframeAnimations.TOP_SHOOT.bake(root);
+      this.deploy = com.alexander.mutantmore.animation.LenientBake.bake(MutantShulkerTurretKeyframeAnimations.DEPLOY, root);
+      this.bottomShoot = com.alexander.mutantmore.animation.LenientBake.bake(MutantShulkerTurretKeyframeAnimations.BOTTOM_SHOOT, root);
+      this.middleShoot = com.alexander.mutantmore.animation.LenientBake.bake(MutantShulkerTurretKeyframeAnimations.MIDDLE_SHOOT, root);
+      this.topShoot = com.alexander.mutantmore.animation.LenientBake.bake(MutantShulkerTurretKeyframeAnimations.TOP_SHOOT, root);
    }
 
    public static LayerDefinition createBodyLayer() {

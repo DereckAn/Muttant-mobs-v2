@@ -3,7 +3,23 @@
   "minVersion": "0.8",
   "package": "com.alexander.mutantmore.mixin",
   "compatibilityLevel": "JAVA_25",
-  "mixins": ["LivingEntityHeatMixin", "LivingEntityRageMixin"],
-  "client": ["client.CameraMixin", "client.HumanoidModelMixin", "client.MusicManagerMixin"],
-  "injectors": { "defaultRequire": 1 }
+  "mixins": [
+    "LivingEntityHeatMixin",
+    "LivingEntityRageMixin",
+    "BrewingStandMixin",
+    "BrewingStandAccessor",
+    "BrewingIngredientSlotMixin",
+    "MutatingMobMixin",
+    "MutatingLivingEntityMixin",
+    "NaturalMutantSpawnMixin",
+    "WanderingTraderMixin"
+  ],
+  "client": [
+    "client.CameraMixin",
+    "client.HumanoidModelMixin",
+    "client.MusicManagerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
 }

@@ -59,7 +59,18 @@ public class MutantMore implements ModInitializer {
       EntityTypeInit.init();
       BlockInit.init();
       com.alexander.mutantmore.init.BlockEntityTypeInit.init();
+      com.alexander.mutantmore.init.DataComponentInit.init();
       net.minecraft.world.level.block.DispenserBlock.registerProjectileBehavior(ItemInit.WITHER_BOMB);
+      net.minecraft.world.level.block.DispenserBlock.registerProjectileBehavior(ItemInit.FORMULA_Y);
+      net.minecraft.world.level.block.DispenserBlock.registerProjectileBehavior(ItemInit.COMPOUND_Z);
+      com.alexander.mutantmore.mutations.NaturalMutantSpawns.register();
+      net.minecraft.core.Registry.register(
+         net.minecraft.core.registries.BuiltInRegistries.MAP_DECORATION_TYPE,
+         net.minecraft.resources.Identifier.fromNamespaceAndPath(MODID, "derelict_laboratory"),
+         new net.minecraft.world.level.saveddata.maps.MapDecorationType(net.minecraft.resources.Identifier.fromNamespaceAndPath(MODID, "derelict_laboratory"), true, false)
+      );
+      net.fabricmc.fabric.api.resource.v1.ResourceLoader.get(net.minecraft.server.packs.PackType.SERVER_DATA)
+         .registerReloadListener(net.minecraft.resources.Identifier.fromNamespaceAndPath(MODID, "mutation_types"), new com.alexander.mutantmore.mutations.MutationTypes.ReloadListener());
       ItemInit.init();
       CreativeModeTabInit.init();
       // ponytail: attributes read the common config once at startup, so health/armour edits need a restart (same as the original)
@@ -76,6 +87,26 @@ public class MutantMore implements ModInitializer {
       com.alexander.mutantmore.heat.Heat.init();
       FabricDefaultAttributeRegistry.register(EntityTypeInit.SENTRY_VINE, SentryVine.createConfiguredAttributes());
       PayloadTypeRegistry.serverboundPlay().register(ArmStranglePayload.TYPE, ArmStranglePayload.CODEC);
+      PayloadTypeRegistry.serverboundPlay().register(com.alexander.mutantmore.network.RewardActionPayload.TYPE, com.alexander.mutantmore.network.RewardActionPayload.CODEC);
+      ServerPlayNetworking.registerGlobalReceiver(com.alexander.mutantmore.network.RewardActionPayload.TYPE, (payload, context) -> {
+         switch (payload.action()) {
+            case SHIELD_SHOOT -> com.alexander.mutantmore.items.MutantShulkerShieldItem.startShooting(context.player());
+            case LEAFBLOWER_SWAP -> {
+               net.minecraft.world.item.ItemStack held = context.player().getMainHandItem();
+               if (held.getItem() instanceof com.alexander.mutantmore.items.LeafblowerItem && !context.player().isUsingItem()) {
+                  held.set(com.alexander.mutantmore.init.DataComponentInit.LEAFBLOWER_BLOWING, !com.alexander.mutantmore.items.LeafblowerItem.isBlowing(held));
+               }
+            }
+         }
+      });
+      PayloadTypeRegistry.serverboundPlay().register(com.alexander.mutantmore.network.RodlingSettingsPayload.TYPE, com.alexander.mutantmore.network.RodlingSettingsPayload.CODEC);
+      ServerPlayNetworking.registerGlobalReceiver(com.alexander.mutantmore.network.RodlingSettingsPayload.TYPE, (payload, context) -> payload.apply(context.player()));
+      com.alexander.mutantmore.gui.RodlingCheckerMenu.TYPE.getClass();
+      // Mutant Blaze Shields eat one hit each (was LivingHurtEvent with the damage set to 0)
+      net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents.ALLOW_DAMAGE.register(
+         (entity, source, amount) -> !com.alexander.mutantmore.entities.MutantBlazeShields.absorb(entity, source, amount)
+      );
+      net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.END_SERVER_TICK.register(server -> com.alexander.mutantmore.items.MutantShulkerShieldItem.tickShooters());
       ServerPlayNetworking.registerGlobalReceiver(ArmStranglePayload.TYPE, (payload, context) -> JungleZombieArmState.of(context.player()).strangleTicks = 3);
       // Wandering traders run from the zombie-type mutants (was ModifyAIEvent)
       net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents.ENTITY_LOAD.register((entity, level) -> {
@@ -142,6 +173,9 @@ public class MutantMore implements ModInitializer {
       config(Type.COMMON, com.alexander.mutantmore.config.mutant_wither_skeleton.MutantWitherSkeletonCommonConfig.SPEC, "mutant_wither_skeleton/mutant_wither_skeleton-common.toml");
       config(Type.CLIENT, com.alexander.mutantmore.config.mutant_wither_skeleton.MutantWitherSkeletonClientConfig.SPEC, "mutant_wither_skeleton/mutant_wither_skeleton-client.toml");
       config(Type.COMMON, com.alexander.mutantmore.config.mutant_wither_skeleton.MutantWitherSkeletonRewardsCommonConfig.SPEC, "mutant_wither_skeleton/mutant_wither_skeleton_rewards-common.toml");
+      config(Type.COMMON, com.alexander.mutantmore.config.mutant_frozen_zombie.MutantFrozenZombieRewardsCommonConfig.SPEC, "mutant_frozen_zombie/mutant_frozen_zombie_rewards-common.toml");
+      config(Type.COMMON, com.alexander.mutantmore.config.AdaptiveCrossbowCommonConfig.SPEC, "adaptive_crossbow-common.toml");
+      config(Type.COMMON, com.alexander.mutantmore.config.MutationCommonConfig.SPEC, "mutation-common.toml");
       config(Type.COMMON, MutantJungleZombieCommonConfig.SPEC, "mutant_jungle_zombie/mutant_jungle_zombie-common.toml");
       config(Type.COMMON, MutantJungleZombieRewardsCommonConfig.SPEC, "mutant_jungle_zombie/mutant_jungle_zombie_rewards-common.toml");
       config(Type.CLIENT, MutantJungleZombieClientConfig.SPEC, "mutant_jungle_zombie/mutant_jungle_zombie-client.toml");

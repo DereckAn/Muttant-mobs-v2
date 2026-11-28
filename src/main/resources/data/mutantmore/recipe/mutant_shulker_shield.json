@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "M": "mutantmore:mutant_shulker_shell",
+    "S": "minecraft:shield",
+    "I": "minecraft:iron_ingot",
+    "D": "minecraft:dispenser"
+  },
+  "pattern": [
+    "IMI",
+    "ISI",
+    "IDI"
+  ],
+  "result": {
+    "id": "mutantmore:mutant_shulker_shield"
+  },
+  "category": "equipment"
+}

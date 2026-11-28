@@ -1,0 +1,35 @@
+{
+  "parent": "mutantmore:mutantmore/brew_formula_y",
+  "criteria": {
+    "compound_z": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:compound_z"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.mutantmore.brew_compound_z.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "mutantmore:compound_z"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.mutantmore.brew_compound_z.title"
+    }
+  },
+  "requirements": [
+    [
+      "compound_z"
+    ]
+  ]
+}

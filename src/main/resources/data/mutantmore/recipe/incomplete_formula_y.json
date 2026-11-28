@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": "minecraft:tinted_glass",
+    "P": "minecraft:paper",
+    "F": "minecraft:feather"
+  },
+  "pattern": [
+    " GF",
+    "GPG",
+    " G "
+  ],
+  "result": {
+    "id": "mutantmore:incomplete_formula_y"
+  },
+  "category": "misc"
+}

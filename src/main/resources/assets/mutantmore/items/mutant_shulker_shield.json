@@ -1,0 +1,78 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "minecraft:using_item",
+    "on_true": {
+      "type": "minecraft:select",
+      "property": "minecraft:display_context",
+      "cases": [
+        {
+          "when": "firstperson_righthand",
+          "model": {
+            "type": "minecraft:special",
+            "base": "mutantmore:item/mutant_shulker_shield_blocking",
+            "model": {
+              "type": "mutantmore:mutant_shulker_shield",
+              "hand": "first_person_right"
+            }
+          }
+        },
+        {
+          "when": "firstperson_lefthand",
+          "model": {
+            "type": "minecraft:special",
+            "base": "mutantmore:item/mutant_shulker_shield_blocking",
+            "model": {
+              "type": "mutantmore:mutant_shulker_shield",
+              "hand": "first_person_left"
+            }
+          }
+        }
+      ],
+      "fallback": {
+        "type": "minecraft:special",
+        "base": "mutantmore:item/mutant_shulker_shield_blocking",
+        "model": {
+          "type": "mutantmore:mutant_shulker_shield",
+          "hand": "other"
+        }
+      }
+    },
+    "on_false": {
+      "type": "minecraft:select",
+      "property": "minecraft:display_context",
+      "cases": [
+        {
+          "when": "firstperson_righthand",
+          "model": {
+            "type": "minecraft:special",
+            "base": "mutantmore:item/mutant_shulker_shield",
+            "model": {
+              "type": "mutantmore:mutant_shulker_shield",
+              "hand": "first_person_right"
+            }
+          }
+        },
+        {
+          "when": "firstperson_lefthand",
+          "model": {
+            "type": "minecraft:special",
+            "base": "mutantmore:item/mutant_shulker_shield",
+            "model": {
+              "type": "mutantmore:mutant_shulker_shield",
+              "hand": "first_person_left"
+            }
+          }
+        }
+      ],
+      "fallback": {
+        "type": "minecraft:special",
+        "base": "mutantmore:item/mutant_shulker_shield",
+        "model": {
+          "type": "mutantmore:mutant_shulker_shield",
+          "hand": "other"
+        }
+      }
+    }
+  }
+}

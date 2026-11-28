@@ -54,14 +54,14 @@ public class MutantHoglinModel extends EntityModel<MutantHoglinRenderState> {
       this.leftFrontLegLower = this.leftFrontLeg.getChild("leftFrontLegLower");
       this.rightFrontLeg = this.everything.getChild("rightFrontLeg");
       this.rightFrontLegLower = this.rightFrontLeg.getChild("rightFrontLegLower");
-      this.death = MutantHoglinKeyframeAnimations.MUTANT_HOGLIN_DEATH.bake(root);
-      this.dance = MutantHoglinKeyframeAnimations.MUTANT_HOGLIN_DANCE.bake(root);
-      this.stomp = MutantHoglinKeyframeAnimations.MUTANT_HOGLIN_STOMP.bake(root);
-      this.prepareCharge = MutantHoglinKeyframeAnimations.MUTANT_HOGLIN_PREPARE_CHARGE.bake(root);
-      this.kick = MutantHoglinKeyframeAnimations.MUTANT_HOGLIN_KICK.bake(root);
-      this.attack = MutantHoglinKeyframeAnimations.MUTANT_HOGLIN_ATTACK.bake(root);
-      this.intro = MutantHoglinKeyframeAnimations.MUTANT_HOGLIN_INTRO.bake(root);
-      this.novelty = MutantHoglinKeyframeAnimations.MUTANT_HOGLIN_NOVELTY.bake(root);
+      this.death = com.alexander.mutantmore.animation.LenientBake.bake(MutantHoglinKeyframeAnimations.MUTANT_HOGLIN_DEATH, root);
+      this.dance = com.alexander.mutantmore.animation.LenientBake.bake(MutantHoglinKeyframeAnimations.MUTANT_HOGLIN_DANCE, root);
+      this.stomp = com.alexander.mutantmore.animation.LenientBake.bake(MutantHoglinKeyframeAnimations.MUTANT_HOGLIN_STOMP, root);
+      this.prepareCharge = com.alexander.mutantmore.animation.LenientBake.bake(MutantHoglinKeyframeAnimations.MUTANT_HOGLIN_PREPARE_CHARGE, root);
+      this.kick = com.alexander.mutantmore.animation.LenientBake.bake(MutantHoglinKeyframeAnimations.MUTANT_HOGLIN_KICK, root);
+      this.attack = com.alexander.mutantmore.animation.LenientBake.bake(MutantHoglinKeyframeAnimations.MUTANT_HOGLIN_ATTACK, root);
+      this.intro = com.alexander.mutantmore.animation.LenientBake.bake(MutantHoglinKeyframeAnimations.MUTANT_HOGLIN_INTRO, root);
+      this.novelty = com.alexander.mutantmore.animation.LenientBake.bake(MutantHoglinKeyframeAnimations.MUTANT_HOGLIN_NOVELTY, root);
    }
 
    public static LayerDefinition createBodyLayer() {

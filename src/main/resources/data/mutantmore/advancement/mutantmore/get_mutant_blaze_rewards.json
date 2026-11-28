@@ -1,0 +1,61 @@
+{
+  "parent": "mutantmore:mutantmore/kill_mutant_blaze",
+  "criteria": {
+    "rodling_checker": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:rodling_checker"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "heatstorm_generator": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:heatstorm_generator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "mutant_blaze_shields": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:mutant_blaze_shields"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.mutantmore.get_mutant_blaze_rewards.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "mutantmore:mutant_blaze_shields"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.mutantmore.get_mutant_blaze_rewards.title"
+    }
+  },
+  "requirements": [
+    [
+      "rodling_checker"
+    ],
+    [
+      "heatstorm_generator"
+    ],
+    [
+      "mutant_blaze_shields"
+    ]
+  ]
+}

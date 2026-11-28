@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "minecraft:bone_meal",
+    "V": "mutantmore:mutant_jungle_zombie_vine",
+    "P": "#mutantmore:mutation_potions",
+    "W": "minecraft:water_bucket"
+  },
+  "pattern": ["BPB", "WVW", "BBB"],
+  "result": {"id": "mutantmore:sentry_vine"}
+}

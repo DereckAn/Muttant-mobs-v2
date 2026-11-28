@@ -864,7 +864,8 @@ public class MutantShulker extends AbstractMutant implements IHasCustomExplosion
       return !p_34192_.is(MobEffects.LEVITATION) && super.canBeAffected(p_34192_);
    }
 
-   public boolean canBeCollidedWith() {
+   @Override
+   public boolean canBeCollidedWith(@org.jspecify.annotations.Nullable Entity other) {
       return this.isAlive() && this.isInBox();
    }
 

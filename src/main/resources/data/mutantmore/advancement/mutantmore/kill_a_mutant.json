@@ -1,0 +1,115 @@
+{
+  "parent": "mutantmore:mutantmore/mutate_mob",
+  "criteria": {
+    "mutantmore:mutant_wither_skeleton": {
+      "conditions": {
+        "entity": {
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "mutantmore:mutant_wither_skeleton"
+          },
+          "type": "minecraft:entity_properties"
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "mutantmore:mutant_shulker": {
+      "conditions": {
+        "entity": {
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "mutantmore:mutant_shulker"
+          },
+          "type": "minecraft:entity_properties"
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "mutantmore:mutant_blaze": {
+      "conditions": {
+        "entity": {
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "mutantmore:mutant_blaze"
+          },
+          "type": "minecraft:entity_properties"
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "mutantmore:mutant_husk": {
+      "conditions": {
+        "entity": {
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "mutantmore:mutant_husk"
+          },
+          "type": "minecraft:entity_properties"
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "mutantmore:mutant_hoglin": {
+      "conditions": {
+        "entity": {
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "mutantmore:mutant_hoglin"
+          },
+          "type": "minecraft:entity_properties"
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "mutantmore:mutant_frozen_zombie": {
+      "conditions": {
+        "entity": {
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "mutantmore:mutant_frozen_zombie"
+          },
+          "type": "minecraft:entity_properties"
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "mutantmore:mutant_jungle_zombie": {
+      "conditions": {
+        "entity": {
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "mutantmore:mutant_jungle_zombie"
+          },
+          "type": "minecraft:entity_properties"
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.mutantmore.kill_a_mutant.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "minecraft:diamond_axe"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.mutantmore.kill_a_mutant.title"
+    }
+  },
+  "requirements": [
+    [
+      "mutantmore:mutant_wither_skeleton",
+      "mutantmore:mutant_shulker",
+      "mutantmore:mutant_blaze",
+      "mutantmore:mutant_husk",
+      "mutantmore:mutant_hoglin",
+      "mutantmore:mutant_frozen_zombie",
+      "mutantmore:mutant_jungle_zombie"
+    ]
+  ]
+}

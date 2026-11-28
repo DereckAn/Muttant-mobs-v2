@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_disc_fragment_forces_unknown": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:disc_fragment_forces_unknown"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipes": "mutantmore:music_disc_forces_unknown"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_disc_fragment_forces_unknown",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mutantmore:music_disc_forces_unknown"
+    ]
+  }
+}

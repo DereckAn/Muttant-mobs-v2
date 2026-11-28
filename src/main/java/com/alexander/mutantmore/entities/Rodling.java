@@ -342,6 +342,26 @@ public class Rodling extends TamableAnimal {
       }
    }
 
+   /** Opens the Rodling Checker for this Rodling (was a custom Forge packet + menu). */
+   public void openCustomInventoryScreen(Player player) {
+      player.openMenu(new net.fabricmc.fabric.api.menu.v1.ExtendedMenuProvider<Integer>() {
+         @Override
+         public Integer getScreenOpeningData(net.minecraft.server.level.ServerPlayer serverPlayer) {
+            return Rodling.this.getId();
+         }
+
+         @Override
+         public net.minecraft.network.chat.Component getDisplayName() {
+            return Rodling.this.getName();
+         }
+
+         @Override
+         public net.minecraft.world.inventory.AbstractContainerMenu createMenu(int id, net.minecraft.world.entity.player.Inventory inventory, Player p) {
+            return new com.alexander.mutantmore.gui.RodlingCheckerMenu(id, inventory, Rodling.this);
+         }
+      });
+   }
+
    public void containerChanged(Container container) {
       if (!this.level().isClientSide()) {
          boolean hadHelmet = this.hasArmour();
@@ -481,11 +501,10 @@ public class Rodling extends TamableAnimal {
       builder.define(ATTACK_TYPE, 0);
       builder.define(SHIELDS, 2);
       builder.define(SOUL, false);
-      builder.define(FLAGS, (byte)0);
+      // griefing (32) and smoke particles (128) start on; 26.x can't set data before the builder is done
+      builder.define(FLAGS, (byte)(32 | 128));
       builder.define(AMOUNT_TO_HEAL, 0.0F);
       builder.define(COLOR_ID, (byte)16);
-      this.setFlag(32, true);
-      this.setFlag(128, true);
    }
 
    protected void addAdditionalSaveData(ValueOutput tag) {
@@ -707,7 +726,8 @@ public class Rodling extends TamableAnimal {
    }
 
 
-   public boolean causeFallDamage(float p_148989_, float p_148990_, DamageSource p_148991_) {
+   @Override
+   public boolean causeFallDamage(double p_148989_, float p_148990_, DamageSource p_148991_) {
       return false;
    }
 

@@ -31,11 +31,11 @@ public class MutantBlazeModel extends MMBaseEntityModel<MutantBlazeRenderer.Stat
          layer2.getChild("shield7"), layer2.getChild("shield4"), layer2.getChild("shield5"), layer2.getChild("shield6"),
          layer1.getChild("shield3"), layer1.getChild("shield"), layer1.getChild("shield2")
       };
-      this.crouch = MutantBlazeKeyframeAnimations.CROUCH.bake(root);
-      this.novelty = MutantBlazeKeyframeAnimations.NOVELTY.bake(root);
-      this.shoot = MutantBlazeKeyframeAnimations.SHOOT.bake(root);
-      this.rodShot = MutantBlazeKeyframeAnimations.ROD_SHOT_KEYFRAME.bake(root);
-      this.death = MutantBlazeKeyframeAnimations.DEATH_KEYFRAME.bake(root);
+      this.crouch = com.alexander.mutantmore.animation.LenientBake.bake(MutantBlazeKeyframeAnimations.CROUCH, root);
+      this.novelty = com.alexander.mutantmore.animation.LenientBake.bake(MutantBlazeKeyframeAnimations.NOVELTY, root);
+      this.shoot = com.alexander.mutantmore.animation.LenientBake.bake(MutantBlazeKeyframeAnimations.SHOOT, root);
+      this.rodShot = com.alexander.mutantmore.animation.LenientBake.bake(MutantBlazeKeyframeAnimations.ROD_SHOT_KEYFRAME, root);
+      this.death = com.alexander.mutantmore.animation.LenientBake.bake(MutantBlazeKeyframeAnimations.DEATH_KEYFRAME, root);
    }
 
    public static LayerDefinition createBodyLayer() {

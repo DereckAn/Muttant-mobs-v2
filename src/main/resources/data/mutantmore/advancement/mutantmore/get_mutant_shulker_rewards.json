@@ -1,0 +1,61 @@
+{
+  "parent": "mutantmore:mutantmore/kill_mutant_shulker",
+  "criteria": {
+    "mutant_shulker_shield": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:mutant_shulker_shield"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "mutant_shulker_turret": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:mutant_shulker_turret"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "mutant_shulker_trap": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:mutant_shulker_trap"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.mutantmore.get_mutant_shulker_rewards.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "mutantmore:mutant_shulker_shield"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.mutantmore.get_mutant_shulker_rewards.title"
+    }
+  },
+  "requirements": [
+    [
+      "mutant_shulker_shield"
+    ],
+    [
+      "mutant_shulker_turret"
+    ],
+    [
+      "mutant_shulker_trap"
+    ]
+  ]
+}

@@ -38,10 +38,10 @@ public class SentryVineModel extends EntityModel<SentryVineRenderState> {
       this.vine4 = this.vine3.getChild("vine4");
       this.vine5 = this.vine4.getChild("vine5");
       this.vine6 = this.vine5.getChild("vine6");
-      this.deploy = SentryVineKeyframeAnimations.SENTRY_VINE_DEPLOY.bake(root);
-      this.trySlam = SentryVineKeyframeAnimations.SENTRY_VINE_TRY_SLAM.bake(root);
-      this.slam = SentryVineKeyframeAnimations.SENTRY_VINE_SLAM.bake(root);
-      this.attack = SentryVineKeyframeAnimations.SENTRY_VINE_ATTACK.bake(root);
+      this.deploy = com.alexander.mutantmore.animation.LenientBake.bake(SentryVineKeyframeAnimations.SENTRY_VINE_DEPLOY, root);
+      this.trySlam = com.alexander.mutantmore.animation.LenientBake.bake(SentryVineKeyframeAnimations.SENTRY_VINE_TRY_SLAM, root);
+      this.slam = com.alexander.mutantmore.animation.LenientBake.bake(SentryVineKeyframeAnimations.SENTRY_VINE_SLAM, root);
+      this.attack = com.alexander.mutantmore.animation.LenientBake.bake(SentryVineKeyframeAnimations.SENTRY_VINE_ATTACK, root);
    }
 
    public static LayerDefinition createBodyLayer() {

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "M": "mutantmore:mutant_frozen_zombie_spikes",
+    "D": "minecraft:dispenser",
+    "W": "#minecraft:planks"
+  },
+  "pattern": [
+    "DWD",
+    "WMW",
+    "DWD"
+  ],
+  "result": {
+    "id": "mutantmore:freezing_fan",
+    "count": 4
+  },
+  "category": "redstone"
+}

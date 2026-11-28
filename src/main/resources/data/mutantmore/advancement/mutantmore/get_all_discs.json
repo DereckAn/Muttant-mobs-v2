@@ -1,0 +1,61 @@
+{
+  "parent": "mutantmore:mutantmore/kill_a_mutant",
+  "criteria": {
+    "music_disc_adrenaline_rush": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:music_disc_adrenaline_rush"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "music_disc_forces_unknown": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:music_disc_forces_unknown"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "music_disc_aegis": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:music_disc_aegis"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.mutantmore.get_all_discs.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "minecraft:jukebox"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.mutantmore.get_all_discs.title"
+    }
+  },
+  "requirements": [
+    [
+      "music_disc_adrenaline_rush"
+    ],
+    [
+      "music_disc_forces_unknown"
+    ],
+    [
+      "music_disc_aegis"
+    ]
+  ]
+}

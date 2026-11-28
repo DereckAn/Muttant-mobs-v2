@@ -78,7 +78,13 @@ public class MutantBlazeFireball extends Fireball {
       this.explosionFire = tag.getBooleanOr("ExplosionFire", true);
    }
 
+   // 26.x moves a projectile onto whatever it "hits" before onHit runs, so hits onHit ignores must be filtered here
+   // (the death burst ignored its own rods/fireballs, which left them frozen mid-air, shaking the screen forever)
    protected boolean canHitEntity(Entity target) {
+      if (this.spawnedByDyingMutantBlaze && (target instanceof MutantBlazeRodProjectile || target instanceof MutantBlazeFireball)) {
+         return false;
+      }
+
       return this.canHit(target) && super.canHitEntity(target);
    }
 

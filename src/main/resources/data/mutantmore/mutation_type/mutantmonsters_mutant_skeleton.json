@@ -1,0 +1,20 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "mutantmonsters"
+      ]
+    }
+  ],
+  "entityType": "minecraft:skeleton",
+  "resultEntityType": "mutantmonsters:mutant_skeleton",
+  "screenShake": {
+    "amount": 0.05,
+    "duration": 26,
+    "range": 25
+  },
+  "requiredMods": [
+    "mutantmonsters"
+  ]
+}

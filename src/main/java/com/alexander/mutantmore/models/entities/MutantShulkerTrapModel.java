@@ -21,9 +21,9 @@ public class MutantShulkerTrapModel extends MMBaseEntityModel<MutantShulkerTrapR
    public MutantShulkerTrapModel(ModelPart root) {
       super(root);
 
-      this.activate = MutantShulkerTrapKeyframeAnimations.ACTIVATE.bake(root);
-      this.playerActivate = MutantShulkerTrapKeyframeAnimations.PLAYER_ACTIVATE.bake(root);
-      this.vanish = MutantShulkerTrapKeyframeAnimations.VANISH.bake(root);
+      this.activate = com.alexander.mutantmore.animation.LenientBake.bake(MutantShulkerTrapKeyframeAnimations.ACTIVATE, root);
+      this.playerActivate = com.alexander.mutantmore.animation.LenientBake.bake(MutantShulkerTrapKeyframeAnimations.PLAYER_ACTIVATE, root);
+      this.vanish = com.alexander.mutantmore.animation.LenientBake.bake(MutantShulkerTrapKeyframeAnimations.VANISH, root);
    }
 
    public static LayerDefinition createBodyLayer() {

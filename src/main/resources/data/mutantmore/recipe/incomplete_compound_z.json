@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": "minecraft:tinted_glass",
+    "I": "minecraft:iron_ingot",
+    "Y": "mutantmore:incomplete_formula_y"
+  },
+  "pattern": [
+    "IGI",
+    "GYG",
+    "IGI"
+  ],
+  "result": {
+    "id": "mutantmore:incomplete_compound_z"
+  },
+  "category": "misc"
+}

@@ -1,0 +1,10 @@
+{
+  "entityType": "minecraft:blaze",
+  "resultEntityType": "mutantmore:mutant_blaze",
+  "mutatedSoundEvent": "mutantmore:entity.mutant_blaze.intro",
+  "screenShake": {
+    "amount": 0.05,
+    "duration": 26,
+    "range": 25
+  }
+}

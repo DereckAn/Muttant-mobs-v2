@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": "minecraft:nether_brick",
+    "H": "minecraft:golden_helmet"
+  },
+  "pattern": [
+    "BB ",
+    "BBB",
+    "BHB"
+  ],
+  "result": {
+    "id": "mutantmore:rodling_helmet"
+  },
+  "category": "equipment"
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": "minecraft:iron_chain",
+    "B": "minecraft:blue_ice",
+    "M": "mutantmore:mutant_frozen_zombie_spikes"
+  },
+  "pattern": [
+    "CBC",
+    "BMB",
+    "CBC"
+  ],
+  "result": {
+    "id": "mutantmore:icicle_ammo_charge"
+  },
+  "category": "equipment"
+}

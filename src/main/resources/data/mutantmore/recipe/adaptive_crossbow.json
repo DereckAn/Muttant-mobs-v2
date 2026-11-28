@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "T": "minecraft:tripwire_hook",
+    "C": "minecraft:crossbow",
+    "I": "minecraft:iron_ingot",
+    "S": "minecraft:stick",
+    "R": "minecraft:rail"
+  },
+  "pattern": [
+    "TCT",
+    "IRI",
+    " S "
+  ],
+  "result": {
+    "id": "mutantmore:adaptive_crossbow"
+  },
+  "category": "equipment"
+}

@@ -1,0 +1,13 @@
+{
+  "entityType": "minecraft:zombie",
+  "resultEntityType": "mutantmore:mutant_frozen_zombie",
+  "requiredBiomes": "mutantmore:vanilla_mutant_frozen_zombie_required_biomes",
+  "screenShake": {
+    "amount": 0.05,
+    "duration": 26,
+    "range": 25
+  },
+  "modsThatPreventMutation": [
+    "dungeonsmobs"
+  ]
+}

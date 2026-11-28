@@ -51,10 +51,10 @@ public class RodlingModel extends MMBaseEntityModel<RodlingModel.State> {
       this.shieldArmour = this.shield2.getChild("shieldArmour");
       this.rodArmour2 = this.rod2.getChild("rodArmour2");
       this.shieldArmour2 = this.shield1.getChild("shieldArmour2");
-      this.sit = RodlingKeyframeAnimations.SIT.bake(root);
-      this.projectilePose = RodlingKeyframeAnimations.PROJECTILE.bake(root);
-      this.novelty = RodlingKeyframeAnimations.NOVELTY.bake(root);
-      this.shoot = RodlingKeyframeAnimations.SHOOT.bake(root);
+      this.sit = com.alexander.mutantmore.animation.LenientBake.bake(RodlingKeyframeAnimations.SIT, root);
+      this.projectilePose = com.alexander.mutantmore.animation.LenientBake.bake(RodlingKeyframeAnimations.PROJECTILE, root);
+      this.novelty = com.alexander.mutantmore.animation.LenientBake.bake(RodlingKeyframeAnimations.NOVELTY, root);
+      this.shoot = com.alexander.mutantmore.animation.LenientBake.bake(RodlingKeyframeAnimations.SHOOT, root);
    }
 
    public static LayerDefinition createBodyLayer() {

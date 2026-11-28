@@ -1,0 +1,20 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "dungeonsmobs"
+      ]
+    }
+  ],
+  "entityType": "dungeonsmobs:frozen_zombie",
+  "resultEntityType": "mutantmore:mutant_frozen_zombie",
+  "screenShake": {
+    "amount": 0.05,
+    "duration": 80,
+    "range": 25
+  },
+  "requiredMods": [
+    "dungeonsmobs"
+  ]
+}

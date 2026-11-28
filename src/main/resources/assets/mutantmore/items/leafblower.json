@@ -1,0 +1,31 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:display_context",
+    "cases": [
+      {
+        "when": [
+          "gui",
+          "fixed",
+          "ground"
+        ],
+        "model": {
+          "type": "minecraft:special",
+          "base": "mutantmore:item/leafblower",
+          "model": {
+            "type": "mutantmore:leafblower",
+            "still": true
+          }
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:special",
+      "base": "mutantmore:item/leafblower",
+      "model": {
+        "type": "mutantmore:leafblower",
+        "still": false
+      }
+    }
+  }
+}

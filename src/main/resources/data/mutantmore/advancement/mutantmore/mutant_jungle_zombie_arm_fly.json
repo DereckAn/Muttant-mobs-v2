@@ -1,0 +1,28 @@
+{
+  "parent": "mutantmore:mutantmore/kill_mutant_jungle_zombie",
+  "display": {
+    "icon": {
+      "id": "mutantmore:mutant_jungle_zombie_arm"
+    },
+    "title": {
+      "translate": "advancements.mutantmore.mutant_jungle_zombie_arm_fly.title"
+    },
+    "description": {
+      "translate": "advancements.mutantmore.mutant_jungle_zombie_arm_fly.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "flew": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "flew"
+    ]
+  ]
+}

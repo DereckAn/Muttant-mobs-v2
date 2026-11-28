@@ -20,7 +20,7 @@ Pass 2 (done): Mutant Jungle Zombie.
 - Entity with its 5 attacks (punch, strangle, slam, vine sweep, poison jump), get-up lives, configs, spawn egg, Mutant More creative tab.
 - Shared `AreaDamage` entity (ground and poison-cloud types) and the poison cloud particle.
 - Rewards: vine seed (drop) and vine crop, Sentry Vine (placeable turret), Mutant Jungle Zombie Arm (grab/strangle, 3D item via a special model renderer, arm-raise pose), arm recipe.
-- Not yet: Sentry Vine recipe (needs the mutation potions), the advancement tree (the "flew" check is in code and lights up once it exists), armour/held-item render layers.
+- Not yet: armour/held-item render layers.
 
 Pass 3 (done): Mutant Husk.
 - Entity with punch, sand-boulder throw, geyser, roar (summons zombies out of the ground and spreads quicksand) and get-up lives; configs; spawn egg.
@@ -39,13 +39,18 @@ Pass 8 (done): Mutant Wither Skeleton (the server-synced `advanced_animation_uti
 
 Pass 9 (done): Mutant Wither Skeleton rewards: bone armour set (the skull is wearable and placeable on floors/walls, +attack speed; chestplate +attack damage), Wither Bomb (thrown, placed or dispensed), and their recipes.
 
-Not ported on purpose: Mutant Phantom (unfinished in the original: no spawn egg, no attacks).
+Pass 10 (done): the remaining boss rewards. Frozen Zombie: Snowstorm Generator, Freezing Fan, Icicle Ammo Charge + Adaptive Crossbow. Blaze: Heatstorm Generator, Mutant Blaze Shields, Rodling Checker (single-Rodling version: slots, name, health, settings). Shulker: Mutant Shulker Shield (block, attack to fire a bullet). Jungle Zombie: Leafblower (attack toggles suck/blow).
+
+Pass 11 (done): mutation system. Formula Y and Compound Z (fill the bottle with water, brew in the config's ingredient list in order; brewing-stand mixins, since 26.x data brewing can't track a step), Mutation Cloud (pink = success, purple = failed roll, red = no mutation, blue = wrong conditions), data-driven `mutation_type` files (Mutant Monsters / Dungeons Mobs ones only load with those mods), optional natural mutant spawns, Derelict Laboratory structure with its loot, and the wandering trader's laboratory map.
+
+Not ported on purpose: Mutant Phantom (unfinished in the original: no spawn egg, no attacks), Concoction W (a pet only for the author's Patreon supporters).
+
+Advancements: all 24 tab advancements (root = entering a Derelict Laboratory) and every recipe-unlock advancement, converted to the 26.x format. The three code-awarded ones (mutate a mob, enrage a Mutant Hoglin, fly with the Jungle Zombie Arm) are hooked. The Sentry Vine recipe is ported too.
 
 Deferred to later passes:
 - Mobs don't render worn armour (`AdvancedArmourLayer`).
-- Blaze extras: Rodling Checker GUI, Rodling equipment editing, Mutant Blaze Shields reward item, heat hearts.
-- Mutation system: the `mutation_type` data registry, natural spawns, Formula Y, Compound Z, the mutation cloud and Concoction W.
-- Advancements: the tree is rooted in mutation advancements.
+- Blaze extras: the heat hearts HUD, and the Rodling Checker's list for switching between and bulk-editing nearby Rodlings.
+- Mutation extras: the glowing overlay drawn on a mob while it mutates, and Mutant Shulkers at End City sentry spots (that one only happens if a datapack turns natural spawns on).
 - Custom "mutant" boss-bar textures. The bar is a vanilla one for now, and it's off by default in the config anyway.
 - Structures, blocks, GUIs, the remaining mixins, and the `forge:` → `c:` tag data.
 

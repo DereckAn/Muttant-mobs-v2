@@ -57,14 +57,14 @@ public class MutantFrozenZombieModel extends EntityModel<MutantFrozenZombieRende
       this.rightLeg = this.everything.getChild("rightLeg");
       this.rightLegLower = this.rightLeg.getChild("rightLegLower");
       this.snowBlock = this.everything.getChild("snowBlock");
-      this.roar = MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_ROAR.bake(root);
-      this.snowThrow = MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_SNOW_THROW.bake(root);
-      this.slam = MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_SLAM.bake(root);
-      this.jump = MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_JUMP.bake(root);
-      this.throwAnim = MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_THROW.bake(root);
-      this.attack = MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_ATTACK.bake(root);
-      this.intro = MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_INTRO.bake(root);
-      this.novelty = MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_NOVELTY.bake(root);
+      this.roar = com.alexander.mutantmore.animation.LenientBake.bake(MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_ROAR, root);
+      this.snowThrow = com.alexander.mutantmore.animation.LenientBake.bake(MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_SNOW_THROW, root);
+      this.slam = com.alexander.mutantmore.animation.LenientBake.bake(MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_SLAM, root);
+      this.jump = com.alexander.mutantmore.animation.LenientBake.bake(MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_JUMP, root);
+      this.throwAnim = com.alexander.mutantmore.animation.LenientBake.bake(MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_THROW, root);
+      this.attack = com.alexander.mutantmore.animation.LenientBake.bake(MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_ATTACK, root);
+      this.intro = com.alexander.mutantmore.animation.LenientBake.bake(MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_INTRO, root);
+      this.novelty = com.alexander.mutantmore.animation.LenientBake.bake(MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_NOVELTY, root);
    }
 
    public static LayerDefinition createBodyLayer() {
@@ -210,7 +210,7 @@ public class MutantFrozenZombieModel extends EntityModel<MutantFrozenZombieRende
       this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
       this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
       if (state.downAnimationTick > 0) {
-         MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_DOWN(age).bake(this.root()).apply(state.downAnimationState, age);
+         com.alexander.mutantmore.animation.LenientBake.bake(MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_DOWN(age), this.root()).apply(state.downAnimationState, age);
       } else if (state.roarAnimationTick > 0) {
          this.roar.apply(state.roarAnimationState, age);
       } else if (state.snowThrowAnimationTick > 0) {
@@ -220,7 +220,7 @@ public class MutantFrozenZombieModel extends EntityModel<MutantFrozenZombieRende
       } else if (state.jumpAnimationTick > 0) {
          this.jump.apply(state.jumpAnimationState, age);
       } else if (state.iciclesAnimationTick > 0) {
-         MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_ICICLES(age).bake(this.root()).apply(state.iciclesAnimationState, age);
+         com.alexander.mutantmore.animation.LenientBake.bake(MutantFrozenZombieKeyframeAnimations.MUTANT_FROZEN_ZOMBIE_ICICLES(age), this.root()).apply(state.iciclesAnimationState, age);
       } else if (state.throwAnimationTick > 0) {
          this.throwAnim.apply(state.throwAnimationState, age);
       } else if (state.attackAnimationTick > 0) {

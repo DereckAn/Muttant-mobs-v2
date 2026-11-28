@@ -1,0 +1,61 @@
+{
+  "parent": "mutantmore:mutantmore/kill_mutant_husk",
+  "criteria": {
+    "husk_hammer": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:husk_hammer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "sand_cannon": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:sand_cannon"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "desert_horn": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:desert_horn"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.mutantmore.get_mutant_husk_rewards.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "mutantmore:desert_horn"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.mutantmore.get_mutant_husk_rewards.title"
+    }
+  },
+  "requirements": [
+    [
+      "husk_hammer"
+    ],
+    [
+      "sand_cannon"
+    ],
+    [
+      "desert_horn"
+    ]
+  ]
+}

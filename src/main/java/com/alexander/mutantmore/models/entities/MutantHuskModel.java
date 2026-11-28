@@ -61,13 +61,13 @@ public class MutantHuskModel extends EntityModel<MutantHuskRenderState> {
       this.cacti = this.body.getChild("cacti");
       this.cactus5 = this.pelvis.getChild("cactus5");
       this.cactus4 = this.rightArm.getChild("cactus4");
-      this.attack = MutantHuskKeyframeAnimations.MUTANT_HUSK_ATTACK.bake(root);
-      this.trap = MutantHuskKeyframeAnimations.MUTANT_HUSK_TRAP.bake(root);
-      this.jump = MutantHuskKeyframeAnimations.MUTANT_HUSK_JUMP.bake(root);
-      this.slam = MutantHuskKeyframeAnimations.MUTANT_HUSK_SLAM.bake(root);
-      this.roar = MutantHuskKeyframeAnimations.MUTANT_HUSK_ROAR.bake(root);
-      this.throwSand = MutantHuskKeyframeAnimations.MUTANT_HUSK_THROW_SAND.bake(root);
-      this.intro = MutantHuskKeyframeAnimations.MUTANT_HUSK_INTRO.bake(root);
+      this.attack = com.alexander.mutantmore.animation.LenientBake.bake(MutantHuskKeyframeAnimations.MUTANT_HUSK_ATTACK, root);
+      this.trap = com.alexander.mutantmore.animation.LenientBake.bake(MutantHuskKeyframeAnimations.MUTANT_HUSK_TRAP, root);
+      this.jump = com.alexander.mutantmore.animation.LenientBake.bake(MutantHuskKeyframeAnimations.MUTANT_HUSK_JUMP, root);
+      this.slam = com.alexander.mutantmore.animation.LenientBake.bake(MutantHuskKeyframeAnimations.MUTANT_HUSK_SLAM, root);
+      this.roar = com.alexander.mutantmore.animation.LenientBake.bake(MutantHuskKeyframeAnimations.MUTANT_HUSK_ROAR, root);
+      this.throwSand = com.alexander.mutantmore.animation.LenientBake.bake(MutantHuskKeyframeAnimations.MUTANT_HUSK_THROW_SAND, root);
+      this.intro = com.alexander.mutantmore.animation.LenientBake.bake(MutantHuskKeyframeAnimations.MUTANT_HUSK_INTRO, root);
    }
 
    public static LayerDefinition createBodyLayer() {
@@ -262,11 +262,11 @@ public class MutantHuskModel extends EntityModel<MutantHuskRenderState> {
       this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
       // DOWN, GEYSER and NOVELTY wobble with age, so they are rebuilt each frame (only while playing)
       if (state.downAnimationTick > 0) {
-         MutantHuskKeyframeAnimations.MUTANT_HUSK_DOWN(age).bake(this.root()).apply(state.downAnimationState, age);
+         com.alexander.mutantmore.animation.LenientBake.bake(MutantHuskKeyframeAnimations.MUTANT_HUSK_DOWN(age), this.root()).apply(state.downAnimationState, age);
       } else if (state.roarAnimationTick > 0) {
          this.roar.apply(state.roarAnimationState, age);
       } else if (state.geyserAnimationTick > 0) {
-         MutantHuskKeyframeAnimations.MUTANT_HUSK_GEYSER(age).bake(this.root()).apply(state.geyserAnimationState, age);
+         com.alexander.mutantmore.animation.LenientBake.bake(MutantHuskKeyframeAnimations.MUTANT_HUSK_GEYSER(age), this.root()).apply(state.geyserAnimationState, age);
       } else if (state.slamAnimationTick > 0) {
          this.slam.apply(state.slamAnimationState, age);
       } else if (state.jumpAnimationTick > 0) {
@@ -280,7 +280,7 @@ public class MutantHuskModel extends EntityModel<MutantHuskRenderState> {
       } else if (state.introAnimationTick > 0) {
          this.intro.apply(state.introAnimationState, age);
       } else if (state.noveltyAnimationTick > 0) {
-         MutantHuskKeyframeAnimations.MUTANT_HUSK_NOVELTY(age).bake(this.root()).apply(state.noveltyAnimationState, age);
+         com.alexander.mutantmore.animation.LenientBake.bake(MutantHuskKeyframeAnimations.MUTANT_HUSK_NOVELTY(age), this.root()).apply(state.noveltyAnimationState, age);
       } else {
          MutantHuskSineWaveAnimations.mutantHuskJumpingAnimation(this, tick, 1.0F, shouldPlayJumpingAnimation ? 1.0F : 0.0F);
          MutantHuskSineWaveAnimations.mutantHuskWalkAnimation(this, tick, state.walkSpeed, shouldPlayWalkAnimation ? 1.0F : 0.0F);

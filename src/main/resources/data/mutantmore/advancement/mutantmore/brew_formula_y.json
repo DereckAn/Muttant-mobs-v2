@@ -1,0 +1,35 @@
+{
+  "parent": "mutantmore:mutantmore/root",
+  "criteria": {
+    "formula_y": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:formula_y"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.mutantmore.brew_formula_y.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "mutantmore:formula_y"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.mutantmore.brew_formula_y.title"
+    }
+  },
+  "requirements": [
+    [
+      "formula_y"
+    ]
+  ]
+}

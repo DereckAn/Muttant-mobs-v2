@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": "#minecraft:stone_tool_materials",
+    "R": "minecraft:redstone",
+    "I": "minecraft:iron_bars",
+    "M": "mutantmore:mutant_frozen_zombie_spikes",
+    "F": "minecraft:blast_furnace"
+  },
+  "pattern": [
+    "IMI",
+    "CFC",
+    "CRC"
+  ],
+  "result": {
+    "id": "mutantmore:snowstorm_generator"
+  },
+  "category": "redstone"
+}

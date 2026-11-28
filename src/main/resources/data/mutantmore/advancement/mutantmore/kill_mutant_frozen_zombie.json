@@ -1,0 +1,37 @@
+{
+  "parent": "mutantmore:mutantmore/kill_mutant_husk",
+  "criteria": {
+    "killed": {
+      "conditions": {
+        "entity": {
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "mutantmore:mutant_frozen_zombie"
+          },
+          "type": "minecraft:entity_properties"
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.mutantmore.kill_mutant_frozen_zombie.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "mutantmore:mutant_frozen_zombie_spikes"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.mutantmore.kill_mutant_frozen_zombie.title"
+    }
+  },
+  "requirements": [
+    [
+      "killed"
+    ]
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "mutantmore:mutantmore/brew_formula_y",
+  "display": {
+    "icon": {
+      "id": "mutantmore:incomplete_compound_z"
+    },
+    "title": {
+      "translate": "advancements.mutantmore.mutate_mob.title"
+    },
+    "description": {
+      "translate": "advancements.mutantmore.mutate_mob.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "mutated": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "mutated"
+    ]
+  ]
+}

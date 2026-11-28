@@ -1,0 +1,10 @@
+{
+  "entityType": "minecraft:hoglin",
+  "resultEntityType": "mutantmore:mutant_hoglin",
+  "mutatedSoundEvent": "minecraft:entity.hoglin.ambient",
+  "screenShake": {
+    "amount": 0.05,
+    "duration": 26,
+    "range": 25
+  }
+}

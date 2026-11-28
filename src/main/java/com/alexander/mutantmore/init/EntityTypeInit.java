@@ -99,6 +99,19 @@ public class EntityTypeInit {
    public static final EntityType<com.alexander.mutantmore.entities.WitherBomb> WITHER_BOMB = register(
       "wither_bomb", EntityType.Builder.<com.alexander.mutantmore.entities.WitherBomb>of(com.alexander.mutantmore.entities.WitherBomb::new, MobCategory.MISC).sized(0.75F, 0.75F)
    );
+   public static final EntityType<com.alexander.mutantmore.entities.MutantBlazeShields> MUTANT_BLAZE_SHIELDS = register(
+      "mutant_blaze_shields",
+      EntityType.Builder.<com.alexander.mutantmore.entities.MutantBlazeShields>of(com.alexander.mutantmore.entities.MutantBlazeShields::new, MobCategory.MISC).sized(0.4F, 1.6F).fireImmune()
+   );
+   public static final EntityType<com.alexander.mutantmore.entities.MutationCloud> MUTATION_CLOUD = register(
+      "mutation_cloud",
+      EntityType.Builder.<com.alexander.mutantmore.entities.MutationCloud>of(com.alexander.mutantmore.entities.MutationCloud::new, MobCategory.MISC).sized(1.0F, 1.0F).fireImmune().clientTrackingRange(10)
+   );
+   public static final EntityType<com.alexander.mutantmore.entities.ThrownMutationPotion> THROWN_MUTATION_POTION = register(
+      "thrown_mutation_potion",
+      EntityType.Builder.<com.alexander.mutantmore.entities.ThrownMutationPotion>of(com.alexander.mutantmore.entities.ThrownMutationPotion::new, MobCategory.MISC).sized(0.25F, 0.25F)
+         .clientTrackingRange(4).updateInterval(10)
+   );
    public static final EntityType<AreaDamage> AREA_DAMAGE = register(
       "area_damage", EntityType.Builder.<AreaDamage>of(AreaDamage::new, MobCategory.MISC).sized(1.0F, 1.0F).fireImmune().noSave()
    );

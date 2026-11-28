@@ -34,8 +34,8 @@ public class MutantJungleZombieArmModel extends Model<MutantJungleZombieArmModel
       this.vine3 = this.vine2.getChild("vine3");
       this.vine4 = this.vine3.getChild("vine4");
       this.vine5 = this.vine4.getChild("vine5");
-      this.grab = MutantJungleZombieArmKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_ARM_GRAB.bake(root);
-      this.release = MutantJungleZombieArmKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_ARM_RELEASE.bake(root);
+      this.grab = com.alexander.mutantmore.animation.LenientBake.bake(MutantJungleZombieArmKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_ARM_GRAB, root);
+      this.release = com.alexander.mutantmore.animation.LenientBake.bake(MutantJungleZombieArmKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_ARM_RELEASE, root);
    }
 
    public static LayerDefinition createBodyLayer() {

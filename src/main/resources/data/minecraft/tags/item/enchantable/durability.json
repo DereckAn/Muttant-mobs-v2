@@ -48,6 +48,18 @@
     {
       "id": "mutantmore:mutant_wither_skeleton_boots",
       "required": false
+    },
+    {
+      "id": "mutantmore:adaptive_crossbow",
+      "required": false
+    },
+    {
+      "id": "mutantmore:mutant_shulker_shield",
+      "required": false
+    },
+    {
+      "id": "mutantmore:leafblower",
+      "required": false
     }
   ]
 }

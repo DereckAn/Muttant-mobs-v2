@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mutant_frozen_zombie_spikes": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mutantmore:mutant_frozen_zombie_spikes"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipes": "mutantmore:snowstorm_generator"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_mutant_frozen_zombie_spikes",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mutantmore:snowstorm_generator"
+    ]
+  }
+}

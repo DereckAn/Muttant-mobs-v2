@@ -124,8 +124,9 @@ public class MutantBlazeRodProjectile extends ThrowableProjectile {
       }
    }
 
+   // rods pass through each other (onHit ignored rod hits, but 26.x would freeze the rod on them)
    protected boolean canHitEntity(Entity target) {
-      return this.canHit(target) && super.canHitEntity(target);
+      return !(target instanceof MutantBlazeRodProjectile) && this.canHit(target) && super.canHitEntity(target);
    }
 
    protected void onHitEntity(EntityHitResult p_37404_) {

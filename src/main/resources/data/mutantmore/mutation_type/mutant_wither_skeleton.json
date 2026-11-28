@@ -1,0 +1,10 @@
+{
+  "entityType": "minecraft:wither_skeleton",
+  "resultEntityType": "mutantmore:mutant_wither_skeleton",
+  "mutatedSoundEvent": "mutantmore:entity.mutant_wither_skeleton.roar",
+  "screenShake": {
+    "amount": 0.05,
+    "duration": 26,
+    "range": 25
+  }
+}

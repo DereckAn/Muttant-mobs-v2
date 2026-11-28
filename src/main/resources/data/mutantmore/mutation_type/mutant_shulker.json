@@ -1,0 +1,10 @@
+{
+  "entityType": "minecraft:shulker",
+  "resultEntityType": "mutantmore:mutant_shulker",
+  "mutatedSoundEvent": "mutantmore:entity.mutant_shulker.roar",
+  "screenShake": {
+    "amount": 0.05,
+    "duration": 26,
+    "range": 25
+  }
+}

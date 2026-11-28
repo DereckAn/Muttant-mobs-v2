@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": "minecraft:shield",
+    "P": "minecraft:blaze_powder",
+    "M": "mutantmore:mutant_blaze_core"
+  },
+  "pattern": [
+    "SPS",
+    "PMP",
+    "SPS"
+  ],
+  "result": {
+    "id": "mutantmore:mutant_blaze_shields"
+  },
+  "category": "equipment"
+}

@@ -26,6 +26,24 @@ public final class HeatUtils {
       if (source.snowstormRange() > 0.0) {
          createSnowstormParticles(source, pos, level);
          freezeNearbyMobs(source, pos, level, freezeSpeed, maxFreezing);
+         if (generator && !level.isClientSide()) {
+            // Snowstorm Generator: whoever is (nearly) fully frozen also gets slowed and weakened
+            for (Entity entity : level.getEntities((Entity)null, createSnowstormRange(source, pos))) {
+               if (entity instanceof LivingEntity living && source.canFreeze(living) && living.getTicksFrozen() >= maxFreezing - 10
+                  && level.getEntitiesOfClass(com.alexander.mutantmore.entities.IceCube.class, living.getBoundingBox()).isEmpty()) {
+                  int slowness = com.alexander.mutantmore.config.mutant_frozen_zombie.MutantFrozenZombieRewardsCommonConfig.generator_slowness_length.get();
+                  living.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+                     net.minecraft.world.effect.MobEffects.SLOWNESS, slowness, com.alexander.mutantmore.config.mutant_frozen_zombie.MutantFrozenZombieRewardsCommonConfig.generator_slowness_level.get()
+                  ));
+                  living.addEffect(new net.minecraft.world.effect.MobEffectInstance(com.alexander.mutantmore.init.EffectInit.JUMPING_FATIGUE, slowness, 0));
+                  living.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+                     net.minecraft.world.effect.MobEffects.WEAKNESS,
+                     com.alexander.mutantmore.config.mutant_frozen_zombie.MutantFrozenZombieRewardsCommonConfig.generator_weakness_length.get(),
+                     com.alexander.mutantmore.config.mutant_frozen_zombie.MutantFrozenZombieRewardsCommonConfig.generator_weakness_level.get()
+                  ));
+               }
+            }
+         }
       }
    }
 

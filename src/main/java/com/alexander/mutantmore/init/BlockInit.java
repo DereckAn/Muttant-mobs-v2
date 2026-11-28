@@ -44,6 +44,18 @@ public class BlockInit {
          .strength(1.0F).pushReaction(net.minecraft.world.level.material.PushReaction.POPPED).noOcclusion()
    );
 
+   public static final Block SNOWSTORM_GENERATOR = register(
+      "snowstorm_generator", com.alexander.mutantmore.blocks.SnowstormGeneratorBlock::new,
+      BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).requiresCorrectToolForDrops().strength(3.5F).noOcclusion()
+   );
+   public static final Block HEATSTORM_GENERATOR = register(
+      "heatstorm_generator", com.alexander.mutantmore.blocks.HeatstormGeneratorBlock::new,
+      BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).requiresCorrectToolForDrops().strength(3.5F).lightLevel(state -> 10).noOcclusion()
+   );
+   public static final Block FREEZING_FAN = register(
+      "freezing_fan", com.alexander.mutantmore.blocks.FreezingFanBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).requiresCorrectToolForDrops().strength(3.5F)
+   );
+
    private static Block register(String name, Function<BlockBehaviour.Properties, Block> factory, BlockBehaviour.Properties properties) {
       ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("mutantmore", name));
       return Registry.register(BuiltInRegistries.BLOCK, key, factory.apply(properties.setId(key)));

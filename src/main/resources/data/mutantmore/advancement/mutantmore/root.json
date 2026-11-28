@@ -1,0 +1,39 @@
+{
+  "criteria": {
+    "in_derelict_laboratory": {
+      "conditions": {
+        "player": {
+          "entity": "this",
+          "predicate": {
+            "minecraft:location": {
+              "structures": "mutantmore:derelict_laboratory"
+            }
+          },
+          "type": "minecraft:entity_properties"
+        }
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "minecraft:block/mossy_stone_bricks",
+    "description": {
+      "translate": "advancements.mutantmore.root.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "mutantmore:incomplete_formula_y"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.mutantmore.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "in_derelict_laboratory"
+    ]
+  ]
+}

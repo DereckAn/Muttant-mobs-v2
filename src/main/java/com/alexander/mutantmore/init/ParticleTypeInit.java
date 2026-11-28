@@ -27,6 +27,9 @@ public class ParticleTypeInit {
    public static final ParticleType<AdvancedParticleOption> MUTANT_WITHER_SKELETON_LEECH = advanced("mutant_wither_skeleton_leech");
    public static final SimpleParticleType WITHER_GAS = simple("wither_gas");
    public static final SimpleParticleType WITHER_BOMB = simple("wither_bomb");
+   public static final ParticleType<AdvancedParticleOption> MUTATION = advanced("mutation");
+   public static final ParticleType<AdvancedParticleOption> MUTATION_SWIRL = advanced("mutation_swirl");
+   public static final SimpleParticleType MOTION_SNOWSTORM = simple("motion_snowstorm");
    public static final ParticleType<AdvancedParticleOption> GROUND_TRAIL = advanced("ground_trail");
    public static final ParticleType<AdvancedParticleOption> ABSORB = advanced("absorb");
 

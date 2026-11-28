@@ -20,7 +20,7 @@ public class IcicleSpikeModel extends Model<IcicleSpikeRenderer.State> {
    public IcicleSpikeModel(ModelPart root) {
       super(root, RenderTypes::entityTranslucent);
       this.spike = root.getChild("spike");
-      this.rise = IcicleSpikeKeyframeAnimations.ICICLE_SPIKE.bake(root);
+      this.rise = com.alexander.mutantmore.animation.LenientBake.bake(IcicleSpikeKeyframeAnimations.ICICLE_SPIKE, root);
    }
 
    public static LayerDefinition createBodyLayer() {

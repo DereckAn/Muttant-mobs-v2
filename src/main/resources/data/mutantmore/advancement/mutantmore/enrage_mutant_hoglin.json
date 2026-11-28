@@ -1,0 +1,28 @@
+{
+  "parent": "mutantmore:mutantmore/kill_mutant_hoglin",
+  "display": {
+    "icon": {
+      "id": "minecraft:cooked_porkchop"
+    },
+    "title": {
+      "translate": "advancements.mutantmore.enrage_mutant_hoglin.title"
+    },
+    "description": {
+      "translate": "advancements.mutantmore.enrage_mutant_hoglin.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "enraged": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "enraged"
+    ]
+  ]
+}

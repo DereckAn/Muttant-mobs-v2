@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": "minecraft:blaze_powder",
+    "S": "minecraft:shield"
+  },
+  "pattern": [
+    "B B",
+    "S S",
+    "B B"
+  ],
+  "result": {
+    "id": "mutantmore:rodling_shields"
+  },
+  "category": "equipment"
+}

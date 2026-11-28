@@ -358,7 +358,8 @@ public class MutantShulkerTrap extends Mob {
       return false;
    }
 
-   public boolean causeFallDamage(float p_148711_, float p_148712_, DamageSource p_148713_) {
+   @Override
+   public boolean causeFallDamage(double p_148711_, float p_148712_, DamageSource p_148713_) {
       return false;
    }
 

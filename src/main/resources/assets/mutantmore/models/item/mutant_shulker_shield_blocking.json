@@ -1,0 +1,108 @@
+{
+  "textures": {
+    "particle": "mutantmore:item/mutant_shulker_shield"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        -121,
+        40,
+        -178
+      ],
+      "translation": [
+        1.5,
+        -5.5,
+        -12
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        -121,
+        40,
+        -178
+      ],
+      "translation": [
+        1.5,
+        -5.5,
+        -12
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -2,
+        180,
+        -10
+      ],
+      "translation": [
+        -3,
+        -3,
+        0
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        -2,
+        180,
+        -10
+      ],
+      "translation": [
+        -3,
+        -3,
+        0
+      ]
+    },
+    "ground": {
+      "scale": [
+        0.25,
+        0.25,
+        0.25
+      ]
+    },
+    "gui": {
+      "rotation": [
+        1,
+        -35,
+        6
+      ],
+      "translation": [
+        0,
+        -6.5,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "head": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        -33,
+        3.75
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "translation": [
+        0,
+        -7.25,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    }
+  }
+}

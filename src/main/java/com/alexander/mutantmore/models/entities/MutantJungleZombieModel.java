@@ -65,16 +65,16 @@ public class MutantJungleZombieModel extends EntityModel<MutantJungleZombieRende
       this.leftLegLower = this.leftLeg.getChild("leftLegLower");
       this.rightLeg = this.everything.getChild("rightLeg");
       this.rightLegLower = this.rightLeg.getChild("rightLegLower");
-      this.lowAttackSlowed = MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_LOW_ATTACK_SLOWED.bake(root);
-      this.highAttackSlowed = MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_HIGH_ATTACK_SLOWED.bake(root);
-      this.punch = MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_PUNCH.bake(root);
-      this.tryChoke = MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_TRY_CHOKE.bake(root);
-      this.trySlam = MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_TRY_SLAM.bake(root);
-      this.slam = MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_SLAM.bake(root);
-      this.novelty = MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_NOVELTY.bake(root);
-      this.intro = MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_INTRO.bake(root);
-      this.jump = MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_JUMP.bake(root);
-      this.stopResting = MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_STOP_RESTING.bake(root);
+      this.lowAttackSlowed = com.alexander.mutantmore.animation.LenientBake.bake(MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_LOW_ATTACK_SLOWED, root);
+      this.highAttackSlowed = com.alexander.mutantmore.animation.LenientBake.bake(MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_HIGH_ATTACK_SLOWED, root);
+      this.punch = com.alexander.mutantmore.animation.LenientBake.bake(MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_PUNCH, root);
+      this.tryChoke = com.alexander.mutantmore.animation.LenientBake.bake(MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_TRY_CHOKE, root);
+      this.trySlam = com.alexander.mutantmore.animation.LenientBake.bake(MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_TRY_SLAM, root);
+      this.slam = com.alexander.mutantmore.animation.LenientBake.bake(MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_SLAM, root);
+      this.novelty = com.alexander.mutantmore.animation.LenientBake.bake(MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_NOVELTY, root);
+      this.intro = com.alexander.mutantmore.animation.LenientBake.bake(MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_INTRO, root);
+      this.jump = com.alexander.mutantmore.animation.LenientBake.bake(MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_JUMP, root);
+      this.stopResting = com.alexander.mutantmore.animation.LenientBake.bake(MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_STOP_RESTING, root);
    }
 
    public static LayerDefinition createBodyLayer() {
@@ -185,7 +185,7 @@ public class MutantJungleZombieModel extends EntityModel<MutantJungleZombieRende
       float tick = SineWaveAnimationUtils.getTick(age, true);
       if (state.downAnimationTick > 0) {
          // DOWN and CHOKE wobble with age, so they are rebuilt each frame (only while playing)
-         MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_DOWN(age).bake(this.root()).apply(state.downAnimationState, age);
+         com.alexander.mutantmore.animation.LenientBake.bake(MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_DOWN(age), this.root()).apply(state.downAnimationState, age);
       } else if (state.introAnimationTick > 0) {
          this.intro.apply(state.introAnimationState, age);
       } else if (state.stopRestingAnimationTick > 0) {
@@ -209,7 +209,7 @@ public class MutantJungleZombieModel extends EntityModel<MutantJungleZombieRende
       } else if (state.slamAnimationTick > 0) {
          this.slam.apply(state.slamAnimationState, age);
       } else if (state.chokeAnimationTick > 0) {
-         MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_CHOKE(age).bake(this.root()).apply(state.chokeAnimationState, age);
+         com.alexander.mutantmore.animation.LenientBake.bake(MutantJungleZombieKeyframeAnimations.MUTANT_JUNGLE_ZOMBIE_CHOKE(age), this.root()).apply(state.chokeAnimationState, age);
       } else if (state.noveltyAnimationTick > 0) {
          this.novelty.apply(state.noveltyAnimationState, age);
       } else {

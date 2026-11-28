@@ -3,7 +3,6 @@ package com.alexander.mutantmore.renderers.entities;
 import com.alexander.mutantmore.entities.MutantWitherSkeletonBodyPart;
 import com.alexander.mutantmore.models.entities.MutantWitherSkeletonBodyPartModel;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -31,10 +30,7 @@ public class MutantWitherSkeletonBodyPartRenderer extends EntityRenderer<MutantW
    public void submit(State state, PoseStack poseStack, SubmitNodeCollector collector, CameraRenderState camera) {
       poseStack.pushPose();
       poseStack.scale(1.2F, 1.2F, 1.2F);
-      poseStack.translate(0.0F, 0.25F, 0.0F);
-      poseStack.rotate(Axis.YP.rotationDegrees(state.yRot));
-      poseStack.rotate(Axis.XP.rotationDegrees(state.xRot));
-      poseStack.translate(0.0F, -0.25F, 0.0F);
+      // drawn upright like the original, so bones lie flat on the floor
       poseStack.scale(-1.0F, -1.0F, 1.0F);
       poseStack.translate(0.0F, -1.501F, 0.0F);
       collector.submitModel(
